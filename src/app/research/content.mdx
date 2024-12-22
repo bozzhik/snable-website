@@ -1,0 +1,64 @@
+# Visual Research Findings
+
+## Introduction
+
+This document presents the findings of our extensive visual research project. The goal was to analyze current design trends and user preferences in digital interfaces.
+
+## Key Findings
+
+1. **Color Trends**
+
+   - Muted pastels are gaining popularity
+   - Dark mode is becoming a standard option
+
+2. **Typography**
+
+   - Sans-serif fonts dominate digital interfaces
+   - Variable fonts are increasingly used for responsive design
+
+3. **Layout Patterns**
+   - Card-based designs continue to be prevalent
+   - Asymmetrical layouts are trending in creative industries
+
+## Methodology
+
+Our research involved:
+
+- Analyzing 500+ websites across various industries
+- Conducting user surveys with 1000+ participants
+- Interviewing 50 design professionals
+
+## Conclusion
+
+The visual design landscape is constantly evolving. Staying updated with these trends while focusing on user needs is crucial for creating effective digital experiences.
+
+# My Stack
+
+Here's where I'm currently most productive:
+
+## 1. Framework (Next.js and React)
+
+I’ve been working with Next.js since 2018 (and React since 2015) so I'm most productive here. I start all my projects with TypeScript.
+
+For data fetching, I use newer React patterns:
+
+<details className="mb-1 -mt-2">
+  <summary className="text-gray-600 text-[15px] mb-2">Majority: Server Components</summary>
+  
+    Most of the time, I fetch data in a Server Component (like a `page` or `layout`). Occasionally, I'll still use an external library for client-fetches (e.g. `swr`) when working with existing codebases.
+    
+    ```jsx
+    export default async function Page() {
+      let data = await fetch('https://api.vercel.app/blog')
+      let posts = await data.json()
+      return (
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>{post.title}</li>
+          ))}
+        </ul>
+      )
+    }
+    ```
+
+</details>
