@@ -1,22 +1,23 @@
 import {MDXRemote} from 'next-mdx-remote/rsc'
-import fs from 'fs'
+import {useMDXComponents} from './mdx-components'
+import fs from 'fs/promises'
 import path from 'path'
+
+// This function will be used to read the MDX file
+async function getContent() {
+  const filePath = path.join(process.cwd(), 'src/app/research/content.mdx')
+  return await fs.readFile(filePath, 'utf8')
+}
+
+// Define custom components outside of the async function
+const components = useMDXComponents({})
 
 export default async function ResearchPage() {
   const content = await getContent()
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Research</h1>
-      <div className="prose prose-lg">
-        <MDXRemote source={content} />
-      </div>
-    </div>
+    <article className="prose lg:prose-xl">
+      <MDXRemote source={content} components={components} />
+    </article>
   )
-}
-
-async function getContent() {
-  const filePath = path.join(process.cwd(), 'src/app/research/content.mdx')
-  const content = await fs.promises.readFile(filePath, 'utf8')
-  return content
 }
