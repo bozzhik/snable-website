@@ -1,11 +1,20 @@
 import {cn} from '@/lib/utils'
 
-import {ComponentPropsWithoutRef} from 'react'
+import React, {ComponentPropsWithoutRef} from 'react'
 import {highlight} from 'sugar-high'
+import Link from 'next/link'
 
 export const MDX = {
-  h1: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h1 className={cn('mb-10 text-3xl sm:text-2xl text-neutral-500 font-semibold tracking-tighter', className)} {...props} />,
-  h2: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h2 className={cn('uppercase mt-10 text-neutral-500 mb-4 text-3xl sm:text-2xl font-semibold tracking-tight', className)} {...props} />,
+  h1: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h1 className={cn('hidden', className)} {...props} />,
+  h2: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => {
+    const textContent = typeof props.children === 'string' ? props.children : React.Children.toArray(props.children).join('')
+    const anchorId = textContent
+      .toLowerCase()
+      .replace(/[^a-z0-9а-яё\s-]/gi, '')
+      .replace(/\s+/g, '-')
+
+    return <h2 id={anchorId} className={cn('scroll-mt-4 uppercase mt-10 text-neutral-500 mb-4 text-3xl sm:text-2xl font-semibold tracking-tight', className)} {...props} />
+  },
   h3: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h3 className={cn('uppercase mt-10 text-neutral-500 mb-4 text-2xl font-semibold tracking-[-0.015em]', className)} {...props} />,
   h4: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h4 className={cn('uppercase mt-8 text-neutral-500 mb-2 text-xl font-semibold tracking-[-0.015em]', className)} {...props} />,
   h5: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h5 className={cn('uppercase mt-4 text-neutral-500 mb-2 text-base font-semibold tracking-[-0.015em]', className)} {...props} />,
@@ -20,6 +29,20 @@ export const MDX = {
   img: ({className, ...props}: React.HTMLAttributes<HTMLImageElement>) => <img className={cn('pb-0.5', className)} {...props} alt="Snable research image" />,
   a: ({href, children, ...props}: ComponentPropsWithoutRef<'a'>) => {
     const className = 'pb-[1px] text-neutral-500 border-b border-neutral-500 hover:border-transparent duration-200'
+    if (href?.startsWith('/')) {
+      return (
+        <Link href={href} className={className} {...props}>
+          {children}
+        </Link>
+      )
+    }
+    if (href?.startsWith('#')) {
+      return (
+        <a href={href} className={className} {...props}>
+          {children}
+        </a>
+      )
+    }
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={className} {...props}>
         {children}
