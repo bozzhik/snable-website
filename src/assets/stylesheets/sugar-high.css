@@ -14,7 +14,7 @@
 }
 
 pre {
-  @apply bg-neutral-900 rounded-[4px] overflow-x-hidden;
+  @apply overflow-x-hidden rounded bg-neutral-900;
 }
 
 pre code {
