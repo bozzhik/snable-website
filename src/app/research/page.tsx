@@ -1,8 +1,13 @@
 import path from 'path'
 import fs from 'fs/promises'
 
+import {Metadata} from 'next'
 import {MDXRemote} from 'next-mdx-remote/rsc'
 import {MDX} from '~/UI/MDX'
+
+export const metadata: Metadata = {
+  title: 'Research',
+}
 
 async function getContent() {
   const filePath = path.join(process.cwd(), 'src/app/research/content.mdx')
