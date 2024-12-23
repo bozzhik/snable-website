@@ -14,12 +14,12 @@
 }
 
 pre {
-  @apply mt-5 bg-neutral-900 rounded-[4px];
+  @apply bg-neutral-900 rounded-[4px] overflow-x-hidden;
 }
 
 pre code {
   counter-reset: sh-line-number;
-  @apply flex flex-col px-3.5 py-2;
+  @apply mb-5 flex flex-col px-3.5 py-2;
 }
 
 .sh__line::before {
