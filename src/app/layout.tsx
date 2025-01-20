@@ -1,4 +1,4 @@
-import type {Metadata} from 'next'
+export {metadata} from '@/lib/layout-config'
 import localFont from 'next/font/local'
 import '@/app/globals.css'
 
@@ -12,14 +12,6 @@ const geistMono = localFont({
   variable: '--font-geist-mono',
   weight: '100 900',
 })
-
-export const metadata: Metadata = {
-  title: {
-    template: '%s — Snable Extension',
-    default: 'Snable Extension',
-  },
-  description: 'Snable — Chrome extension for web design analysis that lets you effortlessly extract colors, fonts, images, and animations while interacting with interface elements.',
-}
 
 import YandexMetrika from '~/Global/Analytics'
 
