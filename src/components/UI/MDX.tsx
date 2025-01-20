@@ -26,7 +26,7 @@ export const MDX = {
   li: ({className, ...props}: React.HTMLAttributes<HTMLLIElement>) => <li className={cn('mt-2', className)} {...props} />,
 
   // eslint-disable-next-line @next/next/no-img-element
-  img: ({className, ...props}: React.HTMLAttributes<HTMLImageElement>) => <img className={cn('pb-0.5 sm:pb-0', className)} {...props} alt="Snable research image" />,
+  img: ({className, ...props}: React.HTMLAttributes<HTMLImageElement>) => <img className={cn('pb-0.5 sm:pb-0 hover:scale-[1.015] sm:hover:scale-100 duration-500', className)} {...props} alt="Snable research image" />,
   a: ({href, children, ...props}: ComponentPropsWithoutRef<'a'>) => {
     const className = 'pb-[1px] text-neutral-500 border-b border-neutral-500 hover:border-transparent duration-200'
     if (href?.startsWith('/')) {
