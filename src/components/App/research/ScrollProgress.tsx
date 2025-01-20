@@ -13,7 +13,7 @@ export default function ScrollProgress() {
         transformOrigin: 'left',
         backgroundColor: bgColor,
       }}
-      className="fixed inset-0 z-[99] w-full h-2"
+      className="fixed inset-0 z-[99] w-full h-2 sm:h-1.5"
     ></motion.div>
   )
 }

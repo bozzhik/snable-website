@@ -41,8 +41,8 @@ export default async function ResearchPage() {
           <Link className="relative block mb-8 overflow-hidden group" href="https://hsedesign.ru/project/82da0ce3a8364a71a6537ec07ae42f16" target="_blank">
             <Image src={PagingGif} className="duration-300 rounded-lg bg-neutral-700 group-hover:opacity-50" alt="Книга Snable (Page Inspector Extension)" />
 
-            <div className="absolute bottom-0 left-0 grid w-full h-16 duration-300 ease-in-out translate-y-14 place-items-center group-hover:translate-y-0">
-              <div className="px-3 py-0.5 pb-1 text-lg font-medium rounded bg-foreground text-neutral-700">Открыть проект</div>
+            <div className="absolute bottom-0 left-0 grid w-full h-16 duration-300 ease-in-out sm:pt-2.5 sm:h-fit sm:static translate-y-14 place-items-center group-hover:translate-y-0 sm:translate-y-0">
+              <div className="px-3 py-0.5 pb-1 sm:py-1.5 text-lg sm:text-base sm:w-full text-center font-medium rounded bg-foreground text-neutral-700">Открыть проект</div>
             </div>
           </Link>
 
