@@ -1,7 +1,8 @@
 import {HEADER_DATA} from '@/lib/constants'
-
 import {cn, m} from '@/lib/utils'
+
 import Link from 'next/link'
+import Button from '~/UI/Button'
 
 const HEADER_BOX = 'px-[10rem]'
 
@@ -25,11 +26,7 @@ export default function Header() {
         </nav>
 
         {Object.entries(HEADER_DATA.ACTION).map(([key, action]) => {
-          return (
-            <Link href={action.to} className={m('justify-self-end', 'w-fit px-4 py-3 flex justify-center bg-white text-black border border-white rounded-lg', 'hover:bg-white/85 duration-300', 'text-sm tracking-wide font-mono font-semibold uppercase')} key={key}>
-              {action.label}
-            </Link>
-          )
+          return <Button className="justify-self-end" to={action.to} variant={action.variant as 'solid' | 'outline'} size="small" text={action.label} key={key} />
         })}
       </div>
     </header>
