@@ -1,10 +1,10 @@
 import {HEADER_DATA} from '@/lib/constants'
+import {HEADER_BOX} from '~/Global/Container'
+
 import {cn, m} from '@/lib/utils'
 
 import Link from 'next/link'
 import Button from '~/UI/Button'
-
-const HEADER_BOX = 'px-[10rem]'
 
 export default function Header() {
   return (
