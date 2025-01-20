@@ -1,17 +1,6 @@
 export {metadata} from '@/lib/layout-config'
-import localFont from 'next/font/local'
+import {geistMono, suisseIntl} from '@/lib/layout-config'
 import '@/app/globals.css'
-
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-})
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-})
 
 import YandexMetrika from '~/Global/Analytics'
 
@@ -22,7 +11,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${suisseIntl.variable} ${geistMono.variable} font-sans antialiased`}>
         {children}
 
         {process.env.NODE_ENV === 'production' && <YandexMetrika />}
