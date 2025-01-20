@@ -3,6 +3,7 @@ import {geistMono, suisseIntl} from '@/lib/layout-config'
 import '@/app/globals.css'
 
 import YandexMetrika from '~/Global/Analytics'
+import Header from '~/Global/Header'
 
 export default function RootLayout({
   children,
@@ -12,6 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${suisseIntl.variable} ${geistMono.variable} bg-black text-white font-sans antialiased`}>
+        <Header />
         {children}
 
         {process.env.NODE_ENV === 'production' && <YandexMetrika />}
