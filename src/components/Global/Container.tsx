@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const HEADER_BOX = 'px-[10rem] xl:px-[2rem] sm:px-2'
-const WEBSITE_BOX = m('px-[19rem] xl:px-[2rem] sm:px-2', 'pt-48 xl:pt-40 pb-20')
+export const WEBSITE_BOX = m('px-[19rem] xl:px-[2rem] sm:px-2.5', 'pt-48 xl:pt-40 sm:pt-32 pb-20')
 
 export default function Container({children, className}: Props) {
   return <main className={cn(WEBSITE_BOX, className)}>{children}</main>

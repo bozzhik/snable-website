@@ -9,8 +9,8 @@ type Props = {
 export type TypoTypes = keyof typeof typoClasses
 
 export const typoClasses = {
-  h1: m('text-[80px] leading-none font-semibold tracking-tighter', 'text-gray'),
-  p: m('text-base uppercase', 'font-mono text-white-dirty'),
+  h1: m('text-8xl sm:text-6xl !leading-none font-semibold tracking-tighter', 'text-gray'),
+  p: m('text-xl sm:text-base uppercase', 'font-mono text-white-dirty'),
 } as const
 
 function Typography({type, className, children}: Props) {
