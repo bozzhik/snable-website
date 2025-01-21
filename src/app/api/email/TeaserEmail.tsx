@@ -1,8 +1,13 @@
-import {type FormFields} from '@/app/api/email/route'
 import {Body, Button, Container, Head, Heading, Hr, Html, Img, Preview, Section, Text, Tailwind} from '@react-email/components'
 import * as React from 'react'
 
 const AUDIENCE_URL = process.env.RESEND_AUDIENCE_ID ? `https://resend.com/audiences/${process.env.RESEND_AUDIENCE_ID}` : ''
+
+export const SUBJECT = 'New audience member'
+
+export type FormFields = {
+  email: string
+}
 
 export const TeaserEmail = ({email}: FormFields) => {
   const previewText = `${email} was added to Audience`

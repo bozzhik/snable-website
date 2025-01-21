@@ -5,7 +5,6 @@ export default function IndexPage() {
   return (
     <>
       <Hero />
-
       <Teaser />
     </>
   )

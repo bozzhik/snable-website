@@ -1,18 +1,13 @@
 import {NextRequest, NextResponse} from 'next/server'
 import {Resend} from 'resend'
 
-import {TeaserEmail} from '@/app/api/email/TeaserEmail'
-
-export type FormFields = {
-  email: string
-}
+import {TeaserEmail, type FormFields, SUBJECT} from '@/app/api/email/TeaserEmail'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 const EMAIL_LIST = {
   from: 'notify@snable.website',
   to: 'bozzhik@gmail.com',
 }
-export const SUBJECT = 'New audience member'
 
 export async function POST(req: NextRequest) {
   const body: FormFields = await req.json()
