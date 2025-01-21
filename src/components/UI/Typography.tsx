@@ -28,5 +28,5 @@ function createTypography(type: TypoTypes) {
   return Component
 }
 
-export const H1 = createTypography('h1')
+export {Heading as H1} from '~/UI/StyledHeading'
 export const P = createTypography('p')

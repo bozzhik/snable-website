@@ -1,4 +1,3 @@
-// https://ui.shadcn.com/docs/components/sonner
 'use client'
 
 import {Toaster as Sonner} from 'sonner'
