@@ -4,6 +4,7 @@ import '@/app/globals.css'
 
 import YandexMetrika from '~/Global/Analytics'
 import Header from '~/Global/Header'
+import {Toaster} from '~/UI/Sonner'
 
 export default function RootLayout({
   children,
@@ -16,6 +17,7 @@ export default function RootLayout({
         <Header />
         {children}
 
+        <Toaster />
         {process.env.NODE_ENV === 'production' && <YandexMetrika />}
       </body>
     </html>
