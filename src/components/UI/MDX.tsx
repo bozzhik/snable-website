@@ -15,9 +15,9 @@ export const MDX = {
 
     return <h2 id={anchorId} className={cn('scroll-mt-4 uppercase mt-10 text-neutral-500 mb-4 text-3xl sm:text-2xl font-semibold tracking-tight', className)} {...props} />
   },
-  h3: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h3 className={cn('uppercase mt-10 text-neutral-500 mb-4 sm:mr-4 text-2xl font-semibold tracking-[-0.015em]', className)} {...props} />,
-  h4: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h4 className={cn('uppercase mt-8 text-neutral-500 mb-2 text-xl font-semibold tracking-[-0.015em]', className)} {...props} />,
-  h5: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h5 className={cn('uppercase mt-4 text-neutral-500 mb-2 text-base font-semibold tracking-[-0.015em]', className)} {...props} />,
+  h3: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h3 className={cn('uppercase mt-8 mb-4 text-neutral-500 sm:mr-4 text-2xl font-semibold tracking-[-0.015em]', className)} {...props} />,
+  h4: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h4 className={cn('uppercase mt-8 mb-2 text-neutral-500 text-xl font-semibold tracking-[-0.015em]', className)} {...props} />,
+  h5: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h5 className={cn('uppercase mt-4 mb-2 text-neutral-500 text-base font-semibold tracking-[-0.015em]', className)} {...props} />,
   p: ({className, ...props}: React.HTMLAttributes<HTMLParagraphElement>) => <p className={cn('[&:not(:first-child)]:mb-6', className)} {...props} />,
   em: ({className, ...props}: React.HTMLAttributes<HTMLSpanElement>) => <em className={cn('text-neutral-500 not-italic sm:text-xs', className)} {...props} />,
   strong: ({className, ...props}: React.HTMLAttributes<HTMLSpanElement>) => <strong className={cn('px-[5px] py-[1px] sm:py-1 text-sm sm:text-xs font-mono text-neutral-200 bg-neutral-900 rounded border border-neutral-800', className)} {...props} />,
