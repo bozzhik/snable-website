@@ -18,7 +18,7 @@ const buttonVariants = {
 
 const buttonSizes = {
   base: 'text-base',
-  small: 'px-4 py-3 text-sm',
+  small: 'px-4 py-3 sm:px-3 sm:py-2.5 text-sm',
 }
 
 export default function Button({text, variant = 'solid', size = 'base', className, to, target = '_self'}: Props) {
