@@ -1,27 +1,10 @@
-import type {Metadata} from 'next'
-import localFont from 'next/font/local'
+export {metadata} from '@/lib/layout-config'
+import {geistMono, suisseIntl} from '@/lib/layout-config'
 import '@/app/globals.css'
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-})
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-})
-
-export const metadata: Metadata = {
-  title: {
-    template: '%s — Snable Extension',
-    default: 'Snable Extension',
-  },
-  description: 'Snable — Chrome extension for web design analysis that lets you effortlessly extract colors, fonts, images, and animations while interacting with interface elements.',
-}
-
 import YandexMetrika from '~/Global/Analytics'
+import Header from '~/Global/Header'
+import {Toaster} from '~/UI/Sonner'
 
 export default function RootLayout({
   children,
@@ -30,9 +13,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${suisseIntl.variable} ${geistMono.variable} bg-black text-white font-sans antialiased`}>
+        <Header />
         {children}
 
+        <Toaster richColors />
         {process.env.NODE_ENV === 'production' && <YandexMetrika />}
       </body>
     </html>

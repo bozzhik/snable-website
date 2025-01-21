@@ -6,9 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email": "email dev --dir ./src/app/api/email"
   },
   "dependencies": {
+    "@react-email/components": "^0.0.32",
+    "axios": "^1.7.9",
     "clsx": "^2.1.1",
     "framer-motion": "^11.15.0",
     "lucide-react": "^0.469.0",
@@ -16,6 +19,9 @@
     "next-mdx-remote": "^5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "resend": "^4.1.1",
+    "sonner": "^1.7.2",
     "sugar-high": "^0.7.5",
     "tailwind-merge": "^2.5.5"
   },
@@ -26,6 +32,7 @@
     "eslint": "^8",
     "eslint-config-next": "15.0.4",
     "postcss": "^8",
+    "react-email": "^3.0.6",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
