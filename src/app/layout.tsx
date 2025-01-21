@@ -17,7 +17,7 @@ export default function RootLayout({
         <Header />
         {children}
 
-        <Toaster />
+        <Toaster richColors />
         {process.env.NODE_ENV === 'production' && <YandexMetrika />}
       </body>
     </html>
