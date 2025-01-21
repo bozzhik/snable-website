@@ -1,7 +1,8 @@
 'use client'
 
-import {ArrowUpRight} from 'lucide-react'
+import type {FormFields} from '@/app/api/email/route'
 import {BUTTON_VARIANTS} from '~/UI/Button'
+import {ArrowUpRight} from 'lucide-react'
 
 import {useState} from 'react'
 import {useForm} from 'react-hook-form'
@@ -9,10 +10,6 @@ import axios from 'axios'
 
 import {cn, m} from '@/lib/utils'
 import {toast} from 'sonner'
-
-export type FormFields = {
-  email: string
-}
 
 export default function TeaserForm() {
   const {register, handleSubmit, reset} = useForm<FormFields>()
