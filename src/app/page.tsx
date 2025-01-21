@@ -1,14 +1,12 @@
-import Container from '~/Global/Container'
 import Hero from '~~/index/Hero'
+import Teaser from '~~/index/Teaser'
 
 export default function IndexPage() {
   return (
     <>
       <Hero />
 
-      <Container>
-        <div></div>
-      </Container>
+      <Teaser />
     </>
   )
 }

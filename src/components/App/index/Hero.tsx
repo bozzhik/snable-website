@@ -1,6 +1,6 @@
 import heroImage from '$/hero.png'
 
-import {WEBSITE_BOX} from '~/Global/Container'
+import {WEBSITE_CONTAINER} from '~/Global/Container'
 import {cn} from '@/lib/utils'
 
 import Image from 'next/image'
@@ -16,8 +16,8 @@ const heroContent = {
 
 export default function Hero() {
   return (
-    <section data-section="hero-index" className={cn('flex flex-col gap-12 sm:gap-8', WEBSITE_BOX, 'sm:pt-28 sm:pb-2', SCREEN_HEIGHT)}>
-      <div className="flex flex-col gap-3 xl:gap-4 items-center text-center">
+    <section data-section="hero-index" className={cn('flex flex-col gap-12 sm:gap-8', WEBSITE_CONTAINER, 'sm:pt-28 sm:pb-2', SCREEN_HEIGHT)}>
+      <div className="flex flex-col items-center gap-3 text-center xl:gap-4">
         <H1>{heroContent.title}</H1>
         <P className="max-w-[50ch]">{heroContent.subtitle}</P>
       </div>

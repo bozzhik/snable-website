@@ -24,6 +24,7 @@ export default {
       gray: {
         DEFAULT: '#818181',
         light: '#333333',
+        medium: '#161616',
         dark: '#101010',
       },
       transparent: 'transparent',
