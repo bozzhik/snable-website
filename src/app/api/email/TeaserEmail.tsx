@@ -18,7 +18,7 @@ export const TeaserEmail = ({email}: FormFields) => {
       <Preview>{previewText}</Preview>
       <Tailwind>
         <Body className="px-2 mx-auto my-auto font-sans bg-white">
-          <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] max-w-[465px]">
+          <Container className="border border-solid border-[#eaeaea] rounded-sm my-[40px] mx-auto p-[20px] max-w-[465px]">
             <Section className="mt-[32px]">
               <Img src="https://snable.website/logo.png" width="40" height="40" alt="Snable Chrome Extension" className="mx-auto my-0" />
             </Section>
@@ -26,7 +26,7 @@ export const TeaserEmail = ({email}: FormFields) => {
               <strong>{email}</strong> was added to Audience
             </Heading>
             <Section className="text-center">
-              <Button className="bg-[#000000] rounded text-white text-[12px] font-semibold no-underline text-center w-full py-3" href={AUDIENCE_URL}>
+              <Button className="bg-[#000000] rounded-sm text-white text-[12px] font-semibold no-underline text-center w-full py-3" href={AUDIENCE_URL}>
                 Open Audience
               </Button>
             </Section>

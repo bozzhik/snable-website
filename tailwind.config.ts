@@ -1,5 +1,5 @@
 import type {Config} from 'tailwindcss'
-import {fontFamily} from 'tailwindcss/defaultTheme'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
   content: ['./src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
@@ -9,8 +9,8 @@ export default {
       sm: {max: '500px'},
     },
     fontFamily: {
-      sans: ['var(--font-suisse-intl)', ...fontFamily.sans],
-      mono: ['var(--font-geist-mono)', ...fontFamily.mono],
+      sans: ['var(--font-suisse-intl)', ...defaultTheme.fontFamily.sans],
+      mono: ['var(--font-geist-mono)', ...defaultTheme.fontFamily.mono],
     },
     colors: {
       white: {

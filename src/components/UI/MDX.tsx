@@ -18,9 +18,9 @@ export const MDX = {
   h3: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h3 className={cn('uppercase mt-8 mb-4 text-neutral-500 sm:mr-4 text-2xl font-semibold tracking-[-0.015em]', className)} {...props} />,
   h4: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h4 className={cn('uppercase mt-8 mb-2 text-neutral-500 text-xl font-semibold tracking-[-0.015em]', className)} {...props} />,
   h5: ({className, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => <h5 className={cn('uppercase mt-4 mb-2 text-neutral-500 text-base font-semibold tracking-[-0.015em]', className)} {...props} />,
-  p: ({className, ...props}: React.HTMLAttributes<HTMLParagraphElement>) => <p className={cn('[&:not(:first-child)]:mb-6', className)} {...props} />,
+  p: ({className, ...props}: React.HTMLAttributes<HTMLParagraphElement>) => <p className={cn('not-first:mb-6', className)} {...props} />,
   em: ({className, ...props}: React.HTMLAttributes<HTMLSpanElement>) => <em className={cn('text-neutral-500 not-italic sm:text-xs', className)} {...props} />,
-  strong: ({className, ...props}: React.HTMLAttributes<HTMLSpanElement>) => <strong className={cn('px-[5px] py-[1px] sm:py-1 text-sm sm:text-xs font-mono text-neutral-200 bg-neutral-900 rounded border border-neutral-800', className)} {...props} />,
+  strong: ({className, ...props}: React.HTMLAttributes<HTMLSpanElement>) => <strong className={cn('px-[5px] py-[1px] sm:py-1 text-sm sm:text-xs font-mono text-neutral-200 bg-neutral-900 rounded-sm border border-neutral-800', className)} {...props} />,
 
   ol: ({className, ...props}: React.HTMLAttributes<HTMLOListElement>) => <ol className={cn('mb-6 ml-4 list-decimal', className)} {...props} />,
   li: ({className, ...props}: React.HTMLAttributes<HTMLLIElement>) => <li className={cn('mt-2', className)} {...props} />,
