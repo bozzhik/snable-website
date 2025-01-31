@@ -14,7 +14,7 @@
 }
 
 pre {
-  @apply overflow-x-hidden sm:overflow-x-scroll rounded bg-neutral-900 sm:!text-xs sm:leading-[1.3];
+  @apply overflow-x-hidden sm:overflow-x-scroll rounded-sm bg-neutral-900 sm:text-xs! sm:leading-[1.3];
 }
 
 pre code {

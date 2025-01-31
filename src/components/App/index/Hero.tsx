@@ -6,7 +6,7 @@ import {cn} from '@/lib/utils'
 import Image from 'next/image'
 import {H1, P} from '~/UI/Typography'
 
-const SCREEN_HEIGHT = 'sm:h-screen sm:!h-svh'
+const SCREEN_HEIGHT = 'sm:h-screen sm:h-svh!'
 
 const heroContent = {
   title: 'Snable Extension',

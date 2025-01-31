@@ -36,7 +36,7 @@ export default async function ResearchPage() {
 
         <main className="space-y-6">
           <div className="space-y-4 sm:space-y-3">
-            <h1 className="text-3xl font-semibold tracking-tighter !leading-[1.15] sm:text-2xl text-neutral-500">Исследование возможностей Сhrome-расширений для анализа визуальных данных веб-сайтов</h1>
+            <h1 className="text-3xl font-semibold tracking-tighter leading-[1.15]! sm:text-2xl text-neutral-500">Исследование возможностей Сhrome-расширений для анализа визуальных данных веб-сайтов</h1>
             <AnchorLinks />
           </div>
 
