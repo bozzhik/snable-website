@@ -1,6 +1,6 @@
 export const HEADER_DATA = {
   LINKS: {
-    about: 'About',
+    // about: 'About',
     socials: 'Follow Us',
     research: 'Research',
   },
@@ -11,4 +11,4 @@ export const HEADER_DATA = {
       variant: 'solid',
     },
   },
-}
+} as const
