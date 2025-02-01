@@ -2,20 +2,20 @@ import {ArrowDownRight} from 'lucide-react'
 
 const linksData = {
   1: {
-    anchor: '#часть-1-веб-браузер',
-    label: 'Веб-браузер',
+    anchor: '#part-1-web-browser',
+    label: 'Web Browser',
   },
   2: {
-    anchor: '#часть-2-расширения',
-    label: 'Расширения',
+    anchor: '#part-2-extensions',
+    label: 'Extensions',
   },
   3: {
-    anchor: '#часть-3-продукт',
-    label: 'Продукт',
+    anchor: '#part-3-product',
+    label: 'Product',
   },
   4: {
-    anchor: '#часть-4-бренд',
-    label: 'Бренд',
+    anchor: '#part-4-brand',
+    label: 'Brand',
   },
 }
 

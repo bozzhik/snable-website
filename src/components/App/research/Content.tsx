@@ -10,14 +10,32 @@ import Link from 'next/link'
 import Button from '~/UI/Button'
 import AnchorLinks from '~~/research/AnchorLinks'
 
+const LINKS = {
+  1: {
+    text: 'Snable Chrome Extension — Research',
+    link: 'https://hsedesign.ru/project/82da0ce3a8364a71a6537ec07ae42f16',
+  },
+  2: {
+    text: 'RU',
+    link: 'https://github.com/bozzhik/snable-website/blob/main/src/app/research/content-ru.mdx',
+  },
+}
+
 export default function Content({data}: {data: string}) {
   return (
-    <div className={m('pt-32 xl:pt-28 sm:pt-24 pb-16 sm:mx-2.5', 'max-w-2xl sm:max-w-none mx-auto space-y-3 xl:space-y-2.5')}>
-      <h1 className="text-sm font-medium tracking-tight uppercase text-neutral-300">Snable Chrome Extension — Research</h1>
+    <section data-section="content-research" className={m('pt-32 xl:pt-28 sm:pt-24 pb-16 sm:mx-2.5', 'max-w-2xl sm:max-w-none mx-auto space-y-4 xl:space-y-3')}>
+      <div className={m('flex justify-between', 'text-sm font-medium tracking-tight uppercase text-neutral-300')}>
+        {Object.values(LINKS).map((item, index) => (
+          <Link key={index} href={item.link} target="_blank" className={m('border-b border-transparent hover:border-neutral-300 duration-200', 'hover:[text-shadow:_0_0px_2px_rgb(255_255_255_/_0.6)]')}>
+            {item.text}
+          </Link>
+        ))}
+      </div>
 
       <main className="space-y-6">
-        <div className="space-y-4 sm:space-y-3">
-          <h1 className="text-3xl font-semibold tracking-tighter leading-[1.15]! sm:text-2xl text-neutral-500">Исследование возможностей Сhrome-расширений для анализа визуальных данных веб-сайтов</h1>
+        <div className="space-y-4 xl:space-y-3">
+          <h1 className="text-3xl font-semibold tracking-tighter leading-[1.15]! sm:text-2xl text-neutral-500 max-w-[30ch]">Exploring the Potential of Chrome Extensions for Visual Data Analysis on Websites</h1>
+
           <AnchorLinks />
         </div>
 
@@ -33,6 +51,6 @@ export default function Content({data}: {data: string}) {
           <MDXRemote source={data} components={MDX} />
         </article>
       </main>
-    </div>
+    </section>
   )
 }
