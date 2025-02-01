@@ -1,4 +1,4 @@
-import {cn, m} from '@/lib/utils'
+import {cn} from '@/lib/utils'
 import Link from 'next/link'
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 }
 
 export const BUTTON_VARIANTS = {
-  DEFAULT: m('w-fit px-4 py-3 flex gap-3 items-center justify-center border rounded-lg duration-300', 'font-mono uppercase tracking-wide'),
+  DEFAULT: cn('w-fit px-4 py-3 flex gap-3 items-center justify-center border rounded-lg duration-300', 'font-mono uppercase tracking-wide'),
   solid: 'bg-white text-black border-white hover:bg-white/85',
   outline: 'bg-black text-white border-gray-light hover:border-white/60',
 }
