@@ -1,14 +1,14 @@
 import PagingGif from '$/paging.gif'
 
 import {MDXRemote} from 'next-mdx-remote/rsc'
-import {m} from '@/lib/utils'
-
-import {MDX} from '~/UI/MDX'
+import {cn} from '@/lib/utils'
 
 import Image from 'next/image'
 import Link from 'next/link'
-import Button from '~/UI/Button'
+import Container from '~/Global/Container'
 import AnchorLinks from '~~/research/AnchorLinks'
+import Button from '~/UI/Button'
+import {MDX} from '~/UI/MDX'
 
 const LINKS = {
   1: {
@@ -23,10 +23,10 @@ const LINKS = {
 
 export default function Content({data}: {data: string}) {
   return (
-    <section data-section="content-research" className={m('pt-32 xl:pt-28 sm:pt-24 pb-16 sm:mx-2.5', 'max-w-2xl sm:max-w-none mx-auto space-y-4 xl:space-y-3')}>
-      <div className={m('flex justify-between', 'text-sm font-medium tracking-tight uppercase text-neutral-300')}>
+    <Container variant="compact" className="space-y-4 xl:space-y-3">
+      <div className={cn('flex justify-between', 'text-sm font-medium tracking-tight uppercase text-neutral-300')}>
         {Object.values(LINKS).map((item, index) => (
-          <Link key={index} href={item.link} target="_blank" className={m('border-b border-transparent hover:border-neutral-300 duration-200', 'hover:[text-shadow:_0_0px_2px_rgb(255_255_255_/_0.6)]')}>
+          <Link key={index} href={item.link} target="_blank" className={cn('border-b border-transparent hover:border-neutral-300 duration-200', 'hover:[text-shadow:_0_0px_2px_rgb(255_255_255_/_0.6)]')}>
             {item.text}
           </Link>
         ))}
@@ -34,7 +34,7 @@ export default function Content({data}: {data: string}) {
 
       <main className="space-y-6">
         <div className="space-y-4 xl:space-y-3">
-          <h1 className="text-3xl font-semibold tracking-tighter leading-[1.15]! sm:text-2xl text-neutral-500 max-w-[30ch]">Exploring the Potential of Chrome Extensions for Visual Data Analysis on Websites</h1>
+          <h1 className="text-3xl font-semibold tracking-tighter leading-[1.15]! sm:text-2xl text-neutral-500 max-w-[30ch] xl:max-w-[23ch]">Exploring the Potential of Chrome Extensions for Visual Data Analysis on Websites</h1>
 
           <AnchorLinks />
         </div>
@@ -51,6 +51,6 @@ export default function Content({data}: {data: string}) {
           <MDXRemote source={data} components={MDX} />
         </article>
       </main>
-    </section>
+    </Container>
   )
 }
