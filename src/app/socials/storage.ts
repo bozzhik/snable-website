@@ -9,23 +9,23 @@ export type SocialSource = keyof typeof LINKS
 export type SocialsItem = {
   source: SocialSource
   link: string
-  content?: string[]
+  content: string[]
 }
 
 export const ITEMS: SocialsItem[] = [
   {
     source: 'telegram',
     link: 'https://t.me/bozzzzhik/85',
-    content: ['I wrote an article on Habr.ru about naive problem-solving in development. This topic has been on my mind since my first year of university—how inexperience in development can sometimes lead to unconventional solutions.', 'In the coming months, I plan to publish a series of articles on development, Chrome extensions, and everything related to my diploma project.'],
+    content: ['i wrote an article on Habr.ru about naive problem-solving in development. This topic has been on my mind since my first year of university—how inexperience in development can sometimes lead to unconventional solutions.', 'In the coming months, I plan to publish a series of articles on development, Chrome extensions, and everything related to my diploma project.'],
   },
   {
     source: 'telegram',
     link: 'https://t.me/bozzzzhik/83',
-    content: ['I’ve finished working on the visual research for my diploma project. It was quite challenging, but creating the book turned out to be an interesting experience.', 'You can check out the web version of the research at the link below ↓', 'https://snable.website/research'],
+    content: ['i’ve finished working on the visual research for my diploma project. It was quite challenging, but creating the book turned out to be an interesting experience.'],
   },
   {
     source: 'x',
     link: 'https://x.com/bozzhik/status/1878468381222850865',
-    content: ['in a few hours, I created a small chrome extension to dive into the process of publishing to the Chrome Web Store.', 'website aura extension reveals a website’s color palette, scheme, and visual mood, giving a snapshot of its design style.', 'https://chromewebstore.google.com/detail/website-aura-color-analyz/hjlcegcjeflohbigndmpeldcdgdbcbbg'],
+    content: ['in a few hours, I created a small chrome extension to dive into the process of publishing to the Chrome Web Store.', 'website aura extension reveals a website’s color palette, scheme, and visual mood, giving a snapshot of its design style.'],
   },
 ]
