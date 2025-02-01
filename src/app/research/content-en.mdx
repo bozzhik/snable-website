@@ -1,0 +1,830 @@
+# Exploring the Potential of Chrome Extensions for Visual Data Analysis on Websites
+
+In an era where web technologies are evolving at an incredible pace and each website is becoming an increasingly complex system, developers need tools capable of efficiently analyzing and interacting with the ever-growing flow of information.
+
+Browser extensions, once considered simple utilities for basic tasks, have now transformed into powerful development tools that can significantly simplify working with modern web applications.
+
+At the same time, despite broad technical capabilities, most browser extensions focus on working with the visual aspects of websites. Whether it's changing browser color schemes, creating personalized website themes, or modifying existing interfaces by hiding unwanted elements, adding new ones, or rearranging components.
+
+Such tools demonstrate how crucial the visual aspect is in modern web development. This highlights the growing need for tools that can effectively analyze and interact with visual components of web pages.
+
+## Part 1. Web Browser
+
+In today’s world, the browser is the key link between users and the internet, combining the functions of a platform for working with web applications, a tool for viewing content, and a development environment. As web technologies have evolved, browsers have become universal tools for solving a wide range of tasks, from browsing web pages to launching complex applications and services.
+
+The standardization of technologies has played a vital role in the development of browsers, ensuring uniform operation of web applications across different platforms and allowing developers to create more sophisticated and functional solutions.
+
+### What is a Web Browser?
+
+A web browser is an application that provides access to the internet by transforming complex code into a convenient and understandable interface. It performs numerous tasks, from loading and processing web pages to rendering them, allowing users to interact easily with content.
+
+The history of browsers began with **WorldWideWeb** (later Nexus), created by Tim Berners-Lee in 1990— a simple text-based browser without image support. At that time, the internet mainly consisted of text documents linked by hyperlinks, and the browser's primary function was to display this text and enable navigation between pages.
+
+![WorldWideWeb Browser Interface](/research/image1.png) _WorldWideWeb Browser Interface_
+
+Web browsers have undergone an incredible evolution from simple text viewers to complex platforms capable of running full-fledged applications. Today, browsers resemble operating systems more than ever, processing complex graphics, running games, and supporting multiple simultaneous processes. They allow users to interact with dynamic content, launch web applications, and include powerful tools for web development, debugging, and analysis, along with built-in security mechanisms.
+
+These capabilities have significantly expanded the application scope of browsers, transitioning them from merely displaying web pages to supporting a wide range of web applications. Modern browsers are fully-fledged ecosystems that integrate various functions previously requiring separate applications. They support multitasking, data synchronization, and adaptation to individual user needs.
+
+![Arc Browser (AI Implementation)](/research/image2.png) _Arc Browser (AI Implementation)_
+
+### The Dominance of the Chromium Ecosystem
+
+**Chromium** is an open-source web browser developed by Google. Due to its openness, reliability, and high performance, it has become the foundation for many modern browsers. Over time, the Chromium ecosystem has significantly expanded, with its architectural decisions and development approaches becoming the de facto industry standard.
+
+The dominance of the Chromium ecosystem has been one of the defining factors in the evolution of the modern internet. By shaping web development standards and user experience, Chromium has created an extensive browser ecosystem.
+
+Popular browsers based on Chromium include Google Chrome, Microsoft Edge, Opera, Brave, Vivaldi, Arc Browser, and Yandex Browser. Each retains the core functionalities of Chromium while developing unique features and approaches to web content interaction. These browsers, actively competing with one another, provide users with diverse tools, from privacy-focused features to innovative functions, thereby continuously expanding the ecosystem and improving the user experience.
+
+![Chromium-based Browsers Logos](/research/image3.png)
+
+According to StatCounter (2024), the combined market share of **Chromium-based** browsers is about 70% of all internet users. Google Chrome remains the undisputed leader with around 65–70% of the market across major platforms, largely due to its stability and deep integration with Google services. Microsoft Edge, with 10–12% market share, strengthens its position through integration with Windows and AI-powered features.
+
+Other browsers, including Opera and Brave, though occupying a smaller market share (2–3% or less), create a healthy competitive environment by offering specialized solutions for various user scenarios.
+
+Yandex Browser, while having a relatively small global market share, stands out with its AI-powered features tailored for Russian-speaking audiences, securing a strong position in CIS countries.
+
+![Stat Counter. Chromium-based Browser Market Share (Dec 2024)](/research/image4.png) [_Stat Counter. Chromium-based Browser Market Share (Dec 2024)_](https://gs.statcounter.com/browser-market-share)
+
+The widespread adoption of Chromium has led to the creation of a vast ecosystem of development tools and browser extensions that work efficiently across all Chromium-based browsers, simplifying the development and distribution process. A unified technological base accelerates the adoption of new web standards and drives innovation, forming the foundation of modern web development.
+
+![Chrome Web Store Homepage](/research/image5.png) [_Chrome Web Store Homepage_](https://chromewebstore.google.com/)
+
+## Part 2. Extensions
+
+In today’s world, the browser is the key link between users and the internet, combining the functions of a platform for working with web applications, a tool for viewing content, and a development environment. The standardization of technologies has played a crucial role in the evolution of browsers, ensuring uniform operation of web applications across different platforms and enabling developers to create more sophisticated and functional solutions.
+
+As the internet evolved and web technologies became more complex, standard browser functionality no longer met the growing user needs. This led to the demand for additional tools that could expand the capabilities of web browsers.
+
+The idea of browser extensions originated as a way to enhance browser functionality without rewriting its core code. Initially, add-ons were simple utilities aimed at improving navigation and security. Over time, they evolved into more complex tools that significantly modify the browser experience. Developers gained the ability to create solutions that interact with the browser through specialized interfaces, opening the door to more functional add-ons.
+
+Modern browsers actively develop their platforms for third-party developers, providing tools and documentation for creating high-quality extensions. As a result, a comprehensive ecosystem of additional software has formed, capable of solving a wide range of tasks—from UI improvements to complex data processing and integration with external services.
+
+![Chrome Extensions Documentation](/research/image6.png) [_Chrome Extensions Documentation_](https://developer.chrome.com/docs/webstore?hl=en)
+
+### What Are Browser Extensions?
+
+**Browser extensions** are specialized software modules integrated into the browser to extend its basic functionality.
+
+Unlike standalone applications, extensions operate exclusively within the browser, utilizing its capabilities and resources. This allows them to interact efficiently with web pages and the browser while remaining lightweight and easy to install.
+
+Architecturally, extensions are built as a set of interconnected components, each responsible for a specific aspect of functionality. The key element is the **manifest.json** file, which defines the structure of the extension, its permissions, and how it interacts with the browser.
+
+```json
+{
+  "manifest_version": 3,
+  "name": "extension",
+  "version": "0.0.1",
+  "permissions": ["activeTab", "scripting"],
+  "background": {
+    "service_worker": "background.ts"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.ts"]
+    }
+  ]
+}
+```
+
+## The Foundation of Development
+
+The development of browser extensions relies on standard web technologies: **HTML** defines the interface structure, **CSS** controls the visual design, and **JavaScript** ensures the programming logic and interaction with the browser API. This approach makes extension development accessible to a wide range of web developers, allowing them to apply their existing skills and tools.
+
+Modern extensions come with an impressive range of capabilities. They can modify web page content in real time, manage browser tabs and windows, process network requests, store data locally or in the cloud, and integrate with external services and APIs. This enables the creation of diverse solutions, from simple utilities that alter web page appearances to complex tools for data analysis, workflow automation, and productivity enhancement.
+
+The popularity of browser extensions continues to grow. According to statistics from the Chrome Web Store, the number of extension installations increased from 1 billion in 2020 to over 4 billion in 2024.
+
+Over the past three years, the number of active extension developers has grown by **70%**, indicating the formation of a sustainable development ecosystem and increasing demand for **specialized browser tools**.
+
+![Chrome Extensions API Reference](/research/image7.png) [_Chrome Extensions API Reference_](https://developer.chrome.com/docs/extensions/reference/api?hl=en)
+
+Given that Chromium-based browsers account for more than **70%** of the market, developing extensions for this platform provides access to a massive audience—ranging from individual users to large corporations.
+
+The Chromium ecosystem offers developers not only an extensive technical foundation and documentation but also a well-developed infrastructure for distributing their solutions through the official extension store. This creates favorable conditions for both independent developers and companies looking to expand their presence in the web space.
+
+As a result, developing Chrome extensions is not only technically appealing but also commercially promising, unlocking vast opportunities for innovation and monetization.
+
+## Anatomy of Extensions
+
+Browser extensions are a powerful tool for enhancing functionality, performance, and the visual experience of web browsers.
+
+Unlike traditional software applications, extensions integrate directly into the browser interface, becoming an organic part of it and enriching user interaction with web content. Extensions are created both by independent developers and by companies that use them as their primary product or as an alternative to desktop applications.
+
+The open nature of extension development platforms has led to an unprecedented shift in software development. Any developer who identifies a need for specific functionality or sees an opportunity to improve user experience can create and publish their own extension. This has resulted in a vast and diverse ecosystem of extensions covering a wide range of categories, from accessibility tools to advanced e-commerce solutions and productivity management.
+
+As part of our research, we conducted a comparative analysis of the most popular browser extensions, with a particular focus on their visual representation and interaction patterns. This allowed us to identify established approaches to extension UI design and determine which types of visual presentation are the most effective for different extension categories.
+
+### Extension Icon
+
+The visual integration of extensions starts with their representation in the browser interface. Every modern browser allocates a dedicated area for displaying installed extension icons. In Yandex Browser, for example, this area is located to the right of the address bar, ensuring quick access to extension functions while remaining an unobtrusive part of the interface.
+
+The extension icon serves as an essential interactive UI element that can dynamically change depending on the context.
+
+![Extension Panel in Yandex Browser](/research/image8.png) _Extension Panel in Yandex Browser_
+
+Browsers allow extensions to dynamically change their icons or overlay additional indicators depending on their status or operational context. For example, an icon can display activity indicators, operational status, or notification counters.
+
+To ensure correct display in the browser interface, developers provide a set of icons in different sizes, ranging from 16×16 pixels for the toolbar to 128×128 pixels for the extension store. The icon design should be simple and easily recognizable, maintaining clarity at any scale.
+
+Users can access some, if not all, extension features directly from this area by clicking on the extension icon. Once a user clicks this button, several interaction options become available. One of these options is a modal popup.
+
+![Extension Icon (On/Off)](/research/image9.png) _Extension Icon (On/Off)_
+
+#### Modal Window (POPUP)
+
+Popup windows are the primary way users interact with extensions and can vary significantly in complexity and size. While some extensions require only a compact interface for full functionality, others demand a more expanded representation with additional pages and features.
+
+There are commonly accepted recommendations for popup sizes—according to Google Chrome Extensions standards, the optimal sizes should not exceed 600×800 pixels to ensure comfortable use on screens with different resolutions.
+
+##### Standard Modal Window
+
+A standard modal window is usually a compact card with a minimal set of controls arranged vertically. This approach is used in many popular extensions, such as Forest or AdBlock.
+
+![Forest Extension Interface](/research/image10.png) _Forest Extension Interface_
+
+The goal of this display choice is to make the extension as simple and minimalist as possible while retaining all the core functionality available to the user.
+
+This helps avoid increased cognitive load on the user while navigating the web page and the modal window simultaneously. A standard modal window usually consists of three main areas: a header with primary settings, the main content area, and a lower panel with additional actions. This structure allows users to quickly navigate the interface while leaving room for design variations depending on the specifics of the extension.
+
+![AdBlock Extension Interface](/research/image11.png) _AdBlock Extension Interface_
+
+More complex extensions, such as Shazam, use advanced interface elements—accordions, dropdown menus, and side panels. This allows for greater functionality organization in a compact space while maintaining intuitive usability.
+
+For example, in Shazam, users can view or hide their music search history using an accordion, while additional functions are available through dropdown menus. This multi-level approach to interface organization allows users to access extended functionality without overloading the main window with unnecessary elements.
+
+![Shazam Extension Interface](/research/image12.png) _Shazam Extension Interface_
+
+Extensions with automatic popup activation deserve special attention. Extensions like Fake News Detector activate automatically under certain conditions—for example, when visiting news sites—and display their results in a popup window.
+
+![Fake News Detector Extension Interface](/research/image13.png) _Fake News Detector Extension Interface_
+
+This can be useful when immediate user notification about important events or analysis results is required. However, this approach requires special caution, as automatically appearing windows can significantly disrupt the user experience, especially if they occupy a large part of the screen or appear too frequently.
+
+When developing extensions with automatic activation, it is critically important to conduct thorough user experience testing. Various usage scenarios and their impact on the user's work with the main page content should be assessed. A good practice is to provide users with flexible settings for the frequency and conditions of popup appearances. Alternative notification methods, such as small badges on the extension icon or system-style notifications, may be preferable in some cases. It is also important to provide simple ways to disable automatic notifications for users who find them disruptive.
+
+##### Complex Modal Window
+
+For more complex tasks, extensions often require an expanded interface with extended functionality. Such multifunctional modal windows allow for an efficient organization of numerous tools while maintaining ease of use. A good example is the Raindrop.io extension, designed for managing bookmarks and annotations.
+
+A distinctive feature of this extension is the presence of two different interface layouts: a compact "Clipper" for quick actions and an expanded "Mini-app" with a full set of functions. In the second version, a two-panel structure is used, where the left part contains navigation elements, and the right part holds the main content with saved items.
+
+![Raindrop.io Extension Interface (Clipper/Mini-app)](/research/image14.png) _Raindrop.io Extension Interface (Clipper/Mini-app)_
+
+Another example of a complex solution is Todoist—a task management extension. Its interface is built with the need to work with multiple projects and tasks, each of which can have different parameters and properties. To optimize workspace, Todoist implements a hidden side panel that appears upon user request, allowing for efficient use of the available window space.
+
+A key feature of Todoist is a unified adaptive interface, where different viewing modes and sorting functions are integrated into the main screen without changing the window size.
+
+This approach differs from Raindrop.io’s solution, where changing the mode affects the overall interface layout, demonstrating different approaches to organizing multifunctional space within an extension’s modal window.
+
+![Todoist Extension Interface / Side Panel](/research/image15.png) _Raindrop.io Extension Interface (Clipper/Mini-app)_
+
+#### Bubble
+
+A bubble is a special type of extension interface that combines compactness and functionality. This approach allows the creation of floating toolbars that users can freely move around the screen or transformable elements that can expand into full side panels.
+
+A good example of using a bubble is the Speechify extension. Initially, the interface is presented in a minimalist form with three basic options: playback, creating a screenshot for listening, and saving content. When interacting with the bubble by hovering the cursor, additional functions such as settings and import appear. The interface can further expand when the playback function is activated, providing access to four additional options.
+
+![Speechify Extension Interface](/research/image16.png) _Speechify Extension Interface_
+
+A key advantage of this approach is the ability for users to place the bubble anywhere on the screen, minimizing interference with the primary website content.
+
+Another example is MaxAI, which also uses an expanding bubble concept. However, its uniqueness lies in the fact that most functions automatically activate a side panel. This approach is particularly effective when working with large volumes of data—such as when analyzing resumes, the extension does not redirect users to a new page but expands a side panel while keeping the original content accessible.
+
+In both cases, an option is implemented for temporarily disabling or adjusting the visibility of the bubble. For example, in Speechify, users can deactivate the extension for specific pages or pause its operation using a special settings menu accessible through the close button at the bottom of the bubble.
+
+![MaxAI Extension Interface](/research/image17.png) _MaxAI Extension Interface_
+
+#### Sidebar
+
+Sidebars represent an ideal balance between popups and full pages, providing extended space for functions that require more flexibility or are grouped together. Typically, access to a sidebar is provided through a small bubble or an icon attached to the right or left edge of the browser window. This approach serves both as an indicator of the panel’s presence and as a trigger for its activation.
+
+A good example of using a sidebar is Teal—a job search manager that helps users track job openings and organize their application process. The panel includes job position details, a field for specifying salary, an interest level selector, an application stage dropdown, and a list of key professional skills for a specific position.
+
+![Teal Extension Interface](/research/image18.png) _Teal Extension Interface_
+
+Given the amount and nature of the displayed information, using a sidebar instead of a popup is the most logical solution. The extension efficiently uses space, focusing on a single task while maintaining a balanced layout.
+
+A different approach is demonstrated by the Monica extension, where the use of a sidebar is less structured. Initially appearing as a simple bubble, upon activation, it creates rather chaotic user interactions. Despite its ambitious goal of providing an AI assistant for various user needs, the interface design leaves much to be desired.
+
+![Monica Extension Interface](/research/image19.png) _Monica Extension Interface_
+
+The cards within the panel attempt to structure key functions, but the poor color choice makes visual separation of sections difficult, which is especially problematic for users with vision impairments. The additional left-side menu and the chat window occupying a third of the lower panel further complicate navigation.
+
+A more successful implementation is seen in Merlin—an AI assistant extension with a well-thought-out use of space. The designers applied principles of visual hierarchy, highlighting important elements through size and central positioning within the panel. The chat interface is seamlessly integrated into the lower part of the panel, accompanied by key actions, without overlapping the main content. Effective use of white space creates a clear visual separation between primary functions, settings, and the chat area. Additional options are compactly placed in the "More" menu in the top-right corner, preventing interface clutter.
+
+![Merlin Extension Interface](/research/image20.png) _Merlin Extension Interface_
+
+The main takeaway from analyzing these examples is that when dealing with a large number of complex functions, developers should consider transitioning to a full-screen extension interface rather than trying to fit everything into a sidebar.
+
+#### Page
+
+Some browser extensions have such extensive functionality that it is difficult to fit them effectively within the limited space of a popup window or sidebar. In such cases, the optimal solution is to create a full-page layout that uses all available screen space.
+
+Despite the obvious advantages of this approach, it is relatively rare, as most developers strive to maintain a compact interface and minimize user distraction from the main website content. A full-page format is typically used only when the extension's functionality requires significant space for effective operation, such as when processing visual content or working with complex analytical tools.
+
+An example of effective use of the full-page format is GoFullPage, an extension for capturing website screenshots. After taking a screenshot, the extension automatically opens a separate page with a toolbar at the top.
+
+![GoFullPage Extension Functional Page](/research/image21.png) _GoFullPage Extension Functional Page_
+
+It contains all the necessary functions for working with the screenshot: saving in various formats, editing tools, deleting, and exporting. This format is particularly convenient when working with full-page captures that require detailed viewing and content editing.
+
+A more complex example is the InVID & WeVerify extension for news verification, which functions as a full-fledged web application. Its interface simultaneously uses a sidebar, a top navigation panel, and additional tabs on the "Tools" page.
+
+![Fake News Debunker by InVID & WeVerify Functional Page](/research/image22.png) _Fake News Debunker by InVID & WeVerify Functional Page_
+
+However, such redundancy creates serious navigation problems: some sections, such as "Tools" and "About," are duplicated in different areas of the interface, and some options, such as "Other Tools," are only accessible through certain navigation paths. The lack of a clear connection between different navigation elements significantly complicates the use of the extension.
+
+DeepL Translator demonstrates a well-thought-out hybrid approach to interface organization. The main translation function is implemented through a compact popup window that appears when text is selected and immediately displays the translation in the chosen language.
+
+![DeepL Extension Compact Menu Functionality](/research/image23.png) _DeepL Extension Compact Menu Functionality_
+
+At the same time, all extension settings are placed on a separate full-size page, allowing for convenient management of numerous translation parameters. This solution takes into account the different usage frequencies of features: quick access to translation via a popup for frequent operations and a separate page for rarely adjusted settings.
+
+![DeepL Extension Configuration Page](/research/image24.png) _DeepL Extension Configuration Page_
+
+Modern browser extensions form a complex ecosystem with multiple approaches to visual interaction. From simple icons to full-size pages, each interface element plays its unique role in creating an effective user experience. The variety of visual components allows developers to choose the most appropriate solutions for specific tasks, creating intuitive and functional tools.
+
+The icon is a critically important element, serving not only as an entry point to the extension's functionality but also as an informational indicator.
+
+Bubbles show high efficiency in scenarios requiring constant access to functionality while minimally interfering with the main content. Their ability to transform and move makes them especially useful for tools that require frequent interaction.
+
+Modal windows remain the most common and universal method of interaction. Standard modal windows are ideal for simple operations and well-structured information, while complex variants are effective for feature-rich extensions. At the same time, it is important to maintain a balance between functionality and ease of use, avoiding excessive clutter in the interface.
+
+Sidebars are an optimal solution for extensions of medium complexity when more space is needed than a modal window can provide, but a full-page interface is excessive. They are especially effective for working with textual content and analytical tools.
+
+Pages are best suited for complex extensions with multiple functions and settings. However, their use must be justified and accompanied by well-organized navigation to prevent user confusion.
+
+#### Conclusion on the Anatomy of Extensions
+
+The choice of a visual interaction method should be determined by the nature of the extension's tasks and the frequency of use of different functions. The most successful extensions often combine various approaches, for example, using a modal window for main operations and a separate page for settings. The key success factor is ensuring that the chosen interface meets user expectations and provides intuitive navigation between different extension components. When developing extensions, it is important to adhere to the principle of minimal interference with the user experience, choosing the least intrusive way to present functionality while still ensuring full access to all features of the extension.
+
+At the same time, it is important to understand that each type of layout has its objective advantages and disadvantages, which are not always directly comparable.
+
+The optimal choice should be based on a thorough analysis of the development context, the number of required functions, and the final goals of the browser extension. Automatically launched extensions with popup windows should be avoided unless extensive user testing has confirmed their necessity and the absence of a negative impact on the user experience. An effective solution is to use interactive interface elements, such as accordions, dropdown lists, and side panels, which allow for maintaining a clean design and rational use of interface space while ensuring access to extended functionality.
+
+### Technical Potential of Extensions
+
+The Chrome extension ecosystem has evolved from a simple set of tools into a powerful development platform. Modern extensions provide developers with a wide range of capabilities, from basic interactions with website content to creating complex systems with custom interfaces and integrations with external services. Thanks to well-designed architecture and a comprehensive set of programming interfaces, Chrome extensions can efficiently solve a variety of tasks.
+
+Developers have access to powerful tools for working with the DOM structure of pages, managing browser tabs and windows, processing network requests, and many other possibilities, enabling the creation of both simple utilities and complex applications. The technical potential of modern Chrome extensions covers a broad range of programming capabilities, from basic JavaScript to the use of advanced browser APIs.
+
+A key feature of Chrome extensions is their ability to organically integrate into the browser's user interface, providing convenient access to their functionality. Extensions can operate in both active mode, requiring direct user interaction, and background mode, automatically performing assigned tasks without user intervention.
+
+#### Modifying Website Content
+
+Modifying website content is a fundamental capability of Chrome extensions, implemented through content scripts.
+
+These scripts are JavaScript files executed in the context of a webpage with full access to its DOM structure. This approach allows developers to create dynamic changes on the page, from simple style modifications to the creation of complex interactive interface elements. A key feature of content scripts is their isolation from the main JavaScript code of the page. This creates a secure execution environment where the extension script cannot disrupt the operation of the main website.
+
+To interact with the core logic of the extension, content scripts use the messaging mechanism chrome.runtime.sendMessage and chrome.runtime.onMessage, ensuring communication between different parts of the extension. The content modification process includes initialization after page load, monitoring changes in the DOM structure using MutationObserver, and handling user actions.
+
+Developers can use standard methods for working with the DOM, including querySelector for finding elements and createElement for creating new ones, allowing for the implementation of a wide range of page modifications.
+
+```jsx
+function addUserAvatar() {
+  const repoList = document.querySelector('.repo-list')
+  const avatar = document.createElement('img')
+  avatar.className = 'user-avatar'
+  avatar.src = 'https://github.com/user-avatar.jpg'
+  avatar.style.cssText = 'position: fixed; inset: 20px;'
+  document.body.appendChild(avatar)
+}
+```
+
+#### Managing Browser Tabs
+
+The Chrome API provides extensions with extensive capabilities for programmatic management of browser tabs through the chrome.tabs interface. This toolkit allows creating, modifying, and deleting tabs, as well as tracking their state and content.
+
+Extensions can retrieve information about the currently active tab, determine its URL, title, and loading status. An important feature is the ability to programmatically switch between tabs, enabling advanced navigation scenarios and user workflow automation.
+
+The chrome.tabs API also supports events related to the tab lifecycle, such as creation, updating, closing, and activity changes. Developers can subscribe to these events and respond to user actions, opening up possibilities for building adaptive extensions.
+
+Tab manipulations can be synchronous or asynchronous, depending on the specific API method. When working with multiple tabs simultaneously, it is important to consider potential conflicts in parallel execution and ensure proper error handling. To maintain security, the tabs API requires explicit declaration of the relevant permissions in the extension manifest. This allows users to control which extensions can interact with their tabs.
+
+```jsx
+function tabManager() {
+  chrome.tabs.create({
+    url: 'https://github.com/trending',
+    active: false,
+    pinned: true,
+  })
+
+  chrome.tabs.onActivated.addListener((activeInfo) => {
+    chrome.tabs.get(activeInfo.tabId, (tab) => {
+      console.log('Active tab:', tab.url)
+    })
+  })
+}
+```
+
+#### Managing Browser Windows
+
+Chrome extensions have access to the powerful chrome.windows API, which provides full control over browser windows. This interface allows programmatically creating, modifying, and managing windows, offering extensive possibilities for developing specialized user interfaces.
+
+Working with windows includes the ability to change their geometric parameters (size, position), state (maximized, minimized, normal), and type (normal, popup, panel). A particularly useful feature is the ability to create purpose-specific windows, such as compact tool panels or isolated workspaces. The API provides events for tracking changes in windows, including their creation, closure, focus shifts, and state changes. This enables extensions to dynamically respond to user actions and maintain synchronization between different browser windows.
+
+An important aspect of working with windows is managing their lifecycle and state. Extensions can save and restore window configurations, which is useful for creating user work profiles or workspace organization systems.
+
+Chrome also ensures security by restricting access to the windows API through the permissions system in the extension manifest, allowing users to control the capabilities of installed extensions.
+
+```jsx
+chrome.windows.create(
+  {
+    url: 'https://github.com/trending',
+    type: 'popup',
+    width: 800,
+    height: 600,
+    focused: true,
+  },
+  (window) => {
+    chrome.storage.local.set({
+      lastWindowConfig: {
+        id: window.id,
+        state: window.state,
+      },
+    })
+  },
+)
+```
+
+#### Handling Network Requests
+
+Chrome extensions provide a powerful set of tools for working with network traffic through the chrome.webRequest API, allowing monitoring and modification of HTTP/HTTPS requests at various stages of their lifecycle. This functionality enables the development of tools for network security, analytics, and optimization. The API supports multiple interception points for requests: before initiation, before sending headers, upon receiving a response, and after request completion. At each stage, the extension can analyze request parameters, modify headers, redirect requests to different URLs, or completely block their execution.
+
+A particularly valuable feature is the ability to filter requests based on various criteria, such as URL, resource type, and request origin. This allows for precise traffic processing rules and enables functions like ad blocking, protection against malicious content, or resource load optimization.
+
+Working with network requests requires special attention to performance, as inefficient processing can significantly slow down page loading. The API provides asynchronous mechanisms for handling requests, preventing the blocking of the main execution thread.
+
+An important aspect is the correct specification of permissions in the extension manifest and compliance with browser security policies when modifying requests.
+
+```jsx
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  (details) => {
+    if (details.url.includes('https://example.com')) {
+      details.requestHeaders.push({
+        name: 'X-Custom-Header',
+        value: 'CustomValue',
+      })
+      details.requestHeaders.forEach((header) => {
+        if (header.name.toLowerCase() === 'user-agent') {
+          header.value = 'Custom Browser/1.0'
+        }
+      })
+    }
+    return {requestHeaders: details.requestHeaders}
+  },
+  {urls: ['<all_urls>']},
+  ['blocking', 'requestHeaders'],
+)
+```
+
+#### Manipulating Cookies
+
+The Chrome API provides extensions with access to cookie management through the chrome.cookies interface, allowing basic operations with cookies such as reading, writing, modifying, and deleting. This toolkit is essential for developing extensions that work with user sessions and authentication.
+
+Working with cookies in extensions includes retrieving information about each cookie, such as name, value, domain, path, expiration date, and security flags. The API supports both synchronous and asynchronous operations for efficient cookie handling. Extensions can set various security attributes: httpOnly to protect against XSS attacks, secure to enforce transmission only over HTTPS, and sameSite to control cross-origin requests. This allows for the creation of extensions with a high level of user data protection.
+
+Chrome also provides a mechanism for tracking cookie changes through the chrome.cookies.onChanged event, allowing extensions to react to modifications in real time and maintain an up-to-date user session state.
+
+When working with cookies, it is important to consider privacy policies and adhere to the principle of minimal required privileges, requesting only the permissions necessary for the extension's functionality.
+
+```jsx
+function createCookie(domain = 'snable.website') {
+  chrome.cookies.set({
+    url: `https://${domain}`,
+    name: 'userToken',
+    value: 'abc123xyz',
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+    expirationDate: Date.now() / 1000 + 3600,
+  })
+}
+```
+
+#### Working with Background Processes
+
+Background scripts are a key component of Chrome extension architecture, ensuring continuous task execution regardless of the state of browser tabs. They act as the central coordination mechanism of an extension, managing long-running processes.
+
+In the modern Chrome extension architecture, the concept of service workers is used for background scripts, providing efficient resource utilization. Service workers are activated on demand and can remain in a dormant state when not needed, significantly reducing memory and CPU usage.
+
+Background scripts can listen for a wide range of browser events, including changes in bookmarks, browsing history, extension installation or removal. They also coordinate interaction between different components of the extension.
+
+```json
+{
+  ...
+  "background": {
+    "service_worker": "background.js"
+  },
+  ...
+}
+```
+
+An important feature of background scripts is their ability to execute periodic tasks using the chrome.alarms API, enabling scheduling functions and regular data updates. It is essential to carefully manage the lifecycle of background processes to optimize performance. To ensure reliable operation of background scripts, proper error handling and persistent data storage mechanisms should be used to maintain state between browser restarts.
+
+```jsx
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+    const activeTabUrl = tabs[0].url
+    chrome.storage.local.set({currentUrl: activeTabUrl})
+    console.log('Current active tab URL:', activeTabUrl)
+  })
+})
+```
+
+#### Access to Native Browser APIs
+
+Chrome provides extensions with a wide range of built-in APIs that significantly expand their functionality. These interfaces allow extensions to interact with browser systems, from data storage to user interface management. Key APIs include chrome.storage for persistent extension data storage, chrome.notifications for creating native system notifications, and chrome.contextMenus for extending the browser's context menu. Each of these interfaces provides asynchronous methods, ensuring efficient execution of operations.
+
+A particularly important role is played by the chrome.storage API, which offers two types of storage: sync for synchronizing data across a user's devices and local for local storage. This enables extensions to maintain a persistent state and seamless synchronization of settings.
+
+The notifications API (chrome.notifications) allows the creation of various types of native notifications, including basic, list-based, image-based, and progress bar notifications. Extensions can customize the appearance, priority, and behavior of notifications, ensuring effective communication with the user.
+
+```jsx
+chrome.storage.sync.set(
+  {
+    preferences: {
+      theme: 'dark',
+      notifications: true,
+    },
+  },
+  () => {
+    chrome.notifications.create('settingsSaved', {
+      type: 'basic',
+      iconUrl: 'icon-128.png',
+      title: 'Settings Saved',
+      message: 'Your preferences have been successfully updated',
+      priority: 1,
+    })
+  },
+)
+```
+
+The context menu system allows adding custom menu items with various activation conditions, expanding user interaction capabilities with page content.
+
+#### Interaction with External APIs
+
+Chrome extensions can establish connections with external web services via HTTP requests, significantly expanding their functionality. This integration allows extensions to retrieve real-time data, synchronize information with remote servers, and utilize third-party services. When working with external APIs, extensions can use both the built-in fetch API and XMLHttpRequest. A critical aspect is the proper handling of CORS policies and the necessity of specifying the appropriate permissions in the extension manifest for accessing specific domains.
+
+Security and error handling are key considerations when integrating with external services. Implementing caching mechanisms helps optimize performance and ensures extension functionality even when offline.
+
+```json
+{
+  ...
+  "permissions": ["https://api.github.com/*"],
+  "host_permissions": ["https://api.github.com/*"]
+  ...
+}
+```
+
+Modern extensions often use OAuth authorization mechanisms for secure API access, requiring the implementation of authentication protocols and token renewal. It is essential to ensure the secure storage of confidential data, such as authorization tokens, and properly manage request quotas and limitations.
+
+```jsx
+function getGitHubUserData(username) {
+  const baseUrl = 'https://api.github.com'
+
+  return axios
+    .get(`${baseUrl}/users/${username}`)
+    .then((response) => {
+      const data = response.data
+      chrome.storage.local.set({[`user_${username}`]: data})
+      return data
+    })
+    .catch((error) => {
+      console.error('GitHub API request failed:', error)
+    })
+}
+```
+
+#### Extracting Visual Data
+
+Analyzing the visual components of web pages through Chrome extensions unlocks extensive possibilities for extracting and processing graphical elements, styles, and interface components. This approach enables the creation of specialized tools for web design, conducting comprehensive user interface analysis, and developing solutions that enhance content accessibility.
+
+A key element in working with visual data is the getComputedStyle method, which provides access to applied styles after all CSS cascade rules have been processed. This method allows obtaining precise information about fonts, colors, sizes, and other visual characteristics of elements.
+
+When working with fonts, extensions can analyze not only basic properties such as family and size but also detailed parameters like weight, letter spacing, and line height. A particularly important feature is the ability to determine the actual applied font, considering the fallback system.
+
+```jsx
+function analyzeFonts() {
+  const elements = document.querySelectorAll('*')
+  const fonts = []
+
+  elements.forEach((element) => {
+    const styles = window.getComputedStyle(element)
+    const fontFamily = styles.fontFamily
+
+    fonts.push({
+      element: element.tagName,
+      family: fontFamily,
+      size: styles.fontSize,
+      weight: styles.fontWeight,
+      style: styles.fontStyle,
+      letterSpacing: styles.letterSpacing,
+      lineHeight: styles.lineHeight,
+    })
+  })
+
+  chrome.runtime.sendMessage({
+    type: 'fontData',
+    data: fonts,
+  })
+}
+```
+
+Color scheme analysis includes the ability to extract both explicitly defined text and background colors as well as inherited values. Extensions can identify colors in various formats (HEX, RGB, HSL) and analyze element transparency using alpha channel values.
+
+Working with images covers both standard &lt;img&gt;, tags and background images set via CSS. Extensions can extract image URLs, determine their dimensions, positioning, and display parameters, including scaling and repeat modes.
+
+For effective visual data analysis, it is important to consider page rendering specifics. Extensions can use MutationObserver to track dynamic changes in the DOM and update visual component data in real time.
+
+```jsx
+function analyzeColors() {
+  const textColors = Array.from(new Set(
+    [...document.querySelectorAll('*')]
+    .map(el => getComputedStyle(el).color)
+  ))
+  const backgroundColors = Array.from(new Set(
+    [...document.querySelectorAll('*')]    
+    .map(el => getComputedStyle(el).backgroundColor)
+  ))
+
+  const combinedColors = [...textColors, ...backgroundColors]
+
+  chrome.runtime.sendMessage({
+    type: 'colorData',
+    data: combinedColors,
+  })
+}
+```
+
+The architecture of Chrome extensions provides a flexible balance between performance, security, and functionality. Isolated code execution, a permission system, and the ability for asynchronous interaction between components create a solid foundation for developing scalable solutions.
+
+```jsx
+function getColorLuminance(color) {
+  const rgb = color.match(/\d+/g).map(Number);
+  const luminance = (0.299 * rgb[0] +
+                    0.587 * rgb[1] +
+                    0.114 * rgb[2]) / 255;
+  return luminance > 0.5 ? 'black' : 'white';
+}
+```
+
+A particularly valuable feature is the ability to analyze media queries and responsive design. Extensions can determine which styles are applied under different display conditions, which is crucial for developing responsive design analysis tools.
+
+The technical potential of Chrome extensions goes far beyond simply adding functionality to the browser, serving as a full-fledged platform for creating complex software solutions. The combination of various APIs and capabilities enables the development of multi-layered systems that can deeply integrate with web content and the browser environment.
+
+At the same time, access to low-level browser APIs opens up opportunities for creating tools that can significantly extend the standard capabilities of the web platform. A particularly important aspect is the ability of extensions to operate at different levels of interaction with the browser, from modifying individual page content to managing the global state and behavior of the browser.
+
+Ultimately, the technical capabilities of Chrome extensions are only limited by the possibilities of modern web technologies, which continue to evolve and expand. The combination of HTML, CSS, modern JavaScript, and powerful browser APIs unlocks nearly limitless opportunities for creating innovative solutions that can significantly extend browser functionality and improve the user experience on the web.
+
+## Part 3. Product
+
+### How Did the Idea Emerge?
+
+As we have already established, browser extensions represent a promising solution that combines deep browser integration with ease of development, opening up new opportunities for creating innovative tools. Research has confirmed that this platform offers extensive possibilities for developing advanced web development tools. The dominance of Chromium-based browsers, with a market share of over 70%, creates a favorable environment for the distribution of new solutions, ensuring access to a vast audience of users.
+
+The rapid growth in the popularity of extensions, reflected in the increase in installations from 1 billion in 2020 to more than 4 billion in 2024, demonstrates the formation of a stable market for specialized browser tools.
+
+Direct access to the DOM structure in real time and a comprehensive set of APIs for analyzing visual data lay the foundation for developing specialized tools. A particularly valuable feature is the ability to work with visual components of web pages, where Chrome extensions fully realize their potential for in-depth analysis. Functionality includes working with color schemes, typography, images and media content, animations and transitions, shadows and gradients, as well as various visual effects and transformations. The ability to analyze these components in real time creates the foundation for developing effective visual analysis tools.
+
+When choosing the product format, we deliberately moved away from traditional solutions such as websites or mobile applications. Developing a browser extension is not only a technically interesting challenge but also a commercially promising direction. It was necessary to identify a relevant problem and formulate key tasks to be addressed during development.
+
+Given the growing popularity of tools for developers and designers, as well as the high demand for specialized solutions, creating an extension opens up broad opportunities for innovation and potential product monetization.
+
+### Context
+
+In the modern world of web development and design, creating unique and visually appealing interfaces is a complex and multifaceted task. Beyond the creativity of the author, it often relies on studying and analyzing existing solutions. Developers and designers frequently explore other websites for inspiration and references for their projects, whether it be color schemes, typography, animations, or general interface design principles.
+
+For specialists, developing visual literacy—the ability to notice, analyze, and remember successful visual solutions—is critically important. Regular study of contemporary projects helps build a library of visual techniques that can be creatively reinterpreted in future work. For example, a designer might observe an unusual use of animation on a web page, and this discovery could become a key element in their next project.
+
+However, the process of analyzing and borrowing visual solutions is often complex and inefficient. Built-in browser developer tools, while offering extensive functionality, are often difficult to navigate, especially for designers and beginner developers. Extracting precise styling information can be challenging due to layout complexities, CSS hierarchy, cascading rules, and dynamically generated content.
+
+This problem is particularly evident when working with modern web applications, where visual components may be programmatically created, use complex styling systems, or be part of large design systems. In such cases, identifying specific parameters becomes a non-trivial task requiring deep web technology knowledge.
+
+Existing browser extensions often have limited functionality and do not offer a comprehensive approach to solving this problem. For example, tools like FontsNinja provide information only about fonts but do not cover other visual elements such as colors, images, or animations. This forces users to work with multiple different extensions, significantly complicating their workflow.
+
+![FontsNinja Extension Interface](/research/image25.png) _FontsNinja Extension Interface_
+
+Thus, the need becomes evident for creating a universal tool that can automate and simplify the process of collecting visual data such as fonts, colors, animations, and icons, providing the ability to quickly extract and adapt them for further use.
+
+A comprehensive approach to capturing and processing interface elements, including typography, color schemes, graphic elements, and dynamic effects, will enable the creation of an effective solution for the professional analysis of modern web projects.
+
+### Solution
+
+To address the identified need, a tool was developed in the format of a browser extension that helps designers and developers efficiently work with visual components of web pages. This comprehensive solution integrates all necessary functions for analyzing visual elements within a single intuitive interface. The development was based on the idea of automating the process of collecting and processing data. When interacting with web page elements, the tool instantly extracts all necessary information about visual components, including typography, color schemes, graphic elements, and dynamic effects.
+
+Special attention was paid to usability and accessibility for specialists of different skill levels. The intuitive interface allows users to quickly obtain the required information without deep technical knowledge of web development. The developed solution not only automates routine processes but also creates new opportunities for professional growth. Systematic analysis of visual solutions becomes more accessible and effective, contributing to the development of visual literacy and improving the quality of created projects.
+
+As a result, the tool significantly simplifies the process of studying successful design solutions, allowing designers and developers to achieve desired results in their projects more quickly. Designers can focus on creative aspects of their work, while developers gain a clear understanding of the technical implementation of elements they find interesting, facilitating the creation of higher-quality and more innovative web projects.
+
+### Key Features
+
+The developed extension includes four key functional areas, each of which contributes significantly to the overall effectiveness of the tool. At its core is a comprehensive analysis of visual components that covers all aspects of web page styling, from typography and color schemes to images and animations.
+
+Particular attention was given to creating an intuitive interface for displaying collected and processed data across all categories. Information is structured in a way that allows users to quickly locate and use necessary elements without spending time searching for parameters within complex style structures.
+
+A key feature of the functionality is the instant display of styles when hovering over an element on a web page. After activating a special mode, users can quickly retrieve style information for any component, significantly speeding up the process of studying visual solutions.
+
+To ensure reliability and ease of use, all features underwent thorough testing across different browsers and devices. Additionally, a closed beta test was conducted with potential users, gathering valuable feedback that helped optimize the extension before its release.
+
+### Interface
+
+Based on a thorough analysis of existing browser extensions and research into interaction patterns, a multifunctional modal window was chosen as the main product interface. This format provides an optimal balance between functionality and usage context, allowing the user to maintain visual contact with the analyzed web page.
+
+The extension window width is set to 25 rem (400px with standard browser settings). The height is implemented dynamically with predefined maximum values for different screen sizes, ensuring adaptability without disrupting the interface composition. Using rem as the unit of measurement for width is key to ensuring interface accessibility—these units support scaling according to the user's browser settings, which is particularly important for users with visual impairments.
+
+The interface is built using the Atomic Design system, simplifying modifications and facilitating the scalability of functionality.
+
+The color palette is carefully designed to create an intuitive and comfortable user experience. Each element is clearly visually distinguished not only by color but also through additional icons and outlines, making navigation simple and understandable. The interface also adapts to the user's system settings, automatically switching between light and dark themes for comfortable use in any lighting condition.
+
+The extension's start screen welcomes the user with a concise hero block that effectively presents the current page's context through an icon and URL. This block is complemented by a clear call to action and a button to proceed to the visual component analysis results, providing an intuitive entry point into the core functionality. At the bottom of the interface, there is a section with saved elements and sites, where the user can quickly access stored resources. Here, all elements that the user saved during previous sessions with the extension are displayed.
+
+![Snable Extension Start Screen](/research/image26.png) _Snable Extension Start Screen_
+
+The analysis results are presented in an intuitive structured format, divided into thematic data categories. A key feature of this screen is the interactive exploration mode, activated by a special button, allowing users to obtain detailed information about the styles of elements directly by hovering over them on the original page.
+
+Each data category has dedicated subpages accessible via a tab system, allowing for an in-depth examination of specific aspects of visual design. This organization enables users to efficiently explore web page visual components while maintaining context and logical connections between different data types.
+
+![Snable Extension Functional Screen](/research/image27.png) _Snable Extension Functional Screen_
+
+The extension's navigation system is implemented through a two-tiered header panel structure, ensuring a clear distinction between primary and contextual interactions. The main panel, permanently present in the interface, contains the product logo and an interactive button that reveals a dropdown menu with additional extension features.
+
+When analyzing a specific website, the panel transforms into a contextual format, displaying key information about the current web resource and providing quick access to the save-to-favorites function.
+
+![Snable Extension Navigation Panel](/research/image28.png) _Snable Extension Navigation Panel_
+
+### Technical Aspects
+
+The product operates as a Chrome extension. I chose this format for several reasons:
+
+1. Development within the Chromium browser environment offers significant technical advantages. Built-in browser APIs provide extensive functionality, including access to the DOM structure, local storage, and management of visual elements. Core algorithms operate at the native level, significantly optimizing the development process.
+
+2. Using browser APIs ensures reliable data handling. Local Storage provides a mechanism for storing user settings and saved elements, while the DOM API allows precise extraction of style and visual component information. This forms a solid foundation for implementing all planned features.
+
+3. Publishing the product on the Chrome Web Store opens up broad distribution opportunities and attracts new users. Chrome Web Store pages are well-indexed by search engines, enabling high rankings in search results. This reduces marketing costs and supports organic audience growth.
+
+Chromium-based browsers hold about 70% of the web browser market. This dominant position provides access to a vast audience and creates favorable conditions for product distribution among target users.
+
+#### Technology Stack
+
+The extension is being developed using a modern technology stack, with **React** as the main framework in combination with **TypeScript**, and **Vite** as the build tool. The choice of **TypeScript** is driven by the need for strict data typing, which is especially important when working with DOM structures and visual components on web pages, where data accuracy and structure are critical.
+
+For interface styling, **Tailwind CSS** is used—a utility-first CSS framework integrated with the product’s custom design system. This solution not only reduces the final code size by an average of 66% but also minimizes unused styles, positively impacting the extension’s performance.
+
+Data storage in the current version is implemented via **Chrome Storage API**, providing a reliable mechanism for saving user data within the extension.
+
+Integration with **IndexedDB** is in development—this low-level API enables structured data storage in the browser on the client side. This tool ensures asynchronous data processing and supports complex data structures, improving the extension’s performance and enhancing the user experience.
+
+The project is built on the [create-chrome-ext](https://github.com/guocaoyi/create-chrome-ext) template, which includes a pre-configured Chrome extension structure and an automated build and packaging process for publishing in the Chrome Web Store.
+
+The extension's codebase follows modern principles of modular architecture, ensuring a clear separation of responsibilities between components and simplifying project maintenance. This approach allows for efficient scaling of functionality and facilitates debugging, as each module is responsible for a specific part of the functionality.
+
+1. The **views** directory contains HTML files for the extension’s visual representations, serving as browser entry points.
+
+2. The **modules** folder includes React components and styles for each view, structured into separate modules.
+
+3. The **contentScript** and **background** sections contain the corresponding functionality for working with page content and background processes.
+
+Various modules are imported using TypeScript aliases, simplifying project navigation and codebase maintenance.
+
+## Part 4. Brand
+
+### Naming
+
+The product name **Snable** comes from a little-known English [slang](https://www.urbandictionary.com/define.php?term=Snable) verb meaning "to unconsciously borrow" or "to snatch."
+
+This name perfectly reflects the playful nature of the product, which helps users "borrow" visual elements from websites purely for inspiration, of course.
+
+At a perception level, **Snable** sounds soft and is memorable due to its unusual letter combination. At the same time, it remains easy to pronounce in different languages, which is essential for global product use. The name's versatility makes it effective in both marketing communications and everyday use, making it an especially successful choice for a digital product.
+
+In the digital space, the name naturally extends to the domain **snable.website**.
+
+![Snable Brand Keyphrase](/research/image29.png) _Snable Brand Keyphrase_
+
+This combination of the product name with a specialized domain zone creates a direct association with the extension’s functionality and strengthens its positioning as a tool for working with websites.
+
+### Mission
+
+To provide users with easy access to analyzing visual elements and design solutions on any website.
+
+### Tone of Voice
+
+**Snable** communicates with users like a witty designer friend who knows all the secrets of web design and gladly shares them. We are ironic yet professional—winking as we say "snatch styles" while delivering impeccably accurate data.
+
+Our tone is casual and playful, much like the brand name itself, but behind the lighthearted approach is always a deep understanding of user needs and serious technical functionality.
+
+### Target Audience
+
+In today’s world, the success of a digital product is determined by understanding the needs of its users. While developing Snable, special attention was given to analyzing different user groups and their usage scenarios.
+
+This approach allowed the creation of a tool that effectively solves the needs of each user segment while remaining universal and accessible.
+
+1. **Web developers** make up a significant portion of the target audience. These professionals prioritize speed and efficiency. They value the ability to quickly analyze the implementation of interesting solutions on other sites and apply that knowledge to their own projects. For them, the technical accuracy of extracted data and the ability to quickly access CSS properties of elements are particularly important.
+
+2. **UI/UX designers** represent another key user group. These specialists continuously explore modern trends and seek inspiration in existing solutions. They need a tool that allows them to analyze visual components of websites without delving into the technical implementation details. They especially appreciate the ability to quickly identify fonts, colors, and other stylistic choices used on a site.
+
+3. **Managers and web agencies** form a third crucial user group. These professionals often act as intermediaries between clients and developers and need a tool for efficient communication. They use the extension to quickly gather references while discussing projects, showcase examples, and create mood boards. The ability to easily collect visual components helps them better articulate technical requirements and collaborate more effectively with development teams.
+
+4. **Beginners and self-taught learners** make up a unique category of users. These individuals actively study web development and design, often on their own. For them, the extension serves as an educational tool that helps them understand how various visual effects are implemented on modern websites. They particularly value ease of use and the ability to gradually dive into technical details as their expertise grows.
+
+A deep understanding of Snable's diverse audience and their specific needs enabled the creation of a universal tool that effectively meets the requirements of each user group.
+
+Web developers receive precise technical data, designers gain a convenient tool for analyzing visual solutions, managers get an efficient communication tool, and beginners have an accessible way to learn web technologies.
+
+At the same time, the extension’s modular architecture ensures the ability to further develop functionality in response to evolving user needs and web technology advancements.
+
+This balanced approach, considering various user scenarios, makes Snable a valuable tool for a wide range of professionals in web development and design.
+
+### SWOT
+
+The conducted SWOT analysis identified key factors influencing the success of the Snable extension in the market.
+
+#### Strengths
+
+1. A unique solution for automating the inspection and collection of visual artifacts from web pages, significantly reducing the work time for developers and designers.
+2. An intuitive interface accessible to users of all technical skill levels, from beginners to experienced professionals.
+3. Advanced capabilities for working with the code of collected elements, including automatic extraction and optimization of CSS styles.
+4. A well-developed prototype with core functionality, allowing for rapid testing and iterative improvement of key product features.
+
+#### Weaknesses
+
+1. The basic set of features in the initial development phase may not fully meet the needs of advanced users.
+2. Technical limitations when working with complex dynamic web pages that use modern JavaScript frameworks and intricate animations.
+3. Limited growth potential due to a lack of monetization and reliance on contributions from the developer community in an open-source project.
+
+#### Opportunities
+
+1. Creating an ecosystem of integrations with popular design and development tools (Figma, Adobe XD, Sketch).
+2. Growing demand for automation tools in web development and design, creating favorable conditions for rapid user base growth.
+3. Active participation in professional events and conferences to increase product recognition.
+
+#### Threats
+
+1. The potential emergence of competing solutions from large companies with broader development and integration capabilities.
+2. The necessity of continuous adaptation to changes in browser technologies and web standards, requiring significant resources for product maintenance and updates.
+3. Potential changes in data protection and intellectual property legislation, which may require substantial modifications to the functionality.
+
+### Identity
+
+Developing an identity for a browser extension presents a unique challenge in balancing the tool’s functionality with its visual appeal. It is particularly important to create a visual language that seamlessly integrates into the browser interface while remaining recognizable and reflecting the product’s core values.
+
+In Snable’s brand identity, we aimed to incorporate several concepts that form the foundation of the product itself. Each visual element was carefully designed not just for decoration but to convey the essence of the user’s interaction with the extension—the process of exploring and analyzing web pages.
+
+#### Concept
+
+1. **Functional minimalism**. The design adheres to a restrained style typical for browser extensions, where functionality prevails over decoration. The interface is built on clear, concise forms that do not compete with the analyzed content.
+
+2. **Achromatic palette**. The color scheme is deliberately limited to black, white, and shades of gray, creating a neutral context for working with various visual styles of websites.
+
+3. **Code metaphor**. Visual elements include subtle references to programming code structures, reflecting the technical nature of the product and its ability to "peek" beneath the surface of web pages.
+
+4. **Reverse aesthetics**. The design plays with the concept of the "reverse side" of a web page, visualizing the process of revealing a website’s internal structure through graphical elements and compositional solutions.
+
+#### Typography
+
+The identity of Snable is based on the **Inter Variable** typeface—a modern and functional choice for digital products. It was chosen not only for its excellent readability in interfaces but also for its technical optimization for screen display.
+
+The system uses two weights: Book (450) for body text and SemiBold (600) for headings and accents. This limited number of weights helps maintain a clear hierarchy while preserving the visual clarity of the interface. A dynamic letter-spacing adjustment from -2% to -5% is applied, depending on font size and weight, to optimize readability and compactness.
+
+![Snable Brand Font](/research/image30.png) _Snable Brand Font_
+
+In the overall identity system, typography plays a supporting role, giving priority to graphical elements. This approach maintains a balance between the functionality of the interface and its visual expressiveness.
+
+#### Logo
+
+The **Snable** logo embodies the brand’s key identity principles—minimalism and reverse aesthetics. It is based on a concise geometric composition: a dark gray rounded square with a white circle at its center.
+
+Conceptually, the shape of the logo reflects the product’s core function—the ability to "see" the internal structure of web pages. The white circle symbolizes a kind of "lens" through which users explore the visual components of websites. When overlaid on any object, the circle creates an inversion effect, visually demonstrating the process of uncovering a website’s internal structure.
+
+![Snable Logo](/research/image31.png) _Snable Logo_
+
+In certain contexts, the circle can be used as an independent graphic element, maintaining brand recognition even in a minimalist form. This flexibility allows the brand’s symbolism to adapt to various usage scenarios while preserving its visual integrity.
+
+#### Brand Assets
+
+![Snable Website](/research/image32.png) _Snable Website (snable.website)_
+
+![Snable Branded Case and Tote Bag](/research/image33.png) _Snable Branded Case and Tote Bag_
+
+![Snable Outdoor Advertising](/research/image34.png) _Snable Outdoor Advertising_
+
+![Snable Digital Advertising](/research/image35.png)
+
+![Snable Digital Advertising](/research/image36.png) _Snable Digital Advertising_
+
+#### Key Snable Project Links
+
+1. [Official Snable Website](https://snable.website) provides a detailed overview of all features and practical usage examples.
+
+2. [The "Archive" section](https://snable.bozzhik.com/archive) contains all technical articles and thematic posts from our development team’s Telegram channel.
+
+3. [Chrome Web Store page](https://snable.bozzhik.com/store) — install the extension and share your user experience.
+
+4. [GitHub Repository](https://snable.bozzhik.com/github) gives access to the source code, allows reporting issues, and contributes to the project’s development.
+
+![QR Codes for Key Links](/research/image37.png)

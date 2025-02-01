@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 async function getContent() {
-  const filePath = path.join(process.cwd(), 'src/app/research/content.mdx')
+  const filePath = path.join(process.cwd(), 'src/app/research/content-en.mdx')
   return await fs.readFile(filePath, 'utf8')
 }
 
