@@ -10,7 +10,10 @@ export type TypoTypes = keyof typeof typoClasses
 
 export const typoClasses = {
   h1: cn('text-8xl sm:text-6xl leading-none! font-semibold tracking-tighter', 'text-gray'),
-  p: cn('text-xl sm:text-base uppercase', 'font-mono text-white-dirty'),
+  h2: cn('text-[32px] xl:text-[26px] sm:text-2xl leading-none! font-semibold tracking-tight', 'text-white'),
+
+  h4: cn('text-xl sm:text-base uppercase', 'font-mono text-white-dirty'),
+  p: cn('text-lg sm:text-base !leading-[1.4] lowercase', 'text-white-dirty'),
 } as const
 
 function Typography({type, className, children}: Props) {
@@ -29,4 +32,7 @@ function createTypography(type: TypoTypes) {
 }
 
 export {Heading as H1} from '~/UI/StyledHeading'
+export const H2 = createTypography('h2')
+
+export const H4 = createTypography('h4')
 export const P = createTypography('p')

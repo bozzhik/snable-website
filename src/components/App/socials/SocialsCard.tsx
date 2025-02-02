@@ -5,13 +5,14 @@ import {cn} from '@/lib/utils'
 
 import Link from 'next/link'
 import Image from 'next/image'
+import {H2, P} from '~/UI/Typography'
 
 export default function SocialsCard({item}: {item: SocialsItem}) {
   const {source, link, title, content, image, video} = item
 
   return (
-    <Link href={link} className={cn(BUTTON_VARIANTS.outline, 'bg-black-card border rounded-lg duration-300', 'block p-5 space-y-3.5 group')} target="_blank">
-      <div className="font-mono text-sm font-medium uppercase text-gray">{source}</div>
+    <Link href={link} className={cn(BUTTON_VARIANTS.outline, 'block p-5 sm:p-4 space-y-3.5 group', 'border rounded-lg duration-300 bg-black-card hover:bg-gray-dark')} target="_blank">
+      <div className="font-mono text-sm sm:text-base font-medium uppercase text-gray">{source}</div>
 
       <div className="space-y-4">
         {(image || video) && (
@@ -28,13 +29,9 @@ export default function SocialsCard({item}: {item: SocialsItem}) {
         )}
 
         <div className="space-y-2">
-          {title && <h2>{title}</h2>}
+          {title && <H2 className="!mt-4 xl:!mt-5 mb-3 sm:mb-2 max-w-[29ch] sm:max-w-[18ch]">{title}</H2>}
 
-          {content?.map((unit, idx) => (
-            <p className="text-white-dirty !leading-[1.4] lowercase" key={idx}>
-              {unit}
-            </p>
-          ))}
+          {content?.map((unit, idx) => <P key={idx}>{unit}</P>)}
         </div>
       </div>
     </Link>
