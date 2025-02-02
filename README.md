@@ -4,7 +4,7 @@
   <img src="https://github.com/bozzhik/snable-website/blob/main/public/readme.png?raw=true" alt="Snable Chrome Extension - website" width="800"/>
 </p>
 
-> Website for the Snable Chrome extension, built with Next.js, TailwindCSS and Framer Motion, providing potential users with insights into the extension's capabilities, developer-published articles, and in-depth [research](https://snable.website/research) conducted during the product’s development.
+> Website for the Snable Chrome extension, built with Next.js, TailwindCSS and Framer Motion, providing potential users with insights into the extension's capabilities, [developer-published articles](https://snable.website/socials), and in-depth [research](https://snable.website/research) conducted during the product’s development.
 
 ## 🚀 Quick Start
 

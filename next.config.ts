@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/archive',
-        destination: 'https://bozzhik.com',
+        destination: 'https://snable.website/socials',
         permanent: true,
         basePath: false,
       },
@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/github',
-        destination: 'https://github.com/bozzhik',
+        destination: 'https://github.com/bozzhik/snable',
         permanent: true,
         basePath: false,
       },

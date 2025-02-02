@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     template: '%s — Snable Chrome Extension',
     default: 'Snable Chrome Extension',
   },
-  description: 'Chrome extension for web design analysis that lets you effortlessly extract colors, fonts, images, and animations while interacting with interface elements.',
+  description: 'Chrome extension for visual data extraction from websites, helping you capture colors, fonts, images, and animations while exploring new designs for inspiration.',
 }
 
 export const geistMono = localFont({
