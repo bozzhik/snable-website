@@ -17,7 +17,7 @@ export default function SocialsPage() {
     <Container variant="compact" className="space-y-6 sm:space-y-8">
       <section data-section="socials-nav" className="grid grid-cols-4 gap-2 sm:grid-cols-2 sm:gap-1.5">
         {Object.entries(LINKS).map(([key, url]) => (
-          <Button to={url} size="small" className="w-full px-8 gap-1.5" text={key !== 'x' ? key : undefined} icon={<SocialsIcon source={key as SocialSource} />} target="_blank" key={key} />
+          <Button to={url} size="small" className="w-full !px-0 gap-1.5" text={key !== 'x' ? key : undefined} icon={<SocialsIcon source={key as SocialSource} />} target="_blank" key={key} />
         ))}
       </section>
 

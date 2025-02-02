@@ -9,6 +9,7 @@ type Props = {
   className?: string
   to?: string
   target?: '_blank' | '_self'
+  onClick?: () => void
 }
 
 export const BUTTON_VARIANTS = {
@@ -17,17 +18,17 @@ export const BUTTON_VARIANTS = {
   outline: 'bg-black text-white border-gray-light hover:border-white/60',
 }
 
-const BUTTON_SIZES = {
+export const BUTTON_SIZES = {
   base: 'py-4 text-base',
   small: 'px-4 py-3 sm:px-3 sm:py-2.5 text-sm font-semibold',
 }
 
-export default function Button({text, icon, variant = 'solid', size = 'base', className, to, target = '_self'}: Props) {
+export default function Button({text, icon, variant = 'solid', size = 'base', className, to, target = '_self', onClick}: Props) {
   const buttonStyles = cn(BUTTON_VARIANTS.DEFAULT, BUTTON_VARIANTS[variant], BUTTON_SIZES[size])
 
   if (to) {
     return (
-      <Link href={to} className={cn(buttonStyles, className)} target={target}>
+      <Link href={to} className={cn(buttonStyles, className)} target={target} onClick={onClick}>
         {icon}
         {text}
       </Link>
@@ -35,7 +36,7 @@ export default function Button({text, icon, variant = 'solid', size = 'base', cl
   }
 
   return (
-    <button className={cn(buttonStyles, className)}>
+    <button className={cn(buttonStyles, className)} onClick={onClick}>
       {icon}
       {text}
     </button>
