@@ -20,6 +20,7 @@ export default {
       black: {
         DEFAULT: '#040404',
         light: '#070707',
+        card: '#0c0c0c',
       },
       gray: {
         DEFAULT: '#818181',

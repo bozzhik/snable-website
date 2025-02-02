@@ -1,9 +1,6 @@
-import PagingGif from '$/paging.gif'
-
 import {MDXRemote} from 'next-mdx-remote/rsc'
 import {cn} from '@/lib/utils'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import Container from '~/Global/Container'
 import AnchorLinks from '~~/research/AnchorLinks'
@@ -40,7 +37,9 @@ export default function Content({data}: {data: string}) {
         </div>
 
         <Link className="relative block mb-8 overflow-hidden group" href="https://hsedesign.ru/project/82da0ce3a8364a71a6537ec07ae42f16" target="_blank">
-          <Image src={PagingGif} className="duration-300 rounded-lg bg-neutral-700 group-hover:opacity-50" alt="Книга Snable (Page Inspector Extension)" />
+          <video autoPlay muted loop className={cn('rounded-lg bg-neutral-700 group-hover:opacity-50 duration-300', 'w-full aspect-video')}>
+            <source src="/socials/telegram-83.mp4" type="video/mp4" />
+          </video>
 
           <div className="absolute bottom-0 left-0 grid w-full h-16 duration-300 ease-in-out sm:pt-2.5 sm:h-fit sm:static translate-y-14 place-items-center group-hover:-translate-y-0.5 sm:translate-y-0">
             <Button className="py-2.5 sm:w-full" size="small" text="Открыть проект" />
