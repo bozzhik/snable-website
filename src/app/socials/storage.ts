@@ -1,7 +1,8 @@
 export const LINKS = {
-  telegram: 'https://t.me/bozzzzhik',
-  habr: 'https://habr.com/ru/users/bozzhik/articles',
   x: 'https://x.com/bozzhik',
+  medium: 'https://medium.com/@bozzhik',
+  telegram: 'https://t.me/s/bozzzzhik',
+  habr: 'https://habr.com/ru/users/bozzhik/articles',
 } as const
 
 export type SocialSource = keyof typeof LINKS

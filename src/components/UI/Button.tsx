@@ -2,7 +2,7 @@ import {cn} from '@/lib/utils'
 import Link from 'next/link'
 
 type Props = {
-  text: string
+  text: string | undefined
   icon?: React.ReactElement
   variant?: 'solid' | 'outline'
   size?: 'base' | 'small'

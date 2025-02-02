@@ -13,7 +13,7 @@ export const BOX_STYLES = {
   },
   compact: {
     box: 'px-[38rem] xl:px-[23rem] sm:px-2',
-    padding: 'pt-32 xl:pt-28 sm:pt-24 pb-16',
+    padding: 'pt-32 xl:pt-28 sm:pt-24 pb-20',
   },
 }
 
