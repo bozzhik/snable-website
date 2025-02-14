@@ -28,7 +28,7 @@ export default function Header() {
   }, [isMenuOpen])
 
   return (
-    <header className={cn('fixed w-full pt-6 xl:pt-4 sm:pt-2', HEADER_BOX)}>
+    <header className={cn('fixed z-[999] w-full pt-6 xl:pt-4 sm:pt-2', HEADER_BOX)}>
       <div className={cn('relative z-[150]', 'p-2 sm:p-1.5 grid grid-cols-5 sm:flex sm:justify-between items-center rounded-2xl', 'bg-black border border-gray-dark')}>
         <Link href="/" className="group w-fit flex gap-2 items-center pl-1.5" onClick={() => !isDesktop && isMenuOpen && setIsMenuOpen(false)}>
           <div className="size-8 sm:size-6 bg-white rounded-full group-hover:scale-[1.05] group-hover:bg-gray duration-300"></div>

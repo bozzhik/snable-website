@@ -19,12 +19,12 @@ export default {
       },
       black: {
         DEFAULT: '#040404',
-        light: '#070707',
-        card: '#0c0c0c',
+        light: '#080808',
+        card: '#0E0E0E',
       },
       gray: {
         DEFAULT: '#818181',
-        light: '#333333',
+        light: '#363636',
         medium: '#161616',
         dark: '#101010',
       },
