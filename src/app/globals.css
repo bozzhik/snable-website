@@ -2,6 +2,7 @@
 @config '../../tailwind.config.ts';
 
 @import '../assets/stylesheets/sugar-high.css' layer(base);
+@import '../assets/stylesheets/markdown.css' layer(base);
 
 ::selection {
   @apply bg-neutral-800;

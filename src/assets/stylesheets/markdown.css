@@ -1,0 +1,19 @@
+[data-section='content-changelog'] h1 {
+  @apply text-3xl text-neutral-500;
+}
+
+[data-section='content-changelog'] h2 {
+  @apply text-xl text-neutral-500;
+}
+
+[data-section='content-changelog'] h3 {
+  @apply hidden;
+}
+
+[data-section='content-changelog'] ul {
+  @apply space-y-1;
+}
+
+[data-section='content-changelog'] code {
+  @apply px-[5px] py-[1px] sm:py-1 text-sm sm:text-xs font-mono text-neutral-200 bg-neutral-900 rounded-sm border border-neutral-800;
+}

@@ -26,6 +26,9 @@ importers:
       lucide-react:
         specifier: ^0.469.0
         version: 0.469.0(react@19.0.0)
+      marked-react:
+        specifier: ^3.0.0
+        version: 3.0.0(react@19.0.0)
       next:
         specifier: 15.0.4
         version: 15.0.4(@babel/core@7.24.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2081,6 +2084,16 @@ packages:
   markdown-extensions@2.0.0:
     resolution: {integrity: sha512-o5vL7aDWatOTX8LzaS1WMoaoxIiLRQJuIKKe2wAw6IeULDHaqbiqiggmx+pKvZDb1Sj+pE46Sn1T7lCqfFtg1Q==}
     engines: {node: '>=16'}
+
+  marked-react@3.0.0:
+    resolution: {integrity: sha512-We5IPtdfarVIqypy4LmQ3O8xe9Hk8EBNs4MRUYg5077mbD7GJ+rmV9XAPJ0XK8LfQkCOwGv4I7niXWLXWywyoQ==}
+    peerDependencies:
+      react: ^16.8.0 || >=17.0.0
+
+  marked@15.0.7:
+    resolution: {integrity: sha512-dgLIeKGLx5FwziAnsk4ONoGwHwGPJzselimvlVskE9XLN4Orv9u2VA3GWw/lYUqjfA0rUT/6fqKwfZJapP9BEg==}
+    engines: {node: '>= 18'}
+    hasBin: true
 
   marked@7.0.4:
     resolution: {integrity: sha512-t8eP0dXRJMtMvBojtkcsA7n48BkauktUKzfkPSCq85ZMTJ0v76Rke4DYz01omYpPTUh4p/f7HePgRo3ebG8+QQ==}
@@ -5037,6 +5050,13 @@ snapshots:
       react: 19.0.0
 
   markdown-extensions@2.0.0: {}
+
+  marked-react@3.0.0(react@19.0.0):
+    dependencies:
+      marked: 15.0.7
+      react: 19.0.0
+
+  marked@15.0.7: {}
 
   marked@7.0.4: {}
 
