@@ -1,3 +1,9 @@
+export const PROJECT_LINKS = {
+  store: 'https://chromewebstore.google.com/detail/website-aura-color-analyz/hjlcegcjeflohbigndmpeldcdgdbcbbg',
+  github: 'https://github.com/bozzhik/snable',
+  socials: 'https://snable.website/socials',
+}
+
 export const HEADER_DATA = {
   LINKS: {
     // about: 'About',
@@ -7,12 +13,12 @@ export const HEADER_DATA = {
   MOBILE_LINKS: {
     1: {
       label: 'Github',
-      to: 'https://github.com/bozzhik/snable',
+      to: PROJECT_LINKS.github,
       disabled: false,
     },
     2: {
       label: 'Web Store',
-      to: '',
+      to: PROJECT_LINKS.store,
       disabled: 'true',
     },
   },

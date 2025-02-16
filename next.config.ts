@@ -1,23 +1,24 @@
 import type {NextConfig} from 'next'
+import {PROJECT_LINKS} from '@/lib/constants'
 
 const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
         source: '/archive',
-        destination: 'https://snable.website/socials',
+        destination: PROJECT_LINKS.socials,
         permanent: true,
         basePath: false,
       },
       {
         source: '/store',
-        destination: 'https://chromewebstore.google.com/detail/website-aura-color-analyz/hjlcegcjeflohbigndmpeldcdgdbcbbg',
+        destination: PROJECT_LINKS.store,
         permanent: true,
         basePath: false,
       },
       {
         source: '/github',
-        destination: 'https://github.com/bozzhik/snable',
+        destination: PROJECT_LINKS.github,
         permanent: true,
         basePath: false,
       },
