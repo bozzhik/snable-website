@@ -1,7 +1,7 @@
 import NextScript from 'next/script'
 
 export default function Analytics() {
-  const counterId = '99223290'
+  const counterId = '99935607'
   return (
     <NextScript
       id="yandex_metrika"
@@ -15,7 +15,7 @@ export default function Analytics() {
                     if(document.scripts[j].src===r)return
                   }
                   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-                })(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+                })(window,document,'script','https://mc.webvisor.org/metrika/tag_ww.js','ym');
                 ym(${counterId},'init',{
                   clickmap:true,
                   trackLinks:true,
