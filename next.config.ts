@@ -22,6 +22,12 @@ const nextConfig: NextConfig = {
         permanent: true,
         basePath: false,
       },
+      {
+        source: '/reviews',
+        destination: PROJECT_LINKS.reviews,
+        permanent: true,
+        basePath: false,
+      },
     ]
   },
 }
