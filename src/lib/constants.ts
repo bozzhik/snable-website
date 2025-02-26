@@ -1,5 +1,5 @@
 export const PROJECT_LINKS = {
-  store: 'https://chromewebstore.google.com/detail/website-aura-color-analyz/hjlcegcjeflohbigndmpeldcdgdbcbbg',
+  store: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn',
   github: 'https://github.com/bozzhik/snable',
   socials: 'https://snable.website/socials',
 }
