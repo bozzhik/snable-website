@@ -18,17 +18,17 @@ export type SocialsItem = {
 
 export const ITEMS: SocialsItem[] = [
   {
-    source: 'habr',
-    link: 'https://habr.com/ru/articles/878590/',
+    source: 'medium',
+    link: 'https://medium.com/@bozzhik/naive-problem-solving-inexperience-can-be-an-advantage-e1826dddd7b8',
     image: '/socials/telegram-85.jpg',
     title: 'Naive Problem Solving: Why Inexperience in Development Can Be an Advantage',
     content: ['Could inexperience be your secret weapon in development? Instead of always searching for ready-made solutions, what if we trusted our intuition and fundamentals to truly understand technology—a mindset that benefits both beginners and seasoned pros.'],
   },
   {
-    source: 'telegram',
-    link: 'https://t.me/bozzzzhik/83',
+    source: 'x',
+    link: 'https://x.com/bozzhik/status/1891478314486816777',
     video: '/socials/telegram-83.mp4',
-    content: ['i’ve finished working on the visual research for my diploma project. It was quite challenging, but creating the book turned out to be an interesting experience.'],
+    content: ['I’ve finished the visual research for my diploma project. It was quite challenging, but creating the book turned out to be an interesting experience.'],
   },
   {
     source: 'x',
