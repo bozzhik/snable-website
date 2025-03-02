@@ -2,6 +2,7 @@ export const PROJECT_LINKS = {
   store: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn',
   github: 'https://github.com/bozzhik/snable',
   socials: 'https://snable.website/socials',
+  reviews: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn/reviews',
 }
 
 export const HEADER_DATA = {
