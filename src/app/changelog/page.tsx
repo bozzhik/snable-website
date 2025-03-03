@@ -27,12 +27,17 @@ async function getChangelog(): Promise<string> {
 export default async function ChangelogPage() {
   const changelog = await getChangelog()
 
+  const filteredChangelog = changelog
+    .split('\n')
+    .map((line) => line.replace(/^(\s*-\s+)[0-9a-f]{7,}:\s*/i, '$1'))
+    .join('\n')
+
   return (
     <Container variant="compact" className="space-y-6 sm:space-y-8">
       <Button to={PROJECT_LINKS.github} size="small" icon={<SquareCode strokeWidth={1.5} />} className="w-full !px-0 gap-1.5" text="Source code" target="_blank" />
 
       <section data-section="content-changelog" className="space-y-3">
-        <Markdown>{changelog}</Markdown>
+        <Markdown>{filteredChangelog}</Markdown>
       </section>
     </Container>
   )
