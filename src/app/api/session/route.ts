@@ -1,4 +1,5 @@
 import {NextRequest, NextResponse} from 'next/server'
+import {supabase} from '@/lib/supabase'
 
 export type TabInfo = {
   favicon: string | null
@@ -8,11 +9,39 @@ export type TabInfo = {
 
 export async function POST(request: NextRequest) {
   try {
-    const data = await request.json()
-    console.log('Tab received successfully:', data)
-    return NextResponse.json({message: 'Tab received successfully', data: data}, {status: 200})
+    const data: TabInfo = await request.json()
+
+    const {data: insertedData, error} = await supabase
+      .from('sessions')
+      .insert([
+        {
+          favicon: data.favicon,
+          url: data.url,
+          title: data.title,
+        },
+      ])
+      .select()
+
+    if (error) {
+      throw error
+    }
+
+    console.log('Tab stored in Supabase successfully:', insertedData)
+    return NextResponse.json(
+      {
+        message: 'Tab stored successfully',
+        data: insertedData,
+      },
+      {status: 200},
+    )
   } catch (error) {
     console.error('Internal Server Error:', error)
-    return NextResponse.json({error: `Internal Server Error`, message: `${error}`}, {status: 500})
+    return NextResponse.json(
+      {
+        error: `Internal Server Error`,
+        message: `${error}`,
+      },
+      {status: 500},
+    )
   }
 }
