@@ -1,11 +1,11 @@
-export const LINKS = {
+export const SOCIALS = {
   x: 'https://x.com/bozzhik',
   medium: 'https://medium.com/@bozzhik',
   telegram: 'https://t.me/s/bozzzzhik',
   habr: 'https://habr.com/ru/users/bozzhik/articles',
 } as const
 
-export type SocialSource = keyof typeof LINKS
+export type SocialSource = keyof typeof SOCIALS
 
 export type SocialsItem = {
   source: SocialSource

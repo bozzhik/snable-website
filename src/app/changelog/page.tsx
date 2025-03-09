@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 }
 
 import {PROJECT_LINKS} from '@/lib/constants'
-import {SquareCode} from 'lucide-react'
+import {FileCode} from 'lucide-react'
 
 import axios from 'axios'
 import Markdown from 'marked-react'
@@ -34,7 +34,7 @@ export default async function ChangelogPage() {
 
   return (
     <Container variant="compact" className="space-y-6 sm:space-y-8">
-      <Button to={PROJECT_LINKS.github} size="small" icon={<SquareCode strokeWidth={1.5} />} className="w-full !px-0 gap-1.5" text="Source code" target="_blank" />
+      <Button to={PROJECT_LINKS.github} size="small" icon={<FileCode strokeWidth={1.5} />} className="w-full !px-0 py-2.5" text="Source code" target="_blank" />
 
       <section data-section="content-changelog" className="space-y-3">
         <Markdown>{filteredChangelog}</Markdown>
