@@ -6,7 +6,7 @@ import {cn} from '@/lib/utils'
 import Image from 'next/image'
 import {H1, H4} from '~/UI/Typography'
 
-const SCREEN_HEIGHT = 'sm:h-screen sm:h-svh!'
+export const SCREEN_HEIGHT = 'sm:h-screen sm:h-svh!'
 const {box, padding} = BOX_STYLES.default
 
 const heroContent = {

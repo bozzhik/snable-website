@@ -26,22 +26,17 @@ export const HEADER_DATA = {
       external: false,
     },
     {
-      label: 'Source Code',
-      to: PROJECT_LINKS.topic,
-      external: true,
-    },
-    {
       label: 'Changelog',
       to: WEBSITE_PATHS.changelog,
       external: false,
     },
-  ],
-  MOBILE_LINKS: [
     {
-      label: 'Source code',
+      label: 'Source Code',
       to: PROJECT_LINKS.topic,
       external: true,
     },
+  ],
+  MOBILE_LINKS: [
     {
       label: 'Web Store',
       to: PROJECT_LINKS.store,

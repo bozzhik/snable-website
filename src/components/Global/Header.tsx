@@ -2,6 +2,7 @@
 
 import {HEADER_DATA, PROJECT_LINKS} from '@/lib/constants'
 import {HEADER_BOX} from '~/Global/Container'
+import {SCREEN_HEIGHT} from '~~/index/Hero'
 import {Menu, X} from 'lucide-react'
 
 import {useState, useLayoutEffect} from 'react'
@@ -12,8 +13,7 @@ import {cn} from '@/lib/utils'
 import Link from 'next/link'
 import {HeaderLink} from '~/UI/HeaderLink'
 import Button, {BUTTON_SIZES, BUTTON_VARIANTS} from '~/UI/Button'
-import {LINKS, type SocialSource} from '@/app/socials/storage'
-import SocialsIcon from '~~/socials/SocialsIcon'
+import SocialsGroup from '~~/socials/SocialsGroup'
 
 export default function Header() {
   const isDesktop = useMediaQuery('(min-width: 768px)')
@@ -65,32 +65,39 @@ export default function Header() {
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div className={cn(SCREEN_HEIGHT, 'fixed z-[100] inset-0 px-2.5 pt-[20vh] pb-6', 'flex flex-col items-center justify-between', 'bg-black bg-opacity-90')} initial={{opacity: 0, y: '-100%'}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: '-100%'}} transition={{duration: 0.5, ease: 'easeInOut'}}>
-            <nav className="flex flex-col gap-2.5 items-center">
-              {[...HEADER_DATA.LINKS, ...HEADER_DATA.MOBILE_LINKS].map((link) => (
-                <motion.div initial={{opacity: 0, y: 30}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: 30}} transition={{delay: 0.4}} key={link.to}>
-                  <HeaderLink variant="mobile" href={link.to} label={link.label} external={link.external} onClick={toggleMenu} key={link.to} />
+          <motion.div className={cn(SCREEN_HEIGHT, 'fixed z-[100] inset-0 pt-10 px-2.5', 'flex flex-col items-center justify-center gap-2', 'bg-black bg-opacity-90')} initial={{opacity: 0, y: '-100%'}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: '-100%'}} transition={{duration: 0.5, ease: 'easeInOut'}}>
+            <nav className="w-full flex flex-col gap-2 items-center">
+              {[...HEADER_DATA.LINKS, ...HEADER_DATA.MOBILE_LINKS].map((link, index) => (
+                <motion.div
+                  className="w-full"
+                  initial={{opacity: 0, y: 30}}
+                  animate={{opacity: 1, y: 0}}
+                  exit={{opacity: 0, y: 30}}
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.25, 0.1, 0.25, 1],
+                    delay: 0.4 + index * 0.1,
+                  }}
+                  key={link.to}
+                >
+                  <HeaderLink variant="mobile" href={link.to} label={link.label} external={link.external} onClick={toggleMenu} />
                 </motion.div>
               ))}
             </nav>
 
-            <div className="flex flex-col gap-2.5 items-center">
-              {HEADER_DATA.MOBILE_LINKS.map((link) => (
-                <motion.div initial={{opacity: 0, y: 30}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: 30}} transition={{delay: 0.4}} key={link.to}>
-                  <Link href={link.to} target={link.external ? '_blank' : '_self'} className={cn('block text-3xl text-white-dirty leading-[1.1] uppercase font-mono', 'hover:text-white duration-200')} onClick={toggleMenu}>
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="flex gap-2 items-center">
-              {Object.entries(LINKS).map(([key, url]) => (
-                <motion.div initial={{opacity: 0, y: 30}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: 30}} transition={{delay: 0.4}} key={key}>
-                  <Button to={url} size="small" className="w-full px-8 gap-1.5" text={undefined} icon={<SocialsIcon className="sm:size-8 sm:p-0" source={key as SocialSource} />} target="_blank" onClick={toggleMenu} />
-                </motion.div>
-              ))}
-            </div>
+            <motion.div
+              className="w-full"
+              initial={{opacity: 0, y: 30}}
+              animate={{opacity: 1, y: 0}}
+              exit={{opacity: 0, y: 30}}
+              transition={{
+                duration: 0.6,
+                ease: [0.25, 0.1, 0.25, 1],
+                delay: 0.4 + (HEADER_DATA.LINKS.length + HEADER_DATA.MOBILE_LINKS.length) * 0.1,
+              }}
+            >
+              <SocialsGroup variant="dark" />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
