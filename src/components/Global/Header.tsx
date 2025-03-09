@@ -2,7 +2,7 @@
 
 import {HEADER_DATA, PROJECT_LINKS} from '@/lib/constants'
 import {HEADER_BOX} from '~/Global/Container'
-import {SCREEN_HEIGHT} from '~~/index/Hero'
+import {MOB_SCREEN_HEIGHT} from '~~/index/Hero'
 import {Menu, X} from 'lucide-react'
 
 import {useState, useLayoutEffect} from 'react'
@@ -65,7 +65,7 @@ export default function Header() {
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div className={cn(SCREEN_HEIGHT, 'fixed z-[100] inset-0 pt-10 px-2.5', 'flex flex-col items-center justify-center gap-2', 'bg-black bg-opacity-90')} initial={{opacity: 0, y: '-100%'}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: '-100%'}} transition={{duration: 0.5, ease: 'easeInOut'}}>
+          <motion.div className={cn(MOB_SCREEN_HEIGHT, 'fixed z-[100] inset-0 pt-10 px-2.5', 'flex flex-col items-center justify-center gap-2', 'bg-black bg-opacity-90')} initial={{opacity: 0, y: '-100%'}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: '-100%'}} transition={{duration: 0.5, ease: 'easeInOut'}}>
             <nav className="w-full flex flex-col gap-2 items-center">
               {[...HEADER_DATA.LINKS, ...HEADER_DATA.MOBILE_LINKS].map((link, index) => (
                 <motion.div

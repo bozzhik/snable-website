@@ -1,4 +1,4 @@
-const WEBSITE_PATHS = {
+export const WEBSITE_PATHS = {
   socials: '/socials',
   research: '/research',
   changelog: '/changelog',

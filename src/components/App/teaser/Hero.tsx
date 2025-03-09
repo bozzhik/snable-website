@@ -1,13 +1,10 @@
 import heroImage from '$/hero.png'
 
-import {BOX_STYLES} from '~/Global/Container'
-import {SCREEN_HEIGHT} from '~~/index/Hero'
+import {MOB_SCREEN_HEIGHT} from '~~/index/Hero'
 
 import {cn} from '@/lib/utils'
 import Image from 'next/image'
 import {H1, H4} from '~/UI/Typography'
-
-const {box, padding} = BOX_STYLES.default
 
 const heroContent = {
   title: 'Snable Extension',
@@ -17,7 +14,7 @@ const heroContent = {
 
 export default function Hero() {
   return (
-    <section data-section="hero-teaser" className={cn('flex flex-col gap-12 sm:gap-10', [box, padding], 'sm:pt-28 sm:pb-2', SCREEN_HEIGHT)}>
+    <section data-section="hero-teaser" className={cn('flex flex-col gap-12 sm:gap-10', 'sm:pt-28 sm:pb-2.5', MOB_SCREEN_HEIGHT)}>
       <div className={cn('relative z-[-20]', 'flex flex-col items-center gap-3 text-center xl:gap-4')}>
         <H1>{heroContent.title}</H1>
         <H4 className="max-w-[50ch]">{heroContent.subtitle}</H4>
