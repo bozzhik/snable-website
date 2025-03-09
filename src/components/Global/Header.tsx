@@ -7,7 +7,7 @@ import {Menu, X} from 'lucide-react'
 
 import {useState, useLayoutEffect} from 'react'
 import {motion, AnimatePresence, useScroll, useTransform} from 'framer-motion'
-import {useMediaQuery} from '@/lib/use-media-query'
+import {useMediaQuery} from '@/hooks/use-media-query'
 import {cn} from '@/lib/utils'
 
 import Link from 'next/link'
