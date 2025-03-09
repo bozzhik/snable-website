@@ -18,7 +18,7 @@ const heroContent = {
 
 export default function Hero() {
   return (
-    <section data-section="hero-index" className={cn('flex flex-col gap-12 sm:gap-8', 'sm:pt-28 sm:pb-2.5', MOB_SCREEN_HEIGHT)}>
+    <section data-section="hero-index" className={cn('flex flex-col gap-12 sm:gap-8', 'sm:pt-28 mb-0! sm:pb-2.5', MOB_SCREEN_HEIGHT)}>
       <div className="space-y-8 sm:space-y-4">
         <div className={cn('relative z-[-20]', 'flex flex-col items-center gap-3 text-center xl:gap-4')}>
           <H1>{heroContent.title}</H1>
