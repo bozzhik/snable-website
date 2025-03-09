@@ -1,33 +1,51 @@
+const WEBSITE_PATHS = {
+  socials: '/socials',
+  research: '/research',
+  changelog: '/changelog',
+  teaser: '/teaser',
+}
+
 export const PROJECT_LINKS = {
   store: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn',
-  github: 'https://github.com/bozzhik/snable',
-  socials: 'https://snable.website/socials',
   reviews: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn/reviews',
+  socials: 'https://snable.website/socials',
+  github: 'https://github.com/bozzhik/snable',
+  topic: 'https://github.com/topics/snable',
 }
 
 export const HEADER_DATA = {
-  LINKS: {
-    // about: 'About',
-    socials: 'Follow Us',
-    research: 'Research',
-  },
-  MOBILE_LINKS: {
-    1: {
-      label: 'Github',
-      to: PROJECT_LINKS.github,
-      disabled: false,
+  LINKS: [
+    {
+      label: 'Follow Us',
+      to: WEBSITE_PATHS.socials,
+      external: false,
     },
-    2: {
+    {
+      label: 'Research',
+      to: WEBSITE_PATHS.research,
+      external: false,
+    },
+    {
+      label: 'Source Code',
+      to: PROJECT_LINKS.topic,
+      external: true,
+    },
+    {
+      label: 'Changelog',
+      to: WEBSITE_PATHS.changelog,
+      external: false,
+    },
+  ],
+  MOBILE_LINKS: [
+    {
+      label: 'Source code',
+      to: PROJECT_LINKS.topic,
+      external: true,
+    },
+    {
       label: 'Web Store',
       to: PROJECT_LINKS.store,
-      disabled: 'true',
+      external: true,
     },
-  },
-  ACTION: {
-    1: {
-      // label: 'Get Notified',
-      to: '/#form',
-      variant: 'solid',
-    },
-  },
+  ],
 } as const
