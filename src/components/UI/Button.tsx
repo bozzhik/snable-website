@@ -15,7 +15,7 @@ type Props = {
 export const BUTTON_VARIANTS = {
   DEFAULT: cn('w-fit px-4 py-3 flex gap-3 items-center justify-center border rounded-lg duration-300', 'font-mono uppercase tracking-wide'),
   solid: 'bg-white text-black border-white hover:bg-white/85',
-  outline: 'bg-black text-white border-gray-light hover:border-white/60',
+  outline: 'bg-black text-white border-gray-medium hover:border-white/60',
 }
 
 export const BUTTON_SIZES = {

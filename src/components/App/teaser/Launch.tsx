@@ -16,7 +16,7 @@ export default function Launch() {
         <TeaserForm />
       </div>
 
-      <Button to="/socials" className="w-full border-gray-medium" icon={<Users />} variant="outline" text="Follow Us" />
+      <Button to="/socials" className="w-full" icon={<Users />} variant="outline" text="Follow Us" />
     </section>
   )
 }

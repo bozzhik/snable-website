@@ -46,8 +46,8 @@ export default function LaunchForm() {
   }
 
   return (
-    <section data-section="launch-form" className={cn('w-full gap-2 p-[5px]', 'bg-black border border-gray-light/25 rounded-xl', 'group hover:border-gray-light/30 focus-within:border-gray-light/30 duration-300')}>
-      <form onSubmit={handleSubmit(submitForm)} className={cn('flex gap-2 justify-between p-[5px] pl-3.5 bg-black-light border border-gray-light/40 rounded-lg', 'group-hover:border-white/50 hover:border-white/50 focus-within:border-white/50 duration-300')}>
+    <section data-section="launch-form" className={cn('w-full gap-2 p-[5px]', 'bg-black border border-gray-medium/50 rounded-xl', 'group hover:border-gray-medium/70 focus-within:border-white/60 duration-300')}>
+      <form onSubmit={handleSubmit(submitForm)} className={cn('flex gap-2 justify-between p-[5px] pl-3.5 bg-black-light border border-gray-medium rounded-lg', 'group-hover:border-white/50 hover:border-white/50 focus-within:border-white/50 duration-300')}>
         <input type="email" placeholder="E-mail" {...register('email', {required: true})} className={cn('w-full bg-transparent text-white placeholder:text-white font-mono uppercase', 'outline-hidden!')} />
 
         <button type="submit" disabled={isSubmitting} className={cn(BUTTON_VARIANTS.solid, 'p-0.5 rounded-md group/button duration-300', isSubmitting && 'bg-gray')}>

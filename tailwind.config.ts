@@ -23,12 +23,10 @@ export default {
       },
       gray: {
         DEFAULT: '#818181',
-        light: '#363636',
-        medium: '#161616',
+        medium: '#262626',
         dark: '#101010',
       },
       transparent: 'transparent',
-
       neutral: {
         50: '#fafafa',
         100: '#f5f5f5',
