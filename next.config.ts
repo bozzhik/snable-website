@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
         permanent: true,
         basePath: false,
       },
+      {
+        source: '/bozzhik',
+        destination: 'https://bozzhik.com',
+        permanent: true,
+        basePath: false,
+      },
     ]
   },
 }
