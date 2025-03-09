@@ -7,11 +7,10 @@ import {ArrowUpRight} from 'lucide-react'
 import {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
-
 import {cn} from '@/lib/utils'
 import {toast} from 'sonner'
 
-export default function TeaserForm() {
+export default function LaunchForm() {
   const {register, handleSubmit, reset} = useForm<FormFields>()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -47,7 +46,7 @@ export default function TeaserForm() {
   }
 
   return (
-    <section data-section="teaser-form" className={cn('w-full gap-2 p-[5px]', 'bg-black border border-gray-light/25 rounded-xl', 'group hover:border-gray-light/30 focus-within:border-gray-light/30 duration-300')}>
+    <section data-section="launch-form" className={cn('w-full gap-2 p-[5px]', 'bg-black border border-gray-light/25 rounded-xl', 'group hover:border-gray-light/30 focus-within:border-gray-light/30 duration-300')}>
       <form onSubmit={handleSubmit(submitForm)} className={cn('flex gap-2 justify-between p-[5px] pl-3.5 bg-black-light border border-gray-light/40 rounded-lg', 'group-hover:border-white/50 hover:border-white/50 focus-within:border-white/50 duration-300')}>
         <input type="email" placeholder="E-mail" {...register('email', {required: true})} className={cn('w-full bg-transparent text-white placeholder:text-white font-mono uppercase', 'outline-hidden!')} />
 
