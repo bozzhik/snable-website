@@ -2,6 +2,7 @@
 
 import {HEADER_DATA, PROJECT_LINKS} from '@/lib/constants'
 import {HEADER_BOX} from '~/Global/Container'
+import {Menu, X} from 'lucide-react'
 
 import {useState, useLayoutEffect} from 'react'
 import {motion, AnimatePresence, useScroll, useTransform} from 'framer-motion'
@@ -9,10 +10,10 @@ import {useMediaQuery} from '@/lib/use-media-query'
 import {cn} from '@/lib/utils'
 
 import Link from 'next/link'
+import {HeaderLink} from '~/UI/HeaderLink'
 import Button, {BUTTON_SIZES, BUTTON_VARIANTS} from '~/UI/Button'
 import {LINKS, type SocialSource} from '@/app/socials/storage'
 import SocialsIcon from '~~/socials/SocialsIcon'
-import {Menu, X} from 'lucide-react'
 
 export default function Header() {
   const isDesktop = useMediaQuery('(min-width: 768px)')
@@ -45,9 +46,7 @@ export default function Header() {
 
         <nav className={cn('col-span-3', 'flex gap-6 justify-self-center', 'sm:hidden')}>
           {HEADER_DATA.LINKS.map((link) => (
-            <Link href={link.to} target={link.external ? '_blank' : '_self'} className={cn('block text-white-dirty leading-[1.1] uppercase font-mono', 'hover:text-white duration-200')} key={link.to}>
-              <span>{link.label}</span>
-            </Link>
+            <HeaderLink variant="desktop" href={link.to} label={link.label} external={link.external} key={link.to} />
           ))}
         </nav>
 
@@ -66,13 +65,11 @@ export default function Header() {
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div className={cn('fixed z-[100] inset-0 flex flex-col gap-10 items-center justify-center', 'bg-black bg-opacity-90')} initial={{opacity: 0, y: '-100%'}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: '-100%'}} transition={{duration: 0.5, ease: 'easeInOut'}}>
+          <motion.div className={cn(SCREEN_HEIGHT, 'fixed z-[100] inset-0 px-2.5 pt-[20vh] pb-6', 'flex flex-col items-center justify-between', 'bg-black bg-opacity-90')} initial={{opacity: 0, y: '-100%'}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: '-100%'}} transition={{duration: 0.5, ease: 'easeInOut'}}>
             <nav className="flex flex-col gap-2.5 items-center">
-              {HEADER_DATA.LINKS.map((link) => (
+              {[...HEADER_DATA.LINKS, ...HEADER_DATA.MOBILE_LINKS].map((link) => (
                 <motion.div initial={{opacity: 0, y: 30}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: 30}} transition={{delay: 0.4}} key={link.to}>
-                  <Link href={link.to} target={link.external ? '_blank' : '_self'} className={cn('block text-3xl text-white-dirty leading-[1.1] uppercase font-mono', 'hover:text-white duration-200')} onClick={toggleMenu}>
-                    {link.label}
-                  </Link>
+                  <HeaderLink variant="mobile" href={link.to} label={link.label} external={link.external} onClick={toggleMenu} key={link.to} />
                 </motion.div>
               ))}
             </nav>
