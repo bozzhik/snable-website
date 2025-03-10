@@ -6,6 +6,7 @@ import {cn, cleanUrl} from '@/lib/utils'
 import {getUsers} from '@/utils/getUsers'
 
 import {H4, H5, P} from '~/UI/Typography'
+import {Counter} from '~/UI/Counter'
 import {Marquee} from '~/Modules/Marque'
 
 export default async function Snabled() {
@@ -25,7 +26,7 @@ export default async function Snabled() {
   return (
     <section data-section="snabled-index" className={cn('mt-24', 'space-y-6')}>
       <H4 className="max-w-[50ch] mx-auto text-white-dirty text-center">
-        Apparently, these are the recently explored websites by someone from our <span className="font-semibold text-white">{usersCount}</span> users
+        Apparently, these are the recently explored websites by someone from our <Counter initialValue={usersCount} className="font-semibold text-white" /> users
       </H4>
 
       <div className="relative flex flex-col items-center justify-center w-full overflow-hidden">
