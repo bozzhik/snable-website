@@ -26,8 +26,11 @@ export default function Hero() {
         </div>
 
         <div className={cn('flex sm:flex-col justify-center gap-2')}>
-          <Button to={PROJECT_LINKS.store} className="sm:w-full" icon={<Chrome strokeWidth={1.5} />} text="Get for Chrome" />
-          <Button to="#features" className="sm:hidden" variant="outline" text="See Features" />
+          <div className="p-1 bg-white/10 border border-white/20 hover:border-white/60 duration-300 rounded-xl">
+            <Button to={PROJECT_LINKS.store} className="sm:w-full" icon={<Chrome strokeWidth={1.5} />} text="Get Extension" />
+          </div>
+
+          <Button to="#features" className="sm:hidden border-white/20 rounded-xl" variant="outline" text="See Features" />
         </div>
       </div>
 

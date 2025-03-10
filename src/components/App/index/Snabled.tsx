@@ -3,11 +3,14 @@ import type {PostgrestError} from '@supabase/supabase-js'
 
 import {supabase} from '@/lib/supabase'
 import {cn, cleanUrl} from '@/lib/utils'
+import {getUsers} from '@/utils/getUsers'
 
 import {H4, H5, P} from '~/UI/Typography'
 import {Marquee} from '~/Modules/Marque'
 
 export default async function Snabled() {
+  const usersCount = await getUsers()
+
   const {data: sessions, error} = (await supabase
     .from('sessions') // tab data
     .select('*')
@@ -21,7 +24,9 @@ export default async function Snabled() {
 
   return (
     <section data-section="snabled-index" className={cn('mt-24', 'space-y-6')}>
-      <H4 className="text-center">Recent Sessions</H4>
+      <H4 className="max-w-[50ch] mx-auto text-white-dirty text-center">
+        Apparently, these are the recently explored websites by someone from our <span className="font-semibold text-white">{usersCount}</span> users
+      </H4>
 
       <div className="relative flex flex-col items-center justify-center w-full overflow-hidden">
         <Marquee pauseOnHover className="[--duration:20s] [--gap:0.75rem]">
@@ -32,9 +37,9 @@ export default async function Snabled() {
             const textGradient = 'bg-gradient-to-r to-black/0 bg-clip-text text-transparent'
 
             return (
-              <a href={url} className={cn('min-w-64', 'group p-2 pr-2.5 flex items-center gap-2.5', 'bg-black-light border border-gray-medium rounded-xl', 'duration-300 hover:bg-black hover:border-gray-medium/70')} target="_blank" rel="noopener noreferrer" key={url}>
+              <a href={url} className={cn('min-w-64', 'group p-2 pr-2.5 flex items-center gap-2.5', 'bg-black-light border border-gray-medium rounded-[10px]', 'duration-300 hover:bg-black hover:border-gray-medium/70')} target="_blank" rel="noopener noreferrer" key={url}>
                 {favicon && (
-                  <div className={cn('size-11 grid place-items-center rounded-lg overflow-hidden', 'relative flex-shrink-0')}>
+                  <div className={cn('size-11 grid place-items-center overflow-hidden', 'relative flex-shrink-0')}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img className="object-contain object-center rounded-sm" src={favicon} alt={title} />
                   </div>
