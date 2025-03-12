@@ -4,6 +4,7 @@ import type {PostgrestError} from '@supabase/supabase-js'
 import {supabase} from '@/lib/supabase'
 import {cn, cleanUrl} from '@/lib/utils'
 import {getUsers} from '@/utils/getUsers'
+import {isBlockedDomain} from '@/utils/sessionFilter'
 
 import {H4, H5, P} from '~/UI/Typography'
 import {Counter} from '~/UI/Counter'
@@ -23,7 +24,8 @@ export default async function Snabled() {
     return null
   }
 
-  const uniqueSessions = sessions
+  const filteredSessions = sessions
+    .filter((session) => !isBlockedDomain(session.url))
     .filter((session, index, self) => {
       const domain = new URL(session.url).hostname
       return index === self.findIndex((s) => new URL(s.url).hostname === domain)
@@ -38,7 +40,7 @@ export default async function Snabled() {
 
       <div className="relative flex flex-col items-center justify-center w-full overflow-hidden">
         <Marquee pauseOnHover className="[--duration:20s] [--gap:0.75rem]">
-          {uniqueSessions.map((tab, idx) => {
+          {filteredSessions.map((tab, idx) => {
             const {favicon, url, title} = tab
             if (!favicon) return null
 
