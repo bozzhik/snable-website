@@ -13,14 +13,14 @@ type Props = {
 }
 
 export const BUTTON_VARIANTS = {
-  DEFAULT: cn('w-fit px-4 py-3 flex gap-3 items-center justify-center border rounded-lg duration-300', 'font-mono uppercase tracking-wide'),
-  solid: 'bg-white text-black border-white hover:bg-white/85',
-  outline: 'bg-black text-white border-gray-light hover:border-white/60',
+  DEFAULT: cn('w-fit px-4 py-3 flex items-center justify-center border rounded-lg duration-300', 'font-mono font-semibold uppercase'),
+  solid: 'bg-white text-black border-white hover:bg-white/80 hover:border-white/80',
+  outline: 'bg-black text-white border-gray-medium hover:border-white/60',
 }
 
 export const BUTTON_SIZES = {
-  base: 'py-4 text-base',
-  small: 'px-4 py-3 sm:px-3 sm:py-2.5 text-sm font-semibold',
+  base: cn('px-6 py-3.5', 'gap-2', 'text-base'),
+  small: cn('px-3.5 py-3 sm:px-3 sm:py-2.5', 'gap-1.5', 'text-sm tracking-wide'),
 }
 
 export default function Button({text, icon, variant = 'solid', size = 'base', className, to, target = '_self', onClick}: Props) {
