@@ -17,11 +17,18 @@ export default async function Snabled() {
     .select('*')
     .order('pin', {ascending: true}) // cool sessions
     .order('created_at', {ascending: false})
-    .limit(15)) as {data: TabInfo[] | null; error: PostgrestError | null}
+    .limit(30)) as {data: TabInfo[] | null; error: PostgrestError | null}
 
   if (error || !sessions?.length) {
     return null
   }
+
+  const uniqueSessions = sessions
+    .filter((session, index, self) => {
+      const domain = new URL(session.url).hostname
+      return index === self.findIndex((s) => new URL(s.url).hostname === domain)
+    })
+    .slice(0, 15)
 
   return (
     <section data-section="snabled-index" className={cn('mt-24', 'space-y-6')}>
@@ -31,18 +38,18 @@ export default async function Snabled() {
 
       <div className="relative flex flex-col items-center justify-center w-full overflow-hidden">
         <Marquee pauseOnHover className="[--duration:20s] [--gap:0.75rem]">
-          {sessions.map((tab) => {
+          {uniqueSessions.map((tab, idx) => {
             const {favicon, url, title} = tab
             if (!favicon) return null
 
             const textGradient = 'bg-gradient-to-r to-black/0 bg-clip-text text-transparent'
 
             return (
-              <a href={url} className={cn('min-w-64', 'group p-2 pr-2.5 flex items-center gap-2.5', 'bg-black-light border border-gray-medium rounded-[10px]', 'duration-300 hover:bg-black hover:border-gray-medium/70')} target="_blank" rel="noopener noreferrer" key={url}>
+              <a href={url} className={cn('min-w-64', 'group p-2 pr-2.5 flex items-center gap-2.5', 'bg-black-light border border-gray-medium rounded-[10px]', 'duration-300 hover:bg-black hover:border-gray-medium/70')} target="_blank" rel="noopener noreferrer" key={idx}>
                 {favicon && (
                   <div className={cn('size-11 grid place-items-center overflow-hidden', 'relative flex-shrink-0')}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img className="object-contain object-center rounded-sm" src={favicon} alt={title} />
+                    <img className="object-contain object-center rounded-sm" src={favicon} alt="" />
                   </div>
                 )}
 
