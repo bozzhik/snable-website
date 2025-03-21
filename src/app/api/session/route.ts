@@ -11,6 +11,19 @@ export async function POST(request: NextRequest) {
   try {
     const data: TabInfo = await request.json()
 
+    const {data: existingData} = await supabase.from('sessions').select().eq('url', data.url).limit(1)
+
+    if (existingData && existingData.length > 0) {
+      console.log('Tab already exists in Supabase:', existingData[0])
+      return NextResponse.json(
+        {
+          message: 'Tab already exists',
+          data: existingData[0],
+        },
+        {status: 200},
+      )
+    }
+
     const {data: insertedData, error} = await supabase
       .from('sessions')
       .insert([
@@ -26,7 +39,7 @@ export async function POST(request: NextRequest) {
       throw error
     }
 
-    console.log('Tab stored in Supabase successfully:', insertedData)
+    console.log('New tab stored in Supabase:', insertedData)
     return NextResponse.json(
       {
         message: 'Tab stored successfully',
