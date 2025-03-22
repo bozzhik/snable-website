@@ -1,11 +1,8 @@
-import type {TabInfo} from '@/app/api/session/route'
-import type {PostgrestError} from '@supabase/supabase-js'
-
 import {unstable_cacheTag as cacheTag, unstable_cacheLife as cacheLife} from 'next/cache'
-import {supabase} from '@/lib/supabase'
+
 import {cn, cleanUrl} from '@/lib/utils'
 import {getUsers} from '@/utils/getUsers'
-import {isBlockedDomain} from '@/utils/sessionFilter'
+import {getSessions} from '@/utils/getSessions'
 
 import {H4, H5, P} from '~/UI/Typography'
 import {Counter} from '~/UI/Counter'
@@ -16,30 +13,21 @@ export default async function Snabled() {
 
   cacheTag('snabled')
   cacheLife({
-    revalidate: 72000,
-    expire: 86400,
+    revalidate: 72000, // 20 hours
+    expire: 86400, // 24 hours
   })
 
   const usersCount = await getUsers()
 
-  const {data: sessions, error} = (await supabase
-    .from('sessions') // tab data
-    .select('*')
-    .order('pin', {ascending: true}) // cool sessions
-    .order('created_at', {ascending: false})
-    .limit(30)) as {data: TabInfo[] | null; error: PostgrestError | null}
+  const sessions = await getSessions()
 
-  if (error || !sessions?.length) {
-    return null
+  if (!sessions) {
+    return (
+      <section data-section="snabled-index" className={cn('mt-24', 'space-y-6')}>
+        <H4 className="max-w-[45ch] mx-auto text-white-dirty text-center">We planned to show our users&#39; sessions here, but the data went missing.</H4>
+      </section>
+    )
   }
-
-  const filteredSessions = sessions
-    .filter((session) => !isBlockedDomain(session.url))
-    .filter((session, index, self) => {
-      const domain = new URL(session.url).hostname
-      return index === self.findIndex((s) => new URL(s.url).hostname === domain)
-    })
-    .slice(0, 15)
 
   return (
     <section data-section="snabled-index" className={cn('mt-24', 'space-y-6')}>
@@ -49,7 +37,7 @@ export default async function Snabled() {
 
       <div className="relative flex flex-col items-center justify-center w-full overflow-hidden">
         <Marquee pauseOnHover className="[--duration:20s] [--gap:0.75rem]">
-          {filteredSessions.map((tab, idx) => {
+          {sessions.map((tab, idx) => {
             const {favicon, url, title} = tab
             if (!favicon) return null
 

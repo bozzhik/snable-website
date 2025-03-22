@@ -30,7 +30,7 @@ export default function Hero() {
             <Button to={PROJECT_LINKS.store} className="sm:w-full" icon={<Chrome strokeWidth={1.5} />} text="Get Extension" />
           </div>
 
-          <Button to="#features" className="sm:hidden border-white/20 rounded-xl" variant="outline" text="See Features" />
+          <Button to={PROJECT_LINKS.socials} className="sm:hidden border-white/20 rounded-xl" variant="outline" text="Follow us" />
         </div>
       </div>
 
