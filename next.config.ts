@@ -2,6 +2,9 @@ import type {NextConfig} from 'next'
 import {PROJECT_LINKS} from '@/lib/constants'
 
 const nextConfig: NextConfig = {
+  experimental: {
+    dynamicIO: true,
+  },
   transpilePackages: ['next-mdx-remote'],
   async redirects() {
     return [

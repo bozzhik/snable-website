@@ -1,6 +1,7 @@
 import type {TabInfo} from '@/app/api/session/route'
 import type {PostgrestError} from '@supabase/supabase-js'
 
+import {unstable_cacheTag as cacheTag, unstable_cacheLife as cacheLife} from 'next/cache'
 import {supabase} from '@/lib/supabase'
 import {cn, cleanUrl} from '@/lib/utils'
 import {getUsers} from '@/utils/getUsers'
@@ -11,6 +12,14 @@ import {Counter} from '~/UI/Counter'
 import {Marquee} from '~/Modules/Marque'
 
 export default async function Snabled() {
+  'use cache'
+
+  cacheTag('snabled')
+  cacheLife({
+    revalidate: 72000,
+    expire: 86400,
+  })
+
   const usersCount = await getUsers()
 
   const {data: sessions, error} = (await supabase
