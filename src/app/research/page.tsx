@@ -2,6 +2,7 @@ import path from 'path'
 import fs from 'fs/promises'
 
 import {Metadata} from 'next'
+import {unstable_cacheLife as cacheLife} from 'next/cache'
 
 import ScrollProgress from '~~/research/ScrollProgress'
 import Content from '~~/research/Content'
@@ -17,6 +18,13 @@ async function getContent() {
 }
 
 export default async function ResearchPage() {
+  'use cache'
+
+  cacheLife({
+    revalidate: 144000, // 40 hours
+    expire: 172800, // 48 hours
+  })
+
   const content = await getContent()
 
   return (

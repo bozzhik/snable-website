@@ -1,4 +1,4 @@
-import {unstable_cacheTag as cacheTag, unstable_cacheLife as cacheLife} from 'next/cache'
+import {unstable_cacheLife as cacheLife} from 'next/cache'
 
 import {cn, cleanUrl} from '@/lib/utils'
 import {getUsers} from '@/utils/getUsers'
@@ -11,7 +11,6 @@ import {Marquee} from '~/Modules/Marque'
 export default async function Snabled() {
   'use cache'
 
-  cacheTag('snabled')
   cacheLife({
     revalidate: 72000, // 20 hours
     expire: 86400, // 24 hours
