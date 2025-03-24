@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
   experimental: {
     dynamicIO: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'cfjm6y1j7f.ufs.sh',
+      },
+    ],
+  },
   transpilePackages: ['next-mdx-remote'],
   async redirects() {
     return [

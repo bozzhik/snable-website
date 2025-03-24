@@ -21,15 +21,19 @@ export default function SocialsCard({item}: {item: SocialsItem}) {
 
       <div className="space-y-4">
         {(image || video) && (
-          <div className="overflow-hidden rounded-md bg-gray-dark">
-            {image ? (
-              <Image quality={100} className={cn('duration-300 group-hover:scale-[1.015]', 'w-full object-contain')} src={image} width={1000} height={1000} alt={`Snable ${source}`} />
-            ) : (
-              <video autoPlay muted loop className={cn('duration-300 group-hover:scale-[1.015]', 'w-full')}>
-                <source src={video} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            )}
+          <div className="relative overflow-hidden rounded-md">
+            <div className="relative z-20">
+              {image ? (
+                <Image quality={100} className={cn('duration-300 group-hover:scale-[1.015]', 'w-full object-contain')} src={image} width={1000} height={1000} alt={`Snable ${source}`} />
+              ) : (
+                <video autoPlay muted loop className={cn('duration-300 group-hover:scale-[1.015]', 'w-full')}>
+                  <source src={video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+            </div>
+
+            <div className="absolute inset-0 size-full bg-gray-medium animate-pulse"></div>
           </div>
         )}
 
