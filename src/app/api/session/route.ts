@@ -5,6 +5,11 @@ export type TabInfo = {
   favicon: string | null
   url: string
   title: string
+
+  id: string
+  created_at: string
+  pin: boolean | null
+  note: 'DANGER' | 'FOCUS' | null
 }
 
 export async function POST(request: NextRequest) {
