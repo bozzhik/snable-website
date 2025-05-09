@@ -18,6 +18,7 @@ export async function getSessions() {
 
   const filteredSessions = sessions
     .filter((session) => !isBlockedDomain(session.url))
+    .filter((session) => session.note !== 'DANGER')
     .filter((session, index, self) => {
       const domain = new URL(session.url).hostname
       return index === self.findIndex((s) => new URL(s.url).hostname === domain)
