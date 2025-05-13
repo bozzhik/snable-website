@@ -38,7 +38,7 @@ export default function Content({data}: {data: string}) {
 
         <Link className="relative block mb-8 overflow-hidden group" href="https://hsedesign.ru/project/82da0ce3a8364a71a6537ec07ae42f16" target="_blank">
           <video autoPlay muted loop className={cn('rounded-lg bg-neutral-700 group-hover:opacity-50 duration-300', 'w-full aspect-video')}>
-            <source src="/socials/telegram-83.mp4" type="video/mp4" />
+            <source src="https://cfjm6y1j7f.ufs.sh/f/WjxObGYK0fV5pt1OMmTi8eLjrtVabkySWdKJ92z5QOFl4m1X" type="video/mp4" />
           </video>
 
           <div className="absolute bottom-0 left-0 grid w-full h-16 duration-300 ease-in-out sm:pt-2.5 sm:h-fit sm:static translate-y-14 place-items-center group-hover:-translate-y-0.5 sm:translate-y-0">
