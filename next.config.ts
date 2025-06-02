@@ -45,6 +45,12 @@ const nextConfig: NextConfig = {
         permanent: true,
         basePath: false,
       },
+      {
+        source: '/figma',
+        destination: PROJECT_LINKS.figma,
+        permanent: true,
+        basePath: false,
+      },
     ]
   },
 }

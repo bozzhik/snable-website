@@ -6,11 +6,14 @@ export const WEBSITE_PATHS = {
 }
 
 export const PROJECT_LINKS = {
-  store: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn',
-  reviews: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn/reviews',
   socials: 'https://snable.website/socials',
   github: 'https://github.com/bozzhik/snable',
-  topic: 'https://github.com/topics/snable',
+  code: 'https://github.com/topics/snable',
+
+  store: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn',
+  reviews: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn/reviews',
+
+  figma: 'https://www.figma.com/community/plugin/1507707678099986490',
 }
 
 export const HEADER_DATA = {
@@ -32,7 +35,12 @@ export const HEADER_DATA = {
     },
     {
       label: 'Source Code',
-      to: PROJECT_LINKS.topic,
+      to: PROJECT_LINKS.code,
+      external: true,
+    },
+    {
+      label: 'Figma Plugin',
+      to: PROJECT_LINKS.figma,
       external: true,
     },
   ],
