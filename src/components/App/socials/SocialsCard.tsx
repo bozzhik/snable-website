@@ -5,7 +5,7 @@ import {cn} from '@/lib/utils'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import {H2, P} from '~/UI/Typography'
+import {H3, P} from '~/UI/Typography'
 import SocialsIcon from './SocialsIcon'
 
 export default function SocialsCard({item}: {item: SocialsItem}) {
@@ -38,7 +38,7 @@ export default function SocialsCard({item}: {item: SocialsItem}) {
         )}
 
         <div className="space-y-2">
-          {title && <H2 className="!mt-4 xl:!mt-5 mb-3 sm:mb-2 max-w-[29ch] sm:max-w-[18ch]">{title}</H2>}
+          {title && <H3 className="!mt-4 xl:!mt-5 mb-3 sm:mb-2 max-w-[29ch] sm:max-w-[18ch]">{title}</H3>}
 
           {content?.map((unit, idx) => <P key={idx}>{unit}</P>)}
         </div>
