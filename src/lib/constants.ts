@@ -10,10 +10,11 @@ export const PROJECT_LINKS = {
   github: 'https://github.com/bozzhik/snable',
   code: 'https://github.com/topics/snable',
 
-  store: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn',
-  reviews: 'https://chromewebstore.google.com/detail/snable-ui-inspector-css-s/gahcgpjomnmmmpimaodmdbaappflalkn/reviews',
+  store: 'https://chromewebstore.google.com/detail/gahcgpjomnmmmpimaodmdbaappflalkn',
+  reviews: 'https://chromewebstore.google.com/detail/gahcgpjomnmmmpimaodmdbaappflalkn/reviews',
 
   figma: 'https://www.figma.com/community/plugin/1507707678099986490',
+  mvp: 'https://chromewebstore.google.com/detail/hjlcegcjeflohbigndmpeldcdgdbcbbg',
 }
 
 export const HEADER_DATA = {

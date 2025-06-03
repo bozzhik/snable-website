@@ -51,6 +51,18 @@ const nextConfig: NextConfig = {
         permanent: true,
         basePath: false,
       },
+      {
+        source: '/mvp',
+        destination: PROJECT_LINKS.mvp,
+        permanent: true,
+        basePath: false,
+      },
+      {
+        source: '/code',
+        destination: PROJECT_LINKS.code,
+        permanent: true,
+        basePath: false,
+      },
     ]
   },
 }
