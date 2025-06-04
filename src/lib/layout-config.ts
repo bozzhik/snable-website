@@ -6,7 +6,10 @@ export const metadata: Metadata = {
     template: '%s — Snable Chrome Extension',
     default: 'Snable Chrome Extension',
   },
-  description: 'Chrome extension for visual data extraction from websites, helping you capture colors, fonts, images, and animations while exploring new designs for inspiration.',
+  description: 'Chrome extension for visual data extraction from websites, helping you capture colors, fonts and images while exploring new designs for inspiration.',
+  openGraph: {
+    images: 'https://snable.website' + '/og.png',
+  },
 }
 
 export const geistMono = localFont({
