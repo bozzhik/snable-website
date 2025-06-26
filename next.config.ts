@@ -69,6 +69,12 @@ const nextConfig: NextConfig = {
         permanent: true,
         basePath: false,
       },
+      {
+        source: '/figma-plugin-guide',
+        destination: PROJECT_LINKS.figma_plugin_guide,
+        permanent: true,
+        basePath: false,
+      },
     ]
   },
 }
