@@ -16,14 +16,14 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/archive',
-        destination: PROJECT_LINKS.socials,
+        source: '/store',
+        destination: PROJECT_LINKS.extension,
         permanent: true,
         basePath: false,
       },
       {
-        source: '/store',
-        destination: PROJECT_LINKS.store,
+        source: '/archive',
+        destination: PROJECT_LINKS.socials,
         permanent: true,
         basePath: false,
       },
@@ -34,20 +34,14 @@ const nextConfig: NextConfig = {
         basePath: false,
       },
       {
+        source: '/code',
+        destination: PROJECT_LINKS.code,
+        permanent: true,
+        basePath: false,
+      },
+      {
         source: '/reviews',
         destination: PROJECT_LINKS.reviews,
-        permanent: true,
-        basePath: false,
-      },
-      {
-        source: '/extension',
-        destination: PROJECT_LINKS.store,
-        permanent: true,
-        basePath: false,
-      },
-      {
-        source: '/figma',
-        destination: PROJECT_LINKS.figma,
         permanent: true,
         basePath: false,
       },
@@ -58,8 +52,20 @@ const nextConfig: NextConfig = {
         basePath: false,
       },
       {
-        source: '/code',
-        destination: PROJECT_LINKS.code,
+        source: '/extension',
+        destination: PROJECT_LINKS.extension,
+        permanent: true,
+        basePath: false,
+      },
+      {
+        source: '/figma-plugin',
+        destination: PROJECT_LINKS.figma_plugin,
+        permanent: true,
+        basePath: false,
+      },
+      {
+        source: '/figma', // (plugin)
+        destination: '/figma-plugin',
         permanent: true,
         basePath: false,
       },

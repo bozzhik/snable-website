@@ -51,7 +51,7 @@ export default function Header() {
         </nav>
 
         <div className={cn('justify-self-end', 'flex justify-between gap-[7px]')}>
-          <Button to={PROJECT_LINKS.store} target="_blank" variant="solid" size="small" text="Get Extension" onClick={() => !isDesktop && isMenuOpen && setIsMenuOpen(false)} className="sm:hidden" />
+          <Button to={PROJECT_LINKS.extension} target="_blank" variant="solid" size="small" text="Get Extension" onClick={() => !isDesktop && isMenuOpen && setIsMenuOpen(false)} className="sm:hidden" />
 
           {!isDesktop && (
             <button className={cn([BUTTON_VARIANTS.DEFAULT, BUTTON_VARIANTS.outline], BUTTON_SIZES.small, 'hidden sm:block sm:py-2 sm:px-2.5 border-white-dirty/40 text-white-dirty/90')} onClick={toggleMenu}>

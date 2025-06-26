@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export async function getUsers() {
   try {
-    const response = await axios.get(PROJECT_LINKS.store, {
+    const response = await axios.get(PROJECT_LINKS.extension, {
       headers: {'Cache-Control': 'public, max-age=86400'},
     })
 

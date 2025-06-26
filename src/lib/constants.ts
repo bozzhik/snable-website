@@ -10,11 +10,11 @@ export const PROJECT_LINKS = {
   github: 'https://github.com/bozzhik/snable',
   code: 'https://github.com/topics/snable',
 
-  store: 'https://chromewebstore.google.com/detail/gahcgpjomnmmmpimaodmdbaappflalkn',
   reviews: 'https://chromewebstore.google.com/detail/gahcgpjomnmmmpimaodmdbaappflalkn/reviews',
-
-  figma: 'https://www.figma.com/community/plugin/1507707678099986490',
   mvp: 'https://chromewebstore.google.com/detail/hjlcegcjeflohbigndmpeldcdgdbcbbg',
+
+  extension: 'https://chromewebstore.google.com/detail/gahcgpjomnmmmpimaodmdbaappflalkn',
+  figma_plugin: 'https://www.figma.com/community/plugin/1507707678099986490',
 }
 
 export const HEADER_DATA = {
@@ -41,14 +41,14 @@ export const HEADER_DATA = {
     },
     {
       label: 'Figma Plugin',
-      to: PROJECT_LINKS.figma,
+      to: PROJECT_LINKS.figma_plugin,
       external: true,
     },
   ],
   MOBILE_LINKS: [
     {
       label: 'Web Store',
-      to: PROJECT_LINKS.store,
+      to: PROJECT_LINKS.extension,
       external: true,
     },
   ],
