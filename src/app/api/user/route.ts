@@ -5,6 +5,10 @@ export type UserData = {
   token: string
   snabled: string[]
   favorites: string[]
+  figma_bridge: {
+    count: number
+    urls: string[]
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -32,6 +36,8 @@ export async function POST(request: NextRequest) {
         .update({
           snabled: data.snabled,
           favorites: data.favorites,
+          figma_bridge: data.figma_bridge,
+          figma_bridge_count: data.figma_bridge.count, // just for database
           updated_at: new Date().toISOString(),
         })
         .eq('token', userToken)
@@ -59,6 +65,8 @@ export async function POST(request: NextRequest) {
           token: userToken,
           snabled: data.snabled,
           favorites: data.favorites,
+          figma_bridge: data.figma_bridge,
+          figma_bridge_count: data.figma_bridge.count, // just for database
         },
       ])
       .select()
