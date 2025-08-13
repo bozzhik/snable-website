@@ -15,7 +15,7 @@ export const PROJECT_LINKS = {
 
   extension: 'https://chromewebstore.google.com/detail/gahcgpjomnmmmpimaodmdbaappflalkn',
   figma_plugin: 'https://www.figma.com/community/plugin/1507707678099986490',
-  figma_plugin_guide: 'https://www.figma.com/community/plugin/1507707678099986490',
+  figma_plugin_guide: 'https://x.com/bozzhik/status/1941531211698143371',
 }
 
 export const HEADER_DATA = {
