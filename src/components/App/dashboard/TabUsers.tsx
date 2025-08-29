@@ -10,7 +10,7 @@ import {H5, P} from '~/UI/Typography'
 
 export function TabUsers({users}: {users: User[]}) {
   return (
-    <section className="flex flex-col gap-2.5">
+    <section data-block="users-tab" className="flex flex-col gap-2.5">
       {users.map((user) => (
         <UserCard key={user.token} user={user} />
       ))}

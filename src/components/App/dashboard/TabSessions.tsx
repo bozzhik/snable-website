@@ -10,11 +10,11 @@ import Link from 'next/link'
 
 export function TabSessions({sessions}: {sessions: Session[]}) {
   return (
-    <section className="flex flex-col gap-2.5">
+    <div data-block="sessions-tab" className="flex flex-col gap-2.5">
       {sessions.map((session) => (
         <SessionCard key={session.id} session={session} />
       ))}
-    </section>
+    </div>
   )
 }
 

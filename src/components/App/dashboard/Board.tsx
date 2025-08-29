@@ -17,13 +17,13 @@ export function Board({sessions, users, className}: {sessions: Session[]; users:
   const [activeTab, setActiveTab] = useState<Tab>('sessions')
 
   return (
-    <div className={cn('space-y-6', className)}>
+    <section data-section="board-dashboard" className={cn('space-y-6', className)}>
       <BoardStats sessions={sessions} users={users} />
 
       <BoardTabs activeTab={activeTab} onTabChange={setActiveTab} sessionsCount={sessions.length} usersCount={users.length} />
 
       {activeTab === 'sessions' && <TabSessions sessions={sessions} />}
       {activeTab === 'users' && <TabUsers users={users} />}
-    </div>
+    </section>
   )
 }

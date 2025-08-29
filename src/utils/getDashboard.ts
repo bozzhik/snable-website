@@ -34,7 +34,7 @@ export async function getSessions(): Promise<Session[] | null> {
 
     return data || []
   } catch (error) {
-    console.error('Error in getDashboardSessions:', error)
+    console.error('Error in getSessions:', error)
     return null
   }
 }
@@ -50,7 +50,7 @@ export async function getUsers(): Promise<User[] | null> {
 
     return data || []
   } catch (error) {
-    console.error('Error in getDashboardUsers:', error)
+    console.error('Error in getUsers:', error)
     return null
   }
 }
