@@ -1,6 +1,9 @@
-import {Metadata} from 'next'
+import type {Metadata} from 'next'
 
 import {getSessions, getUsers} from '@/utils/getDashboard'
+
+import Container from '~/Global/Container'
+import {Board} from '~~/dashboard/Board'
 
 export const metadata: Metadata = {
   title: 'Dashboard',
@@ -24,8 +27,8 @@ export default async function DashboardPage() {
   const users = usersData || []
 
   return (
-    <main className="relative w-full">
-      <div className="p-2 bg-gray rounded-lg">{JSON.stringify({sessions, users}, null, 2)}</div>
-    </main>
+    <Container variant="compact">
+      <Board sessions={sessions} users={users} />
+    </Container>
   )
 }
