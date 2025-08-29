@@ -7,8 +7,12 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
+      // {
+      //   hostname: 'cfjm6y1j7f.ufs.sh',
+      // },
       {
-        hostname: 'cfjm6y1j7f.ufs.sh',
+        protocol: 'https',
+        hostname: '**',
       },
     ],
   },
