@@ -3,7 +3,8 @@ import {PROJECT_LINKS} from '@/lib/constants'
 
 const nextConfig: NextConfig = {
   experimental: {
-    dynamicIO: true,
+    useCache: true,
+    cacheComponents: true,
   },
   images: {
     remotePatterns: [

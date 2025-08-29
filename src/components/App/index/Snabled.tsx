@@ -1,7 +1,7 @@
 import {unstable_cacheLife as cacheLife} from 'next/cache'
 
 import {cn, cleanUrl} from '@/lib/utils'
-import {getUsers} from '@/utils/getUsers'
+import {fetchUsers} from '@/utils/fetchUsers'
 import {getSessions} from '@/utils/getSessions'
 
 import {H4, H5, P} from '~/UI/Typography'
@@ -12,11 +12,12 @@ export default async function Snabled() {
   'use cache'
 
   cacheLife({
+    stale: 50400, // 14 hours
     revalidate: 72000, // 20 hours
     expire: 86400, // 24 hours
   })
 
-  const usersCount = await getUsers()
+  const usersCount = await fetchUsers()
 
   const sessions = await getSessions()
 
