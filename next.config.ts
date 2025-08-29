@@ -3,12 +3,17 @@ import {PROJECT_LINKS} from '@/lib/constants'
 
 const nextConfig: NextConfig = {
   experimental: {
-    dynamicIO: true,
+    useCache: true,
+    cacheComponents: true,
   },
   images: {
     remotePatterns: [
+      // {
+      //   hostname: 'cfjm6y1j7f.ufs.sh',
+      // },
       {
-        hostname: 'cfjm6y1j7f.ufs.sh',
+        protocol: 'https',
+        hostname: '**',
       },
     ],
   },

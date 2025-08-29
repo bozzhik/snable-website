@@ -2,7 +2,7 @@ import type {TabInfo} from '@/app/api/session/route'
 import type {PostgrestError} from '@supabase/supabase-js'
 
 import {supabase} from '@/lib/supabase'
-import {isBlockedDomain} from '@/utils/sessionFilter'
+import {isBlockedDomain} from '@/utils/filterSessions'
 
 export async function getSessions() {
   const {data: sessions, error} = (await supabase
