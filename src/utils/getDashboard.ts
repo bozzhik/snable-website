@@ -12,14 +12,14 @@ export type Session = {
 
 export type User = {
   token: string
-  figma_bridge: Record<string, unknown> | null
+  figma_bridge: {urls?: string[]} | null
   figma_bridge_count: number | null
   snabled: string[]
   favorites: string[]
   created_at: string
   updated_at: string
   mark: string | null
-  figma_plugin: Record<string, unknown> | null
+  figma_plugin: {urls?: string[]} | null
   figma_plugin_count: number | null
 }
 
