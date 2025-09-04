@@ -69,7 +69,7 @@ const nextConfig: NextConfig = {
         basePath: false,
       },
       {
-        source: '/figma', // (plugin)
+        source: '/figma', // (also plugin)
         destination: '/figma-plugin',
         permanent: true,
         basePath: false,
@@ -77,6 +77,12 @@ const nextConfig: NextConfig = {
       {
         source: '/figma-plugin-guide',
         destination: PROJECT_LINKS.figma_plugin_guide,
+        permanent: true,
+        basePath: false,
+      },
+      {
+        source: '/figma-plugin-stats',
+        destination: PROJECT_LINKS.figma_plugin_stats,
         permanent: true,
         basePath: false,
       },
