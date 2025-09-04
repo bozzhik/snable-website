@@ -1,7 +1,7 @@
 import {unstable_cacheLife as cacheLife} from 'next/cache'
 
 import {cn, cleanUrl} from '@/lib/utils'
-import {fetchUsers} from '@/utils/fetchUsers'
+import {fetchConsumers} from '@/utils/fetchConsumers'
 import {getSessions} from '@/utils/getSessions'
 
 import {H4, H5, P} from '~/UI/Typography'
@@ -17,7 +17,8 @@ export default async function Snabled() {
     expire: 86400, // 24 hours
   })
 
-  const usersCount = await fetchUsers()
+  const consumersData = await fetchConsumers('extension')
+  const usersCount = consumersData.extension
 
   const sessions = await getSessions()
 
