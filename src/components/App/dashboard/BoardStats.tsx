@@ -32,10 +32,10 @@ export function BoardStats({sessions, users}: {sessions: Session[]; users: User[
   const stats = calculateStats(sessions, users)
 
   const statsConfig = [
-    {title: 'Sessions Today', value: stats.sessionsToday, description: 'Last 24 hours', trend: getTimeAgo(sessions[0]?.created_at || new Date().toISOString()), color: 'orange' as const},
+    {title: 'Sessions Today', value: stats.sessionsToday, description: 'Since 00:00 today', trend: getTimeAgo(sessions[0]?.created_at || new Date().toISOString()), color: 'orange' as const},
     {title: 'Active Users', value: stats.activeUsers, description: 'Updated recently', trend: `${stats.activeUsersPercent}% this week`, color: 'green' as const},
     {title: 'Avg URLs per User', value: stats.avgUrlsPerUser, description: 'Snabled + Favorites', trend: `${stats.totalUserUrls} total URLs`, color: 'purple' as const},
-    {title: 'Total Figma URLs', value: stats.figmaUrls, description: 'Figma Bridge + Plugin', trend: `${stats.figmaUsersPercent}% of users`, color: 'blue' as const},
+    {title: 'Total Figma URLs', value: stats.figmaUrls, description: 'Figma Bridge + Plugin', trend: `${stats.figmaUsersPercent}% of users (${stats.figmaSessionsPercent}%)`, color: 'blue' as const},
   ]
 
   return (
@@ -163,11 +163,13 @@ function ChartContainer({data}: {data: Array<{date: string; sessions: number}>})
 
 function calculateStats(sessions: Session[], users: User[]) {
   const now = new Date()
-  const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000)
+
+  // Today calculation - from start of today (00:00) to now
+  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate())
   const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
 
-  // Sessions calculations
-  const sessionsToday = sessions.filter((session) => new Date(session.created_at) > oneDayAgo).length
+  // Sessions calculations - count sessions from start of today
+  const sessionsToday = sessions.filter((session) => new Date(session.created_at) >= startOfToday).length
 
   // User calculations
   const usersWithFigmaData = users.filter((user) => (user.figma_bridge?.urls?.length || 0) > 0 || (user.figma_plugin?.urls?.length || 0) > 0)
@@ -190,6 +192,9 @@ function calculateStats(sessions: Session[], users: User[]) {
 
   const figmaUsersPercent = getPercentage(usersWithFigmaData.length)
   const activeUsersPercent = getPercentage(activeUsers.length)
+
+  // Calculate figma URLs percentage from total sessions
+  const figmaSessionsPercent = sessions.length > 0 ? Math.round((figmaUrls / sessions.length) * 100) : 0
 
   // Domain analysis
   const domainCounts: Record<string, number> = {}
@@ -216,6 +221,7 @@ function calculateStats(sessions: Session[], users: User[]) {
   return {
     figmaUrls,
     figmaUsersPercent,
+    figmaSessionsPercent,
     activeUsers: activeUsers.length,
     activeUsersPercent,
     avgUrlsPerUser,

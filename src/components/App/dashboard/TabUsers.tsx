@@ -67,7 +67,7 @@ function UserCard({user}: {user: User}) {
 
       <div className="space-y-3">
         {hasData('snabled') && (
-          <DataSection title="Snabled URLs" count={user.snabled.length} isExpanded={expandedSections.has('snabled')} onToggle={() => toggleSection('snabled')}>
+          <DataSection title="Snabled" count={user.snabled.length} isExpanded={expandedSections.has('snabled')} onToggle={() => toggleSection('snabled')}>
             <div className="space-y-2">
               {user.snabled.map((url, idx) => (
                 <a key={idx} href={url} target="_blank" rel="noopener noreferrer" className="block p-2 bg-gray-dark/50 rounded text-blue-400 hover:text-blue-300 text-sm font-mono truncate">
