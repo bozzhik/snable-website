@@ -1,6 +1,12 @@
-import {unstable_cacheLife as cacheLife} from 'next/cache'
+export const metadata = {
+  title: 'Dashboard',
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
-import type {Metadata} from 'next'
+import {unstable_cacheLife as cacheLife} from 'next/cache'
 
 import {getSessions, getUsers} from '@/utils/getDashboard'
 
@@ -8,21 +14,6 @@ import {Suspense} from 'react'
 
 import Container from '~/Global/Container'
 import {Board} from '~~/dashboard/Board'
-
-export const metadata: Metadata = {
-  title: 'Dashboard',
-
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-    },
-  },
-}
 
 export default async function DashboardPage() {
   'use cache'

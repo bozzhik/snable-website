@@ -1,6 +1,4 @@
-import {Metadata} from 'next'
-
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Socials',
   description: 'Stay connected with Snable. We publish developer insights, research, and discussions. Find all our links to Habr, Telegram, and Medium in one place.',
 }

@@ -1,7 +1,8 @@
-import type {Metadata} from 'next'
-
-export const metadata: Metadata = {
-  robots: 'noindex, nofollow',
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 import Container from '~/Global/Container'

@@ -1,6 +1,4 @@
-import {Metadata} from 'next'
-
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Changelog',
   description: 'Explore the latest updates, fixes, and new features in Snable. Stay informed about version history and improvements.',
 }
