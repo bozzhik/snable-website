@@ -1,6 +1,7 @@
 'use client'
 
 import type {Session, User} from '@/utils/getDashboard'
+import type {DashboardData} from '~/App/dashboard/Board'
 
 import * as React from 'react'
 import {Area, AreaChart, CartesianGrid, XAxis, ResponsiveContainer, Tooltip} from 'recharts'
@@ -26,37 +27,53 @@ const STAT_COLORS = {
 } as const
 
 type TimeRange = keyof typeof TIME_RANGES
-type StatColor = keyof typeof STAT_COLORS
 
-export function BoardStats({sessions, users}: {sessions: Session[]; users: User[]}) {
+export function BoardStats({sessions, users, consumers}: DashboardData) {
   const stats = calculateStats(sessions, users)
 
+  const usersConfig = [
+    {title: 'Snable Chrome Extension', value: consumers.extension, color: STAT_COLORS.red},
+    {title: 'Snable Figma Plugin', value: consumers.plugin, color: STAT_COLORS.purple},
+  ]
+
   const statsConfig = [
-    {title: 'Sessions Today', value: stats.sessionsToday, description: 'Since 00:00 today', trend: getTimeAgo(sessions[0]?.created_at || new Date().toISOString()), color: 'orange' as const},
-    {title: 'Active Users', value: stats.activeUsers, description: 'Updated recently', trend: `${stats.activeUsersPercent}% this week`, color: 'green' as const},
-    {title: 'Avg URLs per User', value: stats.avgUrlsPerUser, description: 'Snabled + Favorites', trend: `${stats.totalUserUrls} total URLs`, color: 'purple' as const},
-    {title: 'Total Figma URLs', value: stats.figmaUrls, description: 'Figma Bridge + Plugin', trend: `${stats.figmaUsersPercent}% of users (${stats.figmaSessionsPercent}%)`, color: 'blue' as const},
+    {title: 'Sessions Today', value: stats.sessionsToday, description: 'Since 00:00 today', trend: getTimeAgo(sessions[0]?.created_at || new Date().toISOString()), color: STAT_COLORS.orange},
+    {title: 'Active Users', value: stats.activeUsers, description: 'Updated recently', trend: `${stats.activeUsersPercent}% this week`, color: STAT_COLORS.green},
+    {title: 'New Users', value: stats.newUsersThisWeek, description: 'First snabled this week', trend: 'Snabled first time', color: STAT_COLORS.red},
+    // {title: 'Avg URLs per User', value: stats.avgUrlsPerUser, description: 'Snabled + Favorites', trend: `${stats.totalUserUrls} total URLs`, color: STAT_COLORS.purple},
+    {title: 'Total Figma URLs', value: stats.figmaUrls, description: 'Figma Bridge + Plugin', trend: `${stats.figmaUsersPercent}% of users (${stats.figmaSessionsPercent}%)`, color: STAT_COLORS.blue},
   ]
 
   return (
     <div data-block="stats-board" className="space-y-4 sm:space-y-3">
-      <div data-block="cards-stats-board" className="grid grid-cols-4 sm:grid-cols-2 gap-3.5 sm:gap-2.5">
+      <div data-block="stats-cards-board" className="grid grid-cols-4 sm:grid-cols-2 gap-3.5 sm:gap-2.5">
         {statsConfig.map((stat) => (
           <StatCard key={stat.title} {...stat} />
         ))}
       </div>
 
       <ChartAreaInteractive sessions={sessions} />
+
+      <div data-block="users-cards-board" className="grid grid-cols-2 gap-3.5 sm:gap-2.5">
+        {usersConfig.map((stat) => (
+          <div key={stat.title} className="p-4 bg-black-light border border-gray-medium rounded-lg hover:bg-black hover:border-gray-medium/70 transition-colors">
+            <div className="flex sm:flex gap-4 items-center sm:h-full">
+              <H3 className={stat.color}>{stat.value}</H3>
+              <H5 className="flex-1 text-center !text-xs text-gray font-mono">{stat.title}</H5>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
 
-function StatCard({title, value, description, trend, color}: {title: string; value: string | number; description: string; trend: string; color: StatColor}) {
+function StatCard({title, value, description, trend, color}: {title: string; value: string | number; description: string; trend: string; color: string}) {
   return (
     <div className={cn('p-4 bg-black-light border border-gray-medium rounded-lg', 'hover:bg-black hover:border-gray-medium/70 transition-colors')} title={description}>
       <div className="space-y-2">
         <P className="text-gray !text-sm first-letter:uppercase">{title}</P>
-        <H3 className={STAT_COLORS[color]}>{value}</H3>
+        <H3 className={color}>{value}</H3>
         <H5 className="!text-xs text-gray font-mono">{trend}</H5>
       </div>
     </div>
@@ -176,6 +193,39 @@ function calculateStats(sessions: Session[], users: User[]) {
   const usersWithFavorites = users.filter((u) => u.favorites.length > 0)
   const activeUsers = users.filter((user) => new Date(user.updated_at) > oneWeekAgo)
 
+  // New users this week calculation (first snable this week)
+  const sessionsByUrl = new Map<string, Date[]>()
+  sessions.forEach((session) => {
+    if (!sessionsByUrl.has(session.url)) {
+      sessionsByUrl.set(session.url, [])
+    }
+    sessionsByUrl.get(session.url)!.push(new Date(session.created_at))
+  })
+
+  let newUsersThisWeek = 0
+
+  for (const user of users) {
+    if (user.snabled.length === 0) continue
+
+    // Find the earliest date among all user's snables
+    let earliestDate: Date | null = null
+
+    for (const url of user.snabled) {
+      const sessionDates = sessionsByUrl.get(url)
+      if (sessionDates && sessionDates.length > 0) {
+        const earliest = new Date(Math.min(...sessionDates.map((d) => d.getTime())))
+        if (!earliestDate || earliest < earliestDate) {
+          earliestDate = earliest
+        }
+      }
+    }
+
+    // If the earliest date is within the week - the user is new
+    if (earliestDate && earliestDate >= oneWeekAgo) {
+      newUsersThisWeek++
+    }
+  }
+
   // Figma URLs count
   const figmaUrls = users.reduce((total, user) => {
     const bridgeUrls = user.figma_bridge?.urls?.length || 0
@@ -227,6 +277,7 @@ function calculateStats(sessions: Session[], users: User[]) {
     avgUrlsPerUser,
     totalUserUrls,
     sessionsToday,
+    newUsersThisWeek,
     userActivityBreakdown,
     topDomains,
   }

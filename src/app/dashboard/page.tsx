@@ -9,6 +9,7 @@ export const metadata = {
 import {unstable_cacheLife as cacheLife} from 'next/cache'
 
 import {getSessions, getUsers} from '@/utils/getDashboard'
+import {fetchConsumers} from '@/utils/fetchConsumers'
 
 import {Suspense} from 'react'
 
@@ -20,19 +21,24 @@ export default async function DashboardPage() {
 
   cacheLife('minutes')
 
-  const [sessionsData, usersData] = await Promise.all([
-    getSessions().catch((err) => {
-      console.error('Sessions failed:', err)
-      return []
-    }),
-    getUsers().catch((err) => {
-      console.error('Users failed:', err)
-      return []
+  const [sessions, users, consumers] = await Promise.all([
+    getSessions()
+      .catch((err) => {
+        console.error('Sessions failed:', err)
+        return []
+      })
+      .then((data) => data || []),
+    getUsers()
+      .catch((err) => {
+        console.error('Users failed:', err)
+        return []
+      })
+      .then((data) => data || []),
+    fetchConsumers('all').catch((err) => {
+      console.error('Consumers failed:', err)
+      return {extension: 0, plugin: 0}
     }),
   ])
-
-  const sessions = sessionsData || []
-  const users = usersData || []
 
   return (
     <Container variant="compact">
@@ -45,7 +51,7 @@ export default async function DashboardPage() {
           </section>
         }
       >
-        <Board sessions={sessions} users={users} />
+        <Board sessions={sessions} users={users} consumers={consumers} />
       </Suspense>
     </Container>
   )
