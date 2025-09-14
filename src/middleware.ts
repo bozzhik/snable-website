@@ -6,9 +6,9 @@ export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/dashboard')) {
     // Проверяем URL параметр
     const secretParam = request.nextUrl.searchParams.get('secret')
-    if (secretParam === process.env.DASHBOARD_SECRET) {
+    if (secretParam === process.env.SNABLE_SECRET) {
       const res = NextResponse.next()
-      res.cookies.set('dashboard', process.env.DASHBOARD_SECRET!, {
+      res.cookies.set('snable-secret', process.env.SNABLE_SECRET!, {
         path: '/',
         maxAge: 60 * 60 * 24 * 7, // 7 дней
       })
@@ -21,8 +21,8 @@ export function middleware(request: NextRequest) {
     }
 
     // Проверяем куки
-    const dashboardCookie = request.cookies.get('dashboard')
-    if (dashboardCookie?.value !== process.env.DASHBOARD_SECRET) {
+    const dashboardCookie = request.cookies.get('snable-secret')
+    if (dashboardCookie?.value !== process.env.SNABLE_SECRET) {
       return NextResponse.redirect(new URL('/', request.url))
     }
 
