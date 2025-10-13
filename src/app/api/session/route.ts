@@ -1,5 +1,6 @@
 import {NextRequest, NextResponse} from 'next/server'
 import {supabase} from '@/lib/supabase'
+import {isSuspiciousDomain} from '@/utils/filterSessions'
 
 export type TabInfo = {
   favicon: string | null
@@ -29,6 +30,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Check if URL should be marked as DANGER
+    const isDanger = isSuspiciousDomain(data.url)
+    const note = isDanger ? 'DANGER' : null
+
     const {data: insertedData, error} = await supabase
       .from('sessions')
       .insert([
@@ -36,6 +41,7 @@ export async function POST(request: NextRequest) {
           favicon: data.favicon,
           url: data.url,
           title: data.title,
+          note: note,
         },
       ])
       .select()
@@ -44,7 +50,7 @@ export async function POST(request: NextRequest) {
       throw error
     }
 
-    console.log('New tab stored in Supabase:', insertedData)
+    console.log(`New tab stored in Supabase (${note ? 'DANGER' : 'SAFE'}):`, insertedData)
     return NextResponse.json(
       {
         message: 'Tab stored successfully',
