@@ -2,7 +2,7 @@ import type {TabInfo} from '@/app/api/session/route'
 import type {PostgrestError} from '@supabase/supabase-js'
 
 import {supabase} from '@/lib/supabase'
-import {isBlockedDomain} from '@/utils/filterSessions'
+// import {isSuspiciousDomain} from '@/utils/filterSessions'
 
 export async function getSessions() {
   const {data: sessions, error} = (await supabase
@@ -17,8 +17,8 @@ export async function getSessions() {
   }
 
   const filteredSessions = sessions
-    .filter((session) => !isBlockedDomain(session.url))
     .filter((session) => session.note !== 'DANGER')
+
     .filter((session, index, self) => {
       const domain = new URL(session.url).hostname
       return index === self.findIndex((s) => new URL(s.url).hostname === domain)
