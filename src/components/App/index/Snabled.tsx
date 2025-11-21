@@ -1,4 +1,4 @@
-import {unstable_cacheLife as cacheLife} from 'next/cache'
+import {cacheLife} from 'next/cache'
 
 import {cn, cleanUrl} from '@/lib/utils'
 import {fetchConsumers} from '@/utils/fetchConsumers'

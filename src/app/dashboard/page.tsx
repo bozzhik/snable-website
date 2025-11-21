@@ -6,7 +6,7 @@ export const metadata = {
   },
 }
 
-import {unstable_cacheLife as cacheLife} from 'next/cache'
+import {cacheLife as cacheLife} from 'next/cache'
 
 import {getSessions, getUsers} from '@/utils/getDashboard'
 import {fetchConsumers} from '@/utils/fetchConsumers'
