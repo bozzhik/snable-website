@@ -9,14 +9,6 @@ import {Counter} from '~/UI/Counter'
 import {Marquee} from '~/Modules/Marque'
 
 export default async function Snabled() {
-  'use cache'
-
-  cacheLife({
-    stale: 50400, // 14 hours
-    revalidate: 72000, // 20 hours
-    expire: 86400, // 24 hours
-  })
-
   const consumersData = await fetchConsumers('extension')
   const usersCount = consumersData.extension
 

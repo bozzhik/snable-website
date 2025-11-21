@@ -6,8 +6,6 @@ export const metadata = {
   },
 }
 
-import {cacheLife as cacheLife} from 'next/cache'
-
 import {getSessions, getUsers} from '@/utils/getDashboard'
 import {fetchConsumers} from '@/utils/fetchConsumers'
 
@@ -17,10 +15,6 @@ import Container from '~/Global/Container'
 import {Board} from '~~/dashboard/Board'
 
 export default async function DashboardPage() {
-  'use cache'
-
-  cacheLife('minutes')
-
   const [sessions, users, consumers] = await Promise.all([
     getSessions()
       .catch((err) => {

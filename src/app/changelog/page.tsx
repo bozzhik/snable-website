@@ -23,8 +23,6 @@ async function getChangelog(): Promise<string> {
 }
 
 export default async function ChangelogPage() {
-  'use cache'
-
   const changelog = await getChangelog()
 
   const filteredChangelog = changelog

@@ -6,7 +6,6 @@ export const metadata = {
 import path from 'path'
 import fs from 'fs/promises'
 
-import {cacheLife as cacheLife} from 'next/cache'
 import {MDXRemote} from 'next-mdx-remote/rsc'
 
 import ScrollProgress from '~~/research/ScrollProgress'
@@ -19,10 +18,6 @@ async function getContent() {
 }
 
 export default async function PrivacyPolicyPage() {
-  'use cache'
-
-  cacheLife('max')
-
   const content = await getContent()
 
   return (

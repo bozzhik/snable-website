@@ -6,8 +6,6 @@ export const metadata = {
 import path from 'path'
 import fs from 'fs/promises'
 
-import {cacheLife} from 'next/cache'
-
 import ScrollProgress from '~~/research/ScrollProgress'
 import Content from '~~/research/Content'
 
@@ -17,10 +15,6 @@ async function getContent() {
 }
 
 export default async function ResearchPage() {
-  'use cache'
-
-  cacheLife('max')
-
   const content = await getContent()
 
   return (

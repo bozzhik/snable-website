@@ -2,7 +2,7 @@ import type {NextConfig} from 'next'
 import {PROJECT_LINKS} from '@/lib/constants'
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
+  // cacheComponents: true,
   reactCompiler: true,
   // typedRoutes: true,
 
