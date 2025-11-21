@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
 
   experimental: {
     typedEnv: true,
+    browserDebugInfoInTerminal: true,
   },
 
   images: {

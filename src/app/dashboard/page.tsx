@@ -6,6 +6,8 @@ export const metadata = {
   },
 }
 
+export const dynamic = 'force-dynamic'
+
 import {getSessions, getUsers} from '@/utils/getDashboard'
 import {fetchConsumers} from '@/utils/fetchConsumers'
 

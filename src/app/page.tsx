@@ -1,3 +1,6 @@
+export const dynamic = 'auto'
+export const revalidate = 43200 // 12 hours
+
 import Container from '~/Global/Container'
 
 import Hero from '~~/index/Hero'
