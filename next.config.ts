@@ -2,15 +2,17 @@ import type {NextConfig} from 'next'
 import {PROJECT_LINKS} from '@/lib/constants'
 
 const nextConfig: NextConfig = {
+  // cacheComponents: true,
+  reactCompiler: true,
+  // typedRoutes: true,
+
   experimental: {
-    useCache: true,
-    cacheComponents: true,
+    typedEnv: true,
   },
+
   images: {
+    qualities: [70, 100],
     remotePatterns: [
-      // {
-      //   hostname: 'cfjm6y1j7f.ufs.sh',
-      // },
       {
         protocol: 'https',
         hostname: '**',
