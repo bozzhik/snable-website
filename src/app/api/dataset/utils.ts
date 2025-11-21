@@ -3,7 +3,7 @@ import type {Session, User} from '@/utils/getDashboard'
 type SessionColumn = keyof Session
 type UserColumn = keyof User
 
-export const SESSION_COLUMNS: readonly SessionColumn[] = ['id', 'url', 'title', 'favicon', 'pin', 'note', 'created_at'] as const
+export const SESSION_COLUMNS: readonly SessionColumn[] = ['id', 'url', 'title', 'favicon', 'note', 'created_at'] as const
 
 export const USER_COLUMNS: readonly UserColumn[] = ['token', 'snabled', 'favorites', 'figma_bridge', 'figma_bridge_count', 'figma_plugin', 'figma_plugin_count', 'mark', 'created_at', 'updated_at'] as const
 

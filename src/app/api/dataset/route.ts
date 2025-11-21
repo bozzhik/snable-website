@@ -38,7 +38,7 @@ import type {Session, User} from '@/utils/getDashboard'
 
 import {NextRequest, NextResponse} from 'next/server'
 
-import {flattenForCSV, reorderSessionData, reorderUserData, toCSV, USER_COLUMNS, SESSION_COLUMNS} from '@/app/api/dataset/utils'
+import {flattenForCSV, reorderSessionData, reorderUserData, toCSV, USER_COLUMNS, SESSION_COLUMNS} from '@api/dataset/utils'
 
 import {supabase} from '@/lib/supabase'
 

@@ -1,7 +1,7 @@
 import {NextRequest, NextResponse} from 'next/server'
 import {Resend} from 'resend'
 
-import {TeaserEmail, type FormFields, SUBJECT} from '@/app/api/email/TeaserEmail'
+import {TeaserEmail, type FormFields, SUBJECT} from '@api/email/TeaserEmail'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 const EMAIL_LIST = {

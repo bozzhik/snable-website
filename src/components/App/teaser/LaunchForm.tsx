@@ -1,6 +1,6 @@
 'use client'
 
-import type {FormFields} from '@/app/api/email/TeaserEmail'
+import type {FormFields} from '@api/email/TeaserEmail'
 import {BUTTON_VARIANTS} from '~/UI/Button'
 import {ArrowUpRight} from 'lucide-react'
 

@@ -2,6 +2,8 @@ import {NextRequest, NextResponse} from 'next/server'
 import {supabase} from '@/lib/supabase'
 import {isSuspiciousDomain} from '@/utils/filterSessions'
 
+export type Note = 'DANGER' | 'FOCUS' | 'SKIP' | 'DUPLICATE' | null
+
 export type TabInfo = {
   favicon: string | null
   url: string
@@ -9,8 +11,7 @@ export type TabInfo = {
 
   id: string
   created_at: string
-  pin: boolean | null
-  note: 'DANGER' | 'FOCUS' | null
+  note: Note
 }
 
 export async function POST(request: NextRequest) {

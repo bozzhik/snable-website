@@ -1,4 +1,4 @@
-import type {TabInfo} from '@/app/api/session/route'
+import type {TabInfo} from '@api/session/route'
 import type {PostgrestError} from '@supabase/supabase-js'
 
 import {supabase} from '@/lib/supabase'
@@ -24,7 +24,7 @@ export async function getSessions(options?: {delay?: boolean}) {
   }
 
   const filteredSessions = sessions
-    .filter((session) => session.note !== 'DANGER')
+    .filter((session) => session.note !== 'DANGER' && session.note !== 'SKIP' && session.note !== 'DUPLICATE')
 
     .filter((session, index, self) => {
       const domain = new URL(session.url).hostname

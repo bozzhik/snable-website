@@ -1,3 +1,4 @@
+import type {Note} from '@api/session/route'
 import {supabase} from '@/lib/supabase'
 
 export type Session = {
@@ -6,8 +7,7 @@ export type Session = {
   url: string
   title: string
   created_at: string
-  pin: boolean | null
-  note: string | null
+  note: Note
 }
 
 export type User = {
