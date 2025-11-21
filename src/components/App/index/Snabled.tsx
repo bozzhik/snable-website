@@ -12,7 +12,7 @@ export default async function Snabled() {
   const consumersData = await fetchConsumers('extension')
   const usersCount = consumersData.extension
 
-  const sessions = await getSessions()
+  const sessions = await getSessions({delay: true})
 
   if (!sessions) {
     return (

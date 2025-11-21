@@ -4,13 +4,20 @@ import type {PostgrestError} from '@supabase/supabase-js'
 import {supabase} from '@/lib/supabase'
 // import {isSuspiciousDomain} from '@/utils/filterSessions'
 
-export async function getSessions() {
-  const {data: sessions, error} = (await supabase
+export async function getSessions(options?: {delay?: boolean}) {
+  let query = supabase
     .from('sessions') // tab data
     .select('*')
-    .order('pin', {ascending: true}) // cool sessions
     .order('created_at', {ascending: false})
-    .limit(30)) as {data: TabInfo[] | null; error: PostgrestError | null}
+    .limit(30)
+
+  // Если delay = true, исключаем сессии за последние 24 часа
+  if (options?.delay) {
+    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
+    query = query.lt('created_at', twentyFourHoursAgo)
+  }
+
+  const {data: sessions, error} = (await query) as {data: TabInfo[] | null; error: PostgrestError | null}
 
   if (error || !sessions?.length) {
     return null
