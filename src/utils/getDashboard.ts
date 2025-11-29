@@ -25,39 +25,18 @@ export type User = {
 
 export async function getSessions(): Promise<Session[] | null> {
   try {
-    // Use pagination to get all sessions, as Supabase has default limits
-    let allSessions: Session[] = []
-    let from = 0
-    const pageSize = 1000
+    const {data, error} = await supabase
+      .from('sessions')
+      .select('*')
+      .limit(5000) // updated in settings
+      .order('created_at', {ascending: false})
 
-    while (true) {
-      const {data, error} = await supabase
-        .from('sessions')
-        .select('*')
-        .order('created_at', {ascending: false})
-        .range(from, from + pageSize - 1)
-
-      if (error) {
-        console.error('Error fetching sessions:', error)
-        return null
-      }
-
-      if (!data || data.length === 0) {
-        break
-      }
-
-      allSessions = allSessions.concat(data)
-
-      // If we got less than pageSize, we've reached the end
-      if (data.length < pageSize) {
-        break
-      }
-
-      from += pageSize
+    if (error) {
+      console.error('Error fetching sessions:', error)
+      return null
     }
 
-    // console.log(`Loaded ${allSessions.length} sessions from Supabase`)
-    return allSessions
+    return data || []
   } catch (error) {
     console.error('Error in getSessions:', error)
     return null
@@ -66,39 +45,19 @@ export async function getSessions(): Promise<Session[] | null> {
 
 export async function getUsers(): Promise<User[] | null> {
   try {
-    // Use pagination to get all users, as Supabase has default limits
-    let allUsers: User[] = []
-    let from = 0
-    const pageSize = 1000
+    // Try simple query first without pagination to diagnose the issue
+    const {data, error} = await supabase
+      .from('users')
+      .select('*')
+      .limit(1000) // default limit
+      .order('updated_at', {ascending: false})
 
-    while (true) {
-      const {data, error} = await supabase
-        .from('users')
-        .select('*')
-        .order('updated_at', {ascending: false})
-        .range(from, from + pageSize - 1)
-
-      if (error) {
-        console.error('Error fetching users:', error)
-        return null
-      }
-
-      if (!data || data.length === 0) {
-        break
-      }
-
-      allUsers = allUsers.concat(data)
-
-      // If we got less than pageSize, we've reached the end
-      if (data.length < pageSize) {
-        break
-      }
-
-      from += pageSize
+    if (error) {
+      console.error('Error fetching users:', error)
+      return null
     }
 
-    // console.log(`Loaded ${allUsers.length} users from Supabase`)
-    return allUsers
+    return data || []
   } catch (error) {
     console.error('Error in getUsers:', error)
     return null
