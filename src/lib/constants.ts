@@ -6,7 +6,7 @@ export const WEBSITE_PATHS = {
 }
 
 export const PROJECT_LINKS = {
-  socials: 'https://snable.website/socials',
+  socials: 'https://snable.bozzhik.com/socials',
   github: 'https://github.com/bozzhik/snable',
   code: 'https://github.com/topics/snable',
 

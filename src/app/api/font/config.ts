@@ -1,5 +1,5 @@
 export const FONT_NAME = 'SF Pro Display'
-export const FONT_DIR = 'https://snable.website/font' // http://localhost:3000/api/font?weights=400
+export const FONT_DIR = 'https://snable.bozzhik.com/font' // http://localhost:3000/api/font?weights=400
 
 export type FontWeight = '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
 

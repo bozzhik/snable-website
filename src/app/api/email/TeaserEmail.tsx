@@ -20,7 +20,7 @@ export const TeaserEmail = ({email}: FormFields) => {
         <Body className="px-2 mx-auto my-auto font-sans bg-white">
           <Container className="border border-solid border-[#eaeaea] rounded-sm my-[40px] mx-auto p-[20px] max-w-[465px]">
             <Section className="mt-[32px]">
-              <Img src="https://snable.website/logo.png" width="40" height="40" alt="Snable Chrome Extension" className="mx-auto my-0" />
+              <Img src="https://snable.bozzhik.com/logo.png" width="40" height="40" alt="Snable Chrome Extension" className="mx-auto my-0" />
             </Section>
             <Heading className="text-black text-[24px] font-normal text-center p-0 mt-[30px] mb-[20px] mx-0">
               <strong>{email}</strong> was added to Audience

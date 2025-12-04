@@ -5,7 +5,7 @@ import {TeaserEmail, type FormFields, SUBJECT} from '@api/email/TeaserEmail'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 const EMAIL_LIST = {
-  from: 'notify@snable.website',
+  from: 'notify@snable.bozzhik.com',
   to: 'bozzhik@gmail.com',
 }
 

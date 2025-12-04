@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   },
   description: 'Chrome extension for visual data extraction from websites, helping you capture colors, fonts and images while exploring new designs for inspiration.',
   openGraph: {
-    images: 'https://snable.website' + '/og.png',
+    images: 'https://snable.bozzhik.com' + '/og.png',
   },
 }
 

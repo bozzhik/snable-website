@@ -1,10 +1,10 @@
-# ⚡️ [snable.website](https://snable.website/)
+# ⚡️ [snable.bozzhik.com](https://snable.bozzhik.com/)
 
 <p align="center">
   <img src="https://github.com/bozzhik/snable-website/blob/main/public/readme.png?raw=true" alt="Snable Chrome Extension - website" width="800"/>
 </p>
 
-> Website for the [Snable Chrome extension](https://snable.website/store), built with Next.js, TailwindCSS and Framer Motion, providing potential users with insights into the extension's capabilities, [developer-published articles](https://snable.website/socials), and in-depth [research](https://snable.website/research) conducted during the product’s development.
+> Website for the [Snable Chrome extension](https://snable.bozzhik.com/store), built with Next.js, TailwindCSS and Framer Motion, providing potential users with insights into the extension's capabilities, [developer-published articles](https://snable.bozzhik.com/socials), and in-depth [research](https://snable.bozzhik.com/research) conducted during the product’s development.
 
 ## 🚀 Quick Start
 
