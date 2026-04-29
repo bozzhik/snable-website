@@ -33,9 +33,25 @@ type TimeRange = keyof typeof TIME_RANGES
 export function BoardStats({sessions, users, consumers}: DashboardData) {
   const stats = calculateStats(sessions, users)
 
-  const usersConfig = [
-    {title: 'Snable Chrome Extension', value: consumers.extension, color: STAT_COLORS.red, link: PROJECT_LINKS.extension},
-    {title: 'Snable Figma Plugin', value: consumers.plugin, color: STAT_COLORS.purple, link: PROJECT_LINKS.figma_plugin_stats},
+  const consumersConfig: Array<{title: string; value: React.ReactNode; link: string}> = [
+    {
+      title: 'Snable Chrome Extension',
+      value: <span className={STAT_COLORS.red}>{consumers.extension}</span>,
+      link: PROJECT_LINKS.extension,
+    },
+    {
+      title: 'Figma Plugin',
+      value: (
+        <>
+          <span className={STAT_COLORS.purple}>{consumers.plugin.unique_runs}</span>
+          <span className="text-gray">
+            {' '}
+            / {consumers.plugin.views}
+          </span>
+        </>
+      ),
+      link: PROJECT_LINKS.figma_plugin,
+    },
   ]
 
   const statsConfig = [
@@ -57,10 +73,10 @@ export function BoardStats({sessions, users, consumers}: DashboardData) {
       <ChartAreaInteractive sessions={sessions} />
 
       <div data-block="users-cards-board" className="grid grid-cols-2 gap-3.5 sm:gap-2.5">
-        {usersConfig.map((stat) => (
+        {consumersConfig.map((stat) => (
           <Link href={stat.link} target="_blank" className="p-4 bg-black-light border border-gray-medium rounded-lg hover:bg-black hover:border-gray-medium/70 transition-colors" key={stat.title}>
             <div className="flex sm:flex gap-4 items-center sm:h-full">
-              <H3 className={stat.color}>{stat.value}</H3>
+              <H3>{stat.value}</H3>
               <H5 className="flex-1 text-center !text-xs text-gray font-mono">{stat.title}</H5>
             </div>
           </Link>

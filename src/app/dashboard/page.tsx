@@ -32,7 +32,7 @@ export default async function DashboardPage() {
       .then((data) => data || []),
     fetchConsumers('all').catch((err) => {
       console.error('Consumers failed:', err)
-      return {extension: 0, plugin: 0}
+      return {extension: 0, plugin: {plugin_id: '1507707678099986490', users: 0, unique_runs: 0, views: 0, likes: 0, comments: 0}}
     }),
   ])
 
