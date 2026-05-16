@@ -55,7 +55,7 @@ function AchievementsBlock({idx, title, caption}: {idx: string; title: string; c
 
 export default function Achievements() {
   return (
-    <section data-section="achievements-index" className="flex flex-col gap-20">
+    <section data-section="achievements-index" className="!mt-0 flex flex-col gap-20">
       {Object.entries(achievementsData).map(([key, item]) => (
         <AchievementsBlock {...item} idx={key} key={key} />
       ))}
