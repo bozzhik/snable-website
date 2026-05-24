@@ -4,6 +4,12 @@ import type {PostgrestError} from '@supabase/supabase-js'
 import {supabase} from '@/lib/supabase'
 // import {isSuspiciousDomain} from '@/utils/filterSessions'
 
+export async function getSessionsCount(): Promise<number> {
+  const {count, error} = await supabase.from('sessions').select('*', {count: 'exact', head: true})
+  if (error || count === null) return 0
+  return count
+}
+
 export async function getSessions(options?: {delay?: boolean}) {
   let query = supabase
     .from('sessions') // tab data

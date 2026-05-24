@@ -1,34 +1,40 @@
-import {cacheLife} from 'next/cache'
-
-import {cn, cleanUrl} from '@/lib/utils'
+import {cn} from '@/lib/utils'
 import {fetchConsumers} from '@/utils/fetchConsumers'
-import {getSessions} from '@/utils/getSessions'
+import {getSessionsCount} from '@/utils/getSessions'
+// import {cn, cleanUrl} from '@/lib/utils'
+// import {getSessions} from '@/utils/getSessions'
 
-import {H4, H5, P} from '~/UI/Typography'
+import {H4} from '~/UI/Typography'
 import {Counter} from '~/UI/Counter'
-import {Marquee} from '~/Modules/Marque'
+// import {H5, P} from '~/UI/Typography'
+// import {Marquee} from '~/Modules/Marque'
 
 export default async function Snabled() {
   const consumersData = await fetchConsumers('extension')
   const usersCount = consumersData.extension
+  const sitesCount = await getSessionsCount()
 
-  const sessions = await getSessions({delay: true})
+  // const sessions = await getSessions({delay: true})
 
-  if (!sessions) {
-    return (
-      <section data-section="snabled-index" className={cn('mt-24', 'space-y-6')}>
-        <H4 className="max-w-[45ch] mx-auto text-white-dirty text-center">We planned to show our users&#39; sessions here, but the data went missing.</H4>
-      </section>
-    )
-  }
+  // if (!sessions) {
+  //   return (
+  //     <section data-section="snabled-index" className={cn('mt-24', 'space-y-6')}>
+  //       <H4 className="max-w-[45ch] mx-auto text-white-dirty text-center">We planned to show our users&#39; sessions here, but the data went missing.</H4>
+  //     </section>
+  //   )
+  // }
 
   return (
-    <section data-section="snabled-index" className={cn('mt-24', 'space-y-6')}>
-      <H4 className="max-w-[50ch] mx-auto text-white-dirty text-center">
-        Apparently, these are the recently explored websites by someone from our <Counter initialValue={usersCount} className="font-semibold text-white" /> users
+    <section data-section="snabled-index" className={cn('!mt-32', 'flex flex-col items-center gap-8')}>
+      <H4 className="max-w-[50ch] mx-auto text-center leading-relaxed!">
+        Apparently, <Counter initialValue={usersCount} className="font-semibold text-white" /> people use snable — each convinced they only needed one screenshot
       </H4>
 
-      <div className="relative flex flex-col items-center justify-center w-full overflow-hidden">
+      <H4 className="max-w-[50ch] mx-auto text-center leading-relaxed!">
+        Between them, that&#39;s over <Counter initialValue={sitesCount} className="font-semibold text-white" /> websites — snable doesn&#39;t ask, it just counts
+      </H4>
+
+      {/* <div className="relative flex flex-col items-center justify-center w-full overflow-hidden">
         <Marquee pauseOnHover className="[--duration:20s] [--gap:0.75rem]">
           {sessions.map((tab, idx) => {
             const {favicon, url, title} = tab
@@ -40,7 +46,6 @@ export default async function Snabled() {
               <a href={url} className={cn('min-w-64', 'group p-2 pr-2.5 flex items-center gap-2.5', 'bg-black-light border border-gray-medium rounded-[10px]', 'duration-300 hover:bg-black hover:border-gray-medium/70')} target="_blank" rel="noopener noreferrer" key={idx}>
                 {favicon && (
                   <div className={cn('size-11 grid place-items-center overflow-hidden', 'relative flex-shrink-0')}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img className="object-contain object-center rounded-sm" src={favicon} alt="" />
                   </div>
                 )}
@@ -56,7 +61,7 @@ export default async function Snabled() {
 
         <div className="absolute inset-y-0 left-0 w-[15%] pointer-events-none bg-gradient-to-r from-black via-gray-dark/40"></div>
         <div className="absolute inset-y-0 right-0 w-[15%] pointer-events-none bg-gradient-to-l from-black via-gray-dark/40"></div>
-      </div>
+      </div> */}
     </section>
   )
 }
