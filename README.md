@@ -23,7 +23,6 @@ pnpm dev
   "language": "TypeScript",
   "styling": "Tailwind CSS",
   "animation": "Framer Motion",
-  "httpClient": "Axios",
   "build": "Turbopack",
 }
 ```
